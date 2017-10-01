@@ -1,6 +1,6 @@
 module.exports = function TextBlock ($) {
-  var _schema = $(':schema');
-  var validator = $('TextBlockValidator');
+  const _schema = $(':schema');
+  const validator = $('TextBlockValidator');
 
   var Schema = _schema.create({
     extraLong: {

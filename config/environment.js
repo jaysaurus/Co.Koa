@@ -6,7 +6,7 @@ process.ENVIRONMENT = process.env.NODE_ENV || 'development';
 switch (process.ENVIRONMENT) {
   case 'development':
   case 'test':
-    var envConfig = require('./.config.json')['environment'][process.ENVIRONMENT];
+    const envConfig = require('./.config.json')['environment'][process.ENVIRONMENT];
     Object.keys(envConfig).forEach(
       (key) => {
         process.env[key] = envConfig[key];
