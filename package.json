@@ -1,0 +1,27 @@
+{
+  "name": "co.koa",
+  "version": "0.1.0",
+  "description": "An application for developing sit-down role playing games",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest",
+    "test-watch": "nodemon --exec 'npm test'"
+  },
+  "keywords": [
+    "RPG"
+  ],
+  "author": "Jay Edwards",
+  "license": "ISC",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "koa": "^2.3.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-router": "^7.2.1",
+    "mongoose": "^4.11.10",
+    "npm": "^5.4.1",
+    "validator": "^8.1.0"
+  },
+  "devDependencies": {
+    "jest": "^21.2.1"
+  }
+}
