@@ -8,11 +8,12 @@
     "test-watch": "nodemon --exec 'npm test'"
   },
   "keywords": [
-    "RPG"
+    "MVC"
   ],
   "author": "Jay Edwards",
   "license": "ISC",
   "dependencies": {
+    "dependencies": "0.0.1",
     "fs": "0.0.1-security",
     "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
