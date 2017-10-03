@@ -1,9 +1,11 @@
 module.exports = {
   bootstrap: async ($) => {
     try {
-      var sampleService = $('SampleService');
+      const sampleService = $('SampleService');
+      const echo = $('deeper/SampleMessages');
       var result = await sampleService.getNewSamples();
-      process.log(result);
+      echo.log('A Message');
+      // process.log(result);
     } catch (e) {
       process.log(e.message);
     }

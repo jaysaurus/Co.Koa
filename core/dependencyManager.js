@@ -1,5 +1,6 @@
 const AssetDependency = require('./handlers/AssetHandler.js');
 const AsyncDependency = require('./handlers/AsyncHandler.js');
+const EchoHandler = require('./handlers/EchoHandler.js');
 const EnumsDependency = require('./handlers/EnumHandler.js');
 const MongooseDependency = require('./handlers/MongooseHandler.js');
 
@@ -10,7 +11,7 @@ var dependencyManager = (item) => {
       else {
         var type = item.match(/[A-Z]{1}[a-z]+$/);
         if (type && type.length) {
-          return fetchDirectory(type[0], item);
+          return fetchDirectory(type[0], item.replace('.', '/'));
         } else throw new Error(`unsupported dependency format: ${item}`);
       }
     } else throw new Error(`dependency expects strings, got: ${typeof item}`);
@@ -19,6 +20,8 @@ var dependencyManager = (item) => {
 
 var fetchDirectory = (type, item) => {
   switch (type) {
+    case 'Messages':
+      return new EchoHandler(getter(type.replace(/s$/, ''), `${item}.json`));
     case 'Service':
       return new (getter(type, item))(dependencyManager);
     case 'Validator':

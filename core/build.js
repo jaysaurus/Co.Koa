@@ -1,4 +1,5 @@
-const Errors = require('./core.errors.js');
+const EchoHandler = require('./handlers/EchoHandler.js');
+const echo = new EchoHandler(require('./.coreEchos.json'));
 const fs = require('fs');
 
 let appendFileCommands = (files, type, next) => {
@@ -11,9 +12,7 @@ let appendFileCommands = (files, type, next) => {
         const requirement = require(`${__root}/api/${dirName}/${name}`);
         const objectName = name.replace((suffix ? suffix[0] : ''), '');
         next(requirement, objectName);
-      } else {
-        process.log(Errors.message('notOfType', file, dirName));
-      }
+      } else echo.log('invalidType', file, dirName);
     });
   }
 };
@@ -26,13 +25,13 @@ module.exports = {
       const dirName = `${type.toLowerCase()}s`;
       const dir = `${__root}/api/${dirName}/`;
       if (!fs.existsSync(dir)) {
-        throw Errors.get('noDir', dirName);
+        echo.throw('invalidDirectory', dirName);
       } else {
         appendFileCommands(fs.readdirSync(dir), type, $);
-        process.log(`The ${type.match(/[A-Za-z0-9]+$/)}s have been imported`);
+        echo.log('success', type.match(/[A-Za-z0-9]+$/));
       }
     } catch (e) {
-      throw Errors.get('buildFailed', type, e.stack);
+      echo.throw('buildFailed', type, e.stack);
     }
     return $;
   }
