@@ -1,3 +1,4 @@
+const Errors = require('./core.errors.js');
 const fs = require('fs');
 
 let appendFileCommands = (files, type, next) => {
@@ -11,7 +12,7 @@ let appendFileCommands = (files, type, next) => {
         const objectName = name.replace((suffix ? suffix[0] : ''), '');
         next(requirement, objectName);
       } else {
-        process.log(`Spotted "${file}" in "/${dirName}". Build will not action this item.`);
+        process.log(Errors.message('notOfType', file, dirName));
       }
     });
   }
@@ -25,13 +26,13 @@ module.exports = {
       const dirName = `${type.toLowerCase()}s`;
       const dir = `${__root}/api/${dirName}/`;
       if (!fs.existsSync(dir)) {
-        throw new Error(`directory "${dirName}" doesn't exist`);
+        throw Errors.get('noDir', dirName);
       } else {
         appendFileCommands(fs.readdirSync(dir), type, $);
         process.log(`The ${type.match(/[A-Za-z0-9]+$/)}s have been imported`);
       }
     } catch (e) {
-      throw new Error(`Failed to build ${type}s: ${e.stack}`);
+      throw Errors.get('buildFailed', type, e.stack);
     }
     return $;
   }
