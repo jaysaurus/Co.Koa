@@ -23,7 +23,7 @@ module.exports = function EchoHandler (echoObject) {
   this.log = (name, ...args) => {
     process.log(getEcho(name, false, ...args));
   };
-  this.message = (name, ...args) => {
+  this.raw = (name, ...args) => {
     return getEcho(name, false, ...args);
   };
   this.throw = (name, ...args) => {

@@ -1,4 +1,5 @@
 {
+  "defaultLanguage":"en",
   "environment": {
     "test": {
       "PORT": 3000,

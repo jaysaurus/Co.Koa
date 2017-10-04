@@ -3,25 +3,26 @@ const AsyncDependency = require('./handlers/AsyncHandler.js');
 const EchoHandler = require('./handlers/EchoHandler.js');
 const EnumsDependency = require('./handlers/EnumHandler.js');
 const MongooseDependency = require('./handlers/MongooseHandler.js');
+const echo = new EchoHandler(require(`./i18n/${__i18n}.depManMessages.json`));
 
-var dependencyManager = (item) => {
+const dependencyManager = (item) => {
   try {
     if (typeof item === 'string') {
       if (item.match(/^:/)) return fetchToken(item);
       else {
-        var type = item.match(/[A-Z]{1}[a-z]+$/);
+        let type = item.match(/[A-Z]{1}[a-z]+$/);
         if (type && type.length) {
           return fetchDirectory(type[0], item.replace('.', '/'));
-        } else throw new Error(`unsupported dependency format: ${item}`);
+        } else echo.throw('unsupported', item);
       }
-    } else throw new Error(`dependency expects strings, got: ${typeof item}`);
-  } catch (e) { throw new Error(`attempt to retrieve a dependency failed: ${e.message}\n${e}`); }
+    } else echo.throw('invalidType', typeof item);
+  } catch (e) { echo.throw('invalidDependency', e.message, e); }
 };
 
-var fetchDirectory = (type, item) => {
+const fetchDirectory = (type, item) => {
   switch (type) {
     case 'Messages':
-      return new EchoHandler(getter(type.replace(/s$/, ''), `${item}.json`));
+      return new EchoHandler(i18nRequirement(item));
     case 'Service':
       return new (getter(type, item))(dependencyManager);
     case 'Validator':
@@ -32,7 +33,7 @@ var fetchDirectory = (type, item) => {
   }
 };
 
-var fetchToken = (type) => {
+const fetchToken = (type) => {
   switch (type) {
     case ':async':
       return new AsyncDependency();
@@ -46,10 +47,23 @@ var fetchToken = (type) => {
   }
 };
 
-var getter = (type, item) => {
+const i18nRequirement = (item, lang = 'en') => {
+  try {
+    if (lang.length === 2) {
+      if (item.match(/\//)) {
+        let arr = item.split('/');
+        arr[arr.length - 1] = `${lang}.${arr[arr.length - 1]}`;
+        item = arr.toString().replace(/,/g, '/');
+      } else item = `${lang}.${item}`;
+      return require(`${__root}/i18n/${item}.json`);
+    } else echo.throw('i18nTooLong');
+  } catch (e) { echo.throw('failed', item + (e.message ? ': ' + e.message : '.')); }
+};
+
+const getter = (type, item, lang) => {
   try {
     return require(`${__root}/api/${type.toLowerCase()}s/${item}`);
-  } catch (e) { throw new Error(`Failed to load ${item}`); }
+  } catch (e) { echo.throw('failed', item); }
 };
 
 module.exports = dependencyManager;

@@ -17,13 +17,13 @@ try {
   /*
   * CO.KOA IMPORTS
   */
-  require('./config/environment');
-  require('./core/welcomeMessage');
+  require('./.core/environment');
+  require('./.core/welcomeMessage');
 
-  const $ = require('./core/dependencyManager');
+  const $ = require('./.core/dependencyManager');
 
   const { bootstrap } = require('./config/bootstrap');
-  const { build } = require('./core/build');
+  const { build } = require('./.core/build');
 
   bootstrap($);
 

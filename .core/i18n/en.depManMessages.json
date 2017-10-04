@@ -1,0 +1,7 @@
+{
+  "failed": "Failed to load {1}",
+  "i18nTooLong": "the i18n region code is too long",
+  "invalidDependency": "attempt to retrieve a dependency failed: {1}\n{2}",
+  "invalidType": "dependency expects strings, but got: {1}.",
+  "unsupported": "unsupported dependency format: {1}."
+}

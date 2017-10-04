@@ -1,17 +1,19 @@
-const mongoose = require('mongoose');
-const { setLog } = require('./log');
-
 process.ENVIRONMENT = process.env.NODE_ENV || 'development';
+
+const mongoose = require('mongoose');
+const config = require(`${__root}/config/config.json`);
+const envConfig = config['environment'][process.ENVIRONMENT];
+const { setLog } = require(`${__root}/config/log.js`);
+
+global.__i18n = config['defaultLanguage'];
 
 switch (process.ENVIRONMENT) {
   case 'development':
   case 'test':
-    const envConfig = require('./.config.json')['environment'][process.ENVIRONMENT];
     Object.keys(envConfig).forEach(
       (key) => {
         process.env[key] = envConfig[key];
       });
-
     mongoose.Promise = global.Promise; // TODO sort out promise library!!
     mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true });
 

@@ -1,5 +1,5 @@
 const EchoHandler = require('./handlers/EchoHandler.js');
-const echo = new EchoHandler(require('./.coreEchos.json'));
+const echo = new EchoHandler(require(`./i18n/${__i18n}.buildMessages.json`));
 const fs = require('fs');
 
 let appendFileCommands = (files, type, next) => {
