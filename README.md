@@ -1,2 +1,2 @@
-# Co.Koa 0.1.0
+# Co.Koa 0.2.0
 An MVC for Koa by Jay Edwards
