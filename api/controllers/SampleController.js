@@ -6,7 +6,7 @@ module.exports = function SampleController ($) {
         await new Sample(ctx.request.body).save();
       } catch (e) {
         ctx.body = e.message;
-        process.log(e.message);
+        $.logger.log(e.message);
       }
     }
   };

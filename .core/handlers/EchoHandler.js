@@ -1,5 +1,5 @@
-module.exports = function EchoHandler (echoObject) {
-  var getEcho = (name, returnErr, ...args) => {
+module.exports = function EchoHandler (echoObject, logger) {
+  const getEcho = (name, returnErr, ...args) => {
     try {
       const echo = echoObject;
       if (echo && echo[name]) {
@@ -21,7 +21,7 @@ module.exports = function EchoHandler (echoObject) {
   };
 
   this.log = (name, ...args) => {
-    process.log(getEcho(name, false, ...args));
+    logger.log(getEcho(name, false, ...args));
   };
   this.raw = (name, ...args) => {
     return getEcho(name, false, ...args);

@@ -1,7 +1,7 @@
 /*
 * A library of built-in async tools
 */
-module.exports = function () {
+module.exports = function AsyncHandler () {
   var self = this;
 
   this.each = async (items, fn) => {

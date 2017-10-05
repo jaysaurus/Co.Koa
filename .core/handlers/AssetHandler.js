@@ -1,6 +1,6 @@
-module.exports = function (tokenName) {
+module.exports = function AssetHandler (tokenName, conf) {
   var dir = tokenName.replace(/^:/, '');
-  switch (process.ENVIRONMENT) {
+  switch (conf.environment) {
     case 'development':
     case 'test':
     default:
@@ -10,9 +10,9 @@ module.exports = function (tokenName) {
             case 'css':
             case 'js':
             case 'html':
-              return require(`${_root}/public/${dir}/${file}`);
+              return require(`${conf.root}/public/${dir}/${file}`);
           }
         }
-      }
+      };
   }
 };

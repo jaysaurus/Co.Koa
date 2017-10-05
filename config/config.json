@@ -2,12 +2,12 @@
   "defaultLanguage":"en",
   "environment": {
     "test": {
-      "PORT": 3000,
-      "MONGODB_URI": "mongodb://localhost:27017/coKoaTest"
+      "port": 3000,
+      "mongoDB_URI": "mongodb://localhost:27017/coKoaTest"
     },
     "development": {
-      "PORT": 3000,
-      "MONGODB_URI": "mongodb://localhost:27017/coKoa"
+      "port": 3000,
+      "mongoDB_URI": "mongodb://localhost:27017/coKoa"
     }
   },
   "hbs": {
