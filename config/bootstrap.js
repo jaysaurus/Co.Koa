@@ -2,7 +2,7 @@ module.exports = {
   bootstrap: async ($) => {
     try {
       const sampleService = $('SampleService');
-      const echo = $('deeper/SampleMessages').setLanguage('en');
+      const echo = $('deeper/SampleMessages').init();
       $.logger.log($(':enums').Sample.Action.get('A'));
       await sampleService.getNewSamples();
       echo.log('A Message');

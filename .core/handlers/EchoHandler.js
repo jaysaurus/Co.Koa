@@ -1,32 +1,32 @@
 module.exports = function EchoHandler (echoObject, logger) {
-  const getEcho = (name, returnErr, ...args) => {
+  const getEcho = (name, ...args) => {
     try {
       const echo = echoObject;
-      if (echo && echo[name]) {
-        if (typeof args === 'object' && args.length) {
-          var splitString = (echo[name] + ' ').split(/\{[0-9]+\}/);
-          if (splitString.length - 1 === args.length) {
-            let i = 0;
-            var message = splitString.reduce(
-              (msg, chunk) => {
-                return msg + chunk + ((i < args.length) ? args[i++] : '');
-              }, '').trim();
-            return returnErr ? new Error(message) : message;
-          } else throw new Error('wrong number of options provided for message');
-        } else return returnErr ? new Error(echo[name]) : echo[name];
+      if (parseParams(echo, name)) {
+        return echo[name].replace(/{(\d+)}/g, (match, number) => {
+          return typeof args[number] !== 'undefined'
+            ? args[number]
+            : match;
+        });
       } else throw new Error('could not find message');
     } catch (e) {
-      return returnErr ? new Error(e.message) : e.message;
+      return e.message;
     }
   };
 
+  const parseParams = (echo, name) => {
+    return typeof echo === 'object' &&
+      typeof name === 'string' &&
+      echo.hasOwnProperty(name);
+  };
+
   this.log = (name, ...args) => {
-    logger.log(getEcho(name, false, ...args));
+    logger.log(getEcho(name, ...args));
   };
   this.raw = (name, ...args) => {
-    return getEcho(name, false, ...args);
+    return getEcho(name, ...args);
   };
   this.throw = (name, ...args) => {
-    throw getEcho(name, true, ...args);
+    throw new Error(getEcho(name, ...args));
   };
 };

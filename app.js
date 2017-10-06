@@ -69,19 +69,6 @@ try {
               conf.logger.log(`failed to generate action "${route}": is your verb valid?'}`);
             }
           });
-      // _.each(
-      //   routes($),
-      //   (action, route) => {
-      //     var routeArray = route.split(' ');
-      //     try {
-      //       if (routeArray.length === 2) {
-      //         router[routeArray[0].toLowerCase()](
-      //           '/' + prefix + routeArray[1], action);
-      //       } else throw new Error();
-      //     } catch (e) {
-      //       process.log(`failed to generate action "${route}": is your verb valid?'}`);
-      //     }
-      //   });
     });
 
   /*

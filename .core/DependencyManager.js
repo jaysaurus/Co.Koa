@@ -1,14 +1,13 @@
 const AssetHandler = require('./handlers/AssetHandler.js');
 const AsyncHandler = require('./handlers/AsyncHandler.js');
 const EchoHandler = require('./handlers/EchoHandler.js');
+const EchoHandlerFactory = require('./handlers/EchoHandlerFactory.js');
 const EnumsHandler = require('./handlers/EnumHandler.js');
 const MongooseHandler = require('./handlers/MongooseHandler.js');
 
 module.exports = function DependencyManager (conf) {
   const _this = this;
-
   const echo = new EchoHandler(require(`./i18n/${conf['i18n']}.depManMessages.json`), conf.logger);
-  const enums = new EnumsHandler().mapEnumMethods(require(`${conf.root}/api/Enums.js`));
   const Mongoose = new MongooseHandler(conf).fetch();
 
   const appendConfigToCallerMethod = () => {
@@ -23,7 +22,7 @@ module.exports = function DependencyManager (conf) {
   const fetchDirectory = (type, item) => {
     switch (type) {
       case 'Messages':
-        return { setLanguage: (lang) => new EchoHandler(i18nRequirement(item, lang), conf.logger) };
+        return new EchoHandlerFactory(conf, item, echo);
       case 'Service':
         return new (getter(type, item))(_this.call);
       case 'Validator':
@@ -39,26 +38,13 @@ module.exports = function DependencyManager (conf) {
       case ':async':
         return new AsyncHandler();
       case ':enums':
-        return enums;
+        return new EnumsHandler().mapEnumMethods(require(`${conf.root}/api/Enums.js`));
       case ':schema':
         Mongoose.Schema.Types.create = (obj, opts) => new Mongoose.Schema(obj, opts);
         return Mongoose.Schema.Types;
       default:
         return AssetHandler(type, conf);
     }
-  };
-
-  const i18nRequirement = (item, lang = (conf.language ? conf.language : 'en')) => {
-    try {
-      if (lang.length === 2) {
-        if (item.match(/\//)) {
-          let arr = item.split('/');
-          arr[arr.length - 1] = `${lang.toLowerCase()}.${arr[arr.length - 1]}`;
-          item = arr.toString().replace(/,/g, '/');
-        } else item = `${lang}.${item}`;
-        return require(`${conf['root']}/i18n/${item}.json`);
-      } else echo.throw('i18nTooLong');
-    } catch (e) { echo.throw('failed', item + (e.message ? ': ' + e.message : '.')); }
   };
 
   const getter = (type, item, lang) => {
