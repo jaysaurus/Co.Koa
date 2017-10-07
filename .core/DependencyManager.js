@@ -8,6 +8,7 @@ const MongooseHandler = require('./handlers/MongooseHandler.js');
 module.exports = function DependencyManager (conf) {
   const _this = this;
   const echo = new EchoHandler(require(`./i18n/${conf['i18n']}.depManMessages.json`), conf.logger);
+  const enumsDir = require(`${conf.root}/api/Enums.js`);
   const Mongoose = new MongooseHandler(conf).fetch();
 
   const appendConfigToCallerMethod = () => {
@@ -38,7 +39,7 @@ module.exports = function DependencyManager (conf) {
       case ':async':
         return new AsyncHandler();
       case ':enums':
-        return new EnumsHandler().mapEnumMethods(require(`${conf.root}/api/Enums.js`));
+        return new EnumsHandler().mapEnumMethods(enumsDir);
       case ':schema':
         Mongoose.Schema.Types.create = (obj, opts) => new Mongoose.Schema(obj, opts);
         return Mongoose.Schema.Types;

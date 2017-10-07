@@ -23,12 +23,12 @@ module.exports = function ConfigManager (root) {
     }
   };
 
-  this.build = function (env) {
+  this.build = function (env, spy) {
     try {
       return {
         environment: env,
         i18n: config['defaultLanguage'],
-        logger: new Logger(env),
+        logger: new Logger(env, spy),
         env: getEnvConfig(env),
         root: root
       };
