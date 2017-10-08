@@ -1,10 +1,18 @@
+const EchoHandler = require('./handlers/EchoHandler.js');
 const mongoose = require('mongoose');
 
 module.exports = function ConfigManager (root) {
   const config = require(`${root}/config/config.json`);
+  const confMessages = require(`./i18n/${config['defaultLanguage']}.confManMessages.json`);
   const Logger = require(`${root}/config/Logger.js`);
 
-  const getEnvConfig = (env) => {
+  const getEchoObject = (env, spy) => {
+    try {
+      return new EchoHandler(confMessages, new Logger(env, spy));
+    } catch (e) { return undefined; }
+  };
+
+  const getEnvConfig = (env, echo) => {
     const envConfig = config['environment'][env];
     switch (env) {
       case 'development':
@@ -19,21 +27,24 @@ module.exports = function ConfigManager (root) {
         return envConfig;
 
       default:
-        throw new Error('UNRECOGNISED DB ENVIRONMENT');
+        echo.throw('invalidEnv');
     }
   };
 
   this.build = function (env, spy) {
-    try {
-      return {
-        environment: env,
-        i18n: config['defaultLanguage'],
-        logger: new Logger(env, spy),
-        env: getEnvConfig(env),
-        root: root
-      };
-    } catch (e) {
-      console.log(`FAILED TO BUILD CONFIG: ${e.message}`);
-    }
+    const echo = getEchoObject(env, spy);
+    if (typeof echo === 'object') {
+      try {
+        return {
+          environment: env,
+          i18n: config['defaultLanguage'],
+          logger: new Logger(env, spy),
+          env: getEnvConfig(env),
+          root: root
+        };
+      } catch (e) {
+        echo.log('failed', e.message);
+      }
+    } else throw new Error('FATAL: failed to retrieve messages for config, check your "environment" and "defaultLanguage" variables!');
   };
 };

@@ -20,7 +20,7 @@ module.exports = function DependencyManager (conf) {
     }
   };
 
-  const fetchDirectory = (type, item) => {
+  const fetchFile = (type, item) => {
     switch (type) {
       case 'Messages':
         return new EchoHandlerFactory(conf, item, echo);
@@ -62,7 +62,7 @@ module.exports = function DependencyManager (conf) {
         else {
           let type = item.match(/[A-Z]{1}[a-z]+$/);
           if (type && type.length) {
-            return fetchDirectory(type[0], item.replace('.', '/'));
+            return fetchFile(type[0], item.replace('.', '/'));
           } else echo.throw('unsupported', item);
         }
       } else echo.throw('invalidType', typeof item);

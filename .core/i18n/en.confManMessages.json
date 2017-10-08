@@ -1,0 +1,4 @@
+{
+  "invalidEnv": "Invalid environment detected.",
+  "failed": "Failed to build config object: {0}"
+}
