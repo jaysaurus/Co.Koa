@@ -6,9 +6,9 @@ module.exports = function ConfigManager (root) {
   const confMessages = require(`./i18n/${config['defaultLanguage']}.confManMessages.json`);
   const Logger = require(`${root}/config/Logger.js`);
 
-  const getEchoObject = (env, spy) => {
+  const getEchoObject = (env) => {
     try {
-      return new EchoHandler(confMessages, new Logger(env, spy));
+      return new EchoHandler(confMessages, new Logger(env));
     } catch (e) { return undefined; }
   };
 
@@ -32,18 +32,18 @@ module.exports = function ConfigManager (root) {
   };
 
   this.build = function (env, spy) {
-    const echo = getEchoObject(env, spy);
+    const echo = getEchoObject(env);
     if (typeof echo === 'object') {
       try {
         return {
           environment: env,
           i18n: config['defaultLanguage'],
           logger: new Logger(env, spy),
-          env: getEnvConfig(env),
+          env: getEnvConfig(env, echo),
           root: root
         };
       } catch (e) {
-        echo.log('failed', e.message);
+        echo.throw('failed', e.message);
       }
     } else throw new Error('FATAL: failed to retrieve messages for config, check your "environment" and "defaultLanguage" variables!');
   };

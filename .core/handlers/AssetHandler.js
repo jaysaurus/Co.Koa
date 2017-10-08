@@ -14,5 +14,7 @@ module.exports = function AssetHandler (tokenName, conf) {
           }
         }
       };
+    case process.env.NODE_ENV:
+      return 'TODO'; // uglified data goes here.
   }
 };
