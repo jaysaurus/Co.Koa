@@ -1,18 +1,29 @@
-module.exports = function EnumHandler () {
+const EchoHandler = require('./EchoHandler');
+
+module.exports = function EnumHandler (conf) {
+  let hasFailed = false;
   const _this = this;
+  const echo = new EchoHandler(require(`${conf.root}/.core/i18n/${conf.i18n}.handlerMessages.json`), conf.logger);
 
   const enumGetCallback = (limit) => {
     return function (item) {
-      for (let i in this) {
-        if (i < (limit) &&
-            this[i] === item) return i;
-      }
-      return -1;
+      const duplicateMembers = findDuplicatEnumMembers(this);
+      if (!duplicateMembers.length) {
+        for (let i in this) {
+          if (i < (limit) &&
+              this[i] === item) return i;
+        }
+        return -1;
+      } else echo.throw('enumNotUnique', duplicateMembers.toString().replace(/,/g, ', '));
     };
   };
 
+  const findDuplicatEnumMembers = (enumArray) => {
+    return enumArray.filter((value, index, self) => self.indexOf(value) !== index);
+  };
+
   this.mapEnumMethods = (enums, init = true) => {
-    if (enums) {
+    if (enums && !hasFailed) {
       var keys = Object.keys(enums);
       if (keys) {
         keys.forEach((key) => {
@@ -20,9 +31,8 @@ module.exports = function EnumHandler () {
             var childKey = Object.keys(enums[key]);
             if (childKey.length && isNaN(parseInt(childKey[0]))) {
               _this.mapEnumMethods(enums[key], false);
-            } else {
-              // enum methods go here
-              var limitGuard = enums[key].length; // limit number of calls to exclude .get from enum results
+            } else { // enum methods go here:
+              const limitGuard = enums[key].length; // limit number of calls to exclude .get from enum results
               enums[key].get = enumGetCallback(limitGuard);
             }
           }

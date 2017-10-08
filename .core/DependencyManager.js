@@ -2,7 +2,7 @@ const AssetHandler = require('./handlers/AssetHandler.js');
 const AsyncHandler = require('./handlers/AsyncHandler.js');
 const EchoHandler = require('./handlers/EchoHandler.js');
 const EchoHandlerFactory = require('./handlers/EchoHandlerFactory.js');
-const EnumsHandler = require('./handlers/EnumHandler.js');
+const EnumHandler = require('./handlers/EnumHandler.js');
 const MongooseHandler = require('./handlers/MongooseHandler.js');
 
 module.exports = function DependencyManager (conf) {
@@ -39,7 +39,7 @@ module.exports = function DependencyManager (conf) {
       case ':async':
         return new AsyncHandler();
       case ':enums':
-        return new EnumsHandler().mapEnumMethods(enumsDir);
+        return new EnumHandler(conf).mapEnumMethods(enumsDir);
       case ':schema':
         Mongoose.Schema.Types.create = (obj, opts) => new Mongoose.Schema(obj, opts);
         return Mongoose.Schema.Types;

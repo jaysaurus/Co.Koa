@@ -45,6 +45,11 @@ module.exports = function ConfigManager (root) {
       } catch (e) {
         echo.throw('failed', e.message);
       }
-    } else throw new Error('FATAL: failed to retrieve messages for config, check your "environment" and "defaultLanguage" variables!');
+    } else {
+      throw new Error(
+        (confMessages && confMessages.fatalError)
+          ? confMessages.fatalError
+          : 'FATAL: Something went fatally wrong, ConfigManager could not find it\'s messages AND config.json was not understood. Your Co.Koa installation may have become corrupted.');
+    }
   };
 };

@@ -1,0 +1,3 @@
+{
+  "enumNotUnique": "An enum contained more than one identical value for: {0}. Enum values MUST be unqiue."
+}
