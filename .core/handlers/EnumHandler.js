@@ -7,18 +7,18 @@ module.exports = function EnumHandler (conf) {
 
   const enumGetCallback = (limit) => {
     return function (item) {
-      const duplicateMembers = findDuplicatEnumMembers(this);
+      const duplicateMembers = findDuplicateEnumMembers(this);
       if (!duplicateMembers.length) {
         for (let i in this) {
           if (i < (limit) &&
               this[i] === item) return i;
         }
         return -1;
-      } else echo.throw('enumNotUnique', duplicateMembers.toString().replace(/,/g, ', '));
+      } else echo.throw('enumNotUnique', `"${duplicateMembers.join('", "')}"`);
     };
   };
 
-  const findDuplicatEnumMembers = (enumArray) => {
+  const findDuplicateEnumMembers = (enumArray) => {
     return enumArray.filter((value, index, self) => self.indexOf(value) !== index);
   };
 
