@@ -1,6 +1,6 @@
 {
   "name": "co.koa",
-  "version": "0.2.0",
+  "version": "0.2.0a2",
   "description": "A Model View Controller built on Koa",
   "main": "app.js",
   "scripts": {
