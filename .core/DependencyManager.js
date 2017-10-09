@@ -23,7 +23,7 @@ module.exports = function DependencyManager (conf) {
   const fetchFile = (type, item) => {
     switch (type) {
       case 'Messages':
-        return new EchoHandlerFactory(conf, item, echo);
+        return new EchoHandlerFactory(conf, item);
       case 'Service':
         return new (getter(type, item))(_this.call);
       case 'Validator':

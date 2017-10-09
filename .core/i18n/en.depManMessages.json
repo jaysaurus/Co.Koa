@@ -1,7 +1,5 @@
 {
-  "echoNotInitialised": "An unitialised message has been detected. Your definition should look as follows: $('{0}').init()",
   "failed": "Failed to load {0}",
-  "i18nTooLong": "the i18n region code is too long",
   "invalidDependency": "attempt to retrieve a dependency failed: {0}\n{1}",
   "invalidType": "dependency expects strings, but got: {0}.",
   "unsupported": "unsupported dependency format: {0}."

@@ -11,9 +11,12 @@ module.exports = function EnumHandler (conf) {
       if (!duplicateMembers.length) {
         for (let i in this) {
           if (i < (limit) &&
-              this[i] === item) return i;
+            this[i] === item) {
+            let index = parseInt(i);
+            return (!isNaN(index)) ? index : -1;
+          }
         }
-        return -1;
+        echo.throw('enumNotFound', item);
       } else echo.throw('enumNotUnique', `"${duplicateMembers.join('", "')}"`);
     };
   };
@@ -32,8 +35,10 @@ module.exports = function EnumHandler (conf) {
             if (childKey.length && isNaN(parseInt(childKey[0]))) {
               _this.mapEnumMethods(enums[key], false);
             } else { // enum methods go here:
-              const limitGuard = enums[key].length; // limit number of calls to exclude .get from enum results
-              enums[key].get = enumGetCallback(limitGuard);
+              if (enums[key]) {
+                const limitGuard = enums[key].length; // limit number of calls to exclude .get from enum results
+                enums[key].get = enumGetCallback(limitGuard);
+              }
             }
           }
         });
