@@ -1,5 +1,7 @@
-const EchoHandler = require('./handlers/EchoHandler.js');
+const bluebird = require('bluebird');
 const mongoose = require('mongoose');
+
+const EchoHandler = require('./handlers/EchoHandler.js');
 
 module.exports = function ConfigManager (root) {
   const config = require(`${root}/config/config.json`);
@@ -17,7 +19,7 @@ module.exports = function ConfigManager (root) {
     switch (env) {
       case 'development':
       case 'test':
-        mongoose.Promise = global.Promise; // TODO sort out promise library!!
+        mongoose.Promise = bluebird;
         mongoose.connect(envConfig['mongoDB_URI'], { useMongoClient: true });
         envConfig.mongoose = mongoose;
         return envConfig;
@@ -36,11 +38,12 @@ module.exports = function ConfigManager (root) {
     if (typeof echo === 'object') {
       try {
         return {
+          env: getEnvConfig(env, echo),
           environment: env,
           i18n: config['defaultLanguage'],
           logger: new Logger(env, spy),
-          env: getEnvConfig(env, echo),
-          root: root
+          root: root,
+          useHBS: config['useHBS']
         };
       } catch (e) {
         echo.throw('failed', e.message);

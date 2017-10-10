@@ -10,7 +10,7 @@ module.exports = function AssetHandler (tokenName, conf) {
             case 'css':
             case 'js':
             case 'html':
-              return require(`${conf.root}/public/${dir}/${file}`);
+              return `${conf.root}/public/${dir}/${file}`;
           }
         }
       };

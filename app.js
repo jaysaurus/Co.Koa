@@ -26,12 +26,20 @@ const conf = new ConfigFactory(__dirname).build(process.env.NODE_ENV || 'develop
 try {
   welcome(conf);
   const $ = new DependencyManager(conf);
+  const hbsOptions = require('./config/hbsConfig');
 
   require('./config/bootstrap').bootstrap($.call);
 
   var app = new Koa();
   var router = new Router();
 
+  /*
+  * VIEW SUPPORT
+  */
+  if (conf.useHBS) {
+    const renderer = require('koa-hbs-renderer');
+    app.use(renderer(hbsOptions(conf)));
+  }
   /*
   * TODO MIDDLEWARE
   */
@@ -44,11 +52,6 @@ try {
       const ms = new Date() - start;
       conf.logger.log(`${ctx.method} ${ctx.url} - ${ms}`);
     });
-
-  /*
-  * TODO TAGLIB
-  */
-  // require('./core/handlebars')(build, $, hbs);
 
   /*
   * BUILD CONTROLLERS

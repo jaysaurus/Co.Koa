@@ -1,5 +1,6 @@
 {
   "defaultLanguage":"en",
+  "useHBS": false,
   "environment": {
     "test": {
       "port": 3000,
@@ -9,8 +10,5 @@
       "port": 3000,
       "mongoDB_URI": "mongodb://localhost:27017/coKoa"
     }
-  },
-  "hbs": {
-    "partials": "/views/partials"
   }
 }

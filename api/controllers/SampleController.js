@@ -8,6 +8,11 @@ module.exports = function SampleController ($) {
         ctx.body = e.message;
         $.logger.log(e.message);
       }
+    },
+    'GET /hbs': async (ctx, next) => {
+      await ctx.render('template', {
+        adjective: 'useful'
+      });
     }
   };
 };
