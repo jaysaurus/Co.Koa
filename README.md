@@ -27,11 +27,11 @@ module.exports = function Sample ($) {
 };
 ```
 let's run through it line by line:
-`function Sample ($) {` convention dictates that your function should be given the name of your model (e.g. "Sample"). Your function *must* be defined with the $ argument.
-`$(':schema');` tells the project to require an encapsulated version of Mongoose's schema
-`_schema.create` returns a new mongoose Schema instance
-`name: { ... }` is a completely normal mongoose object
-`return Schema;` should always appear at the bottom of your function
+* `function Sample ($) {` convention dictates that your function should be given the name of your model (e.g. "Sample"). Your function *must* be defined with the $ argument.
+* `const _schema = $(':schema');` tells the project to require an encapsulated version of Mongoose's schema. the ':' prefix tells us that we're loading a 'token' resource.  Token resources should always be assigned to variables prefixed with an underscore; thus, `const _schema`.
+* `_schema.create` returns a new mongoose Schema instance
+* `name: { ... }` is a standard mongoose Schema object
+* `return Schema;` should always appear at the bottom of your function
 
 ## Controller
 
