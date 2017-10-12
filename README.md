@@ -46,6 +46,6 @@ let's run through it line by line:
 - [ ] Support for Grunt asset management
 - [ ] Command line interface
 - [ ] Incorporate asset management tools (Grunt)
-- [ ] Enable view support for .ejs
+- [ ] Enable view support for .hbs
 
 Co.Koa will implement Grunt for asset management
