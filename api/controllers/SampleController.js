@@ -1,18 +1,17 @@
 module.exports = function SampleController ($) {
-  var Sample = $('Sample');
+  var sampleService = $('SampleService');
+
   return {
-    'POST /create': async (ctx, next) => {
+    'GET /FindAll': async (ctx) => {
       try {
-        await new Sample(ctx.request.body).save();
+        const sampleList = await sampleService.fetchAllToList();
+        await ctx.render('FindAll', { sampleList });
       } catch (e) {
-        ctx.body = e.message;
-        $.logger.log(e.message);
+        ctx.body = `Something went wrong: ${e.message}`;
       }
     },
-    'GET /hbs': async (ctx, next) => {
-      await ctx.render('template', {
-        adjective: 'useful'
-      });
+    'GET /HBSDemo': async (ctx) => {
+      await ctx.render('SampleView', { action: '/HBSDemo' });
     }
   };
 };

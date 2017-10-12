@@ -1,14 +1,18 @@
 module.exports = {
   bootstrap: async ($) => {
+    const echo = $('BootstrapMessages').init(); // retrieve the sample messages for bootstrap
     try {
-      const sampleService = $('SampleService');
-      const echo = $('deeper/SampleMessages').init();
-      $.logger.log($(':enums').Sample.Action.get('A'));
-      await sampleService.getNewSamples();
-      echo.log('A Message');
-      $.logger.log('I dunno, this should be present too!');
+      const sampleService = $('SampleService'); // require a sample service.
+
+      echo.log('getSampleService'); // log a locale-friendly message from BootstrapMessages
+      const generated = await sampleService.generateNewSamples();
+
+      // if you don't want to use the i18n messages, you can defer to your build's default logger with $.logger.log():
+      $.logger.log(generated
+          ? 'Sample services successfully generated'
+          : 'Sample services were found');
     } catch (e) {
-      $.logger.log(e.message);
+      echo.log('failed', e.message);
     }
   }
 };

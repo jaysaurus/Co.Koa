@@ -1,0 +1,11 @@
+I'm a partial inner sample, I'm going to call a custom conditional statement from the "CK.js" helper library
+<ul>
+  <li>
+    {{#if (and (eq parent 'PartialSample')
+               (ne parent 'SampleView')) }}
+      I am the product of an "if" condition using embedded operands!
+    {{else}}
+        I am the product of an "else" condition
+    {{/if}}
+  </li>
+</ul>

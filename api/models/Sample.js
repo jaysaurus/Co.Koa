@@ -1,6 +1,6 @@
 module.exports = function Sample ($) {
-  const _enums = $(':enums');
-  const _schema = $(':schema');
+  const _enums = $(':enums'); // import the enums object
+  const _schema = $(':schema'); // import the mongoose schema object
 
   var Schema = _schema.create({
     description: { type: require('./TextBlock')($) },
