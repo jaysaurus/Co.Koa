@@ -36,7 +36,7 @@ let's run through it line by line:
 ## Controller
 
 ## Views
-Co.Koa does not currently support views. It may support a basic implementation of handlebars in due course, though I favour implementing something with a pure API and static resources
+**Co.Koa** Supports handlebars .hbs; this is a work in progress (I'm currently awaiting an update to koa-hbs-renderer so it can implement support for multiple helpers in one file) but should be available soon.  More details to follows
 
 ## To Do
 - [x] Controller Implementation
