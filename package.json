@@ -1,6 +1,5 @@
 {
   "name": "co.koa",
-
   "version": "0.2.0a4",
   "description": "A Model View Controller built on Koa",
   "main": "app.js",
@@ -20,13 +19,14 @@
     "fs": "0.0.1-security",
     "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
-    "koa-hbs-renderer": "^1.1.0",
+    "koa-hbs-renderer": "^1.2.0",
     "koa-router": "^7.2.1",
     "mongoose": "^4.11.10",
     "npm": "^5.4.1",
     "validator": "^8.1.0"
   },
   "devDependencies": {
+    "grunt": "^1.0.1",
     "jest": "^21.2.1",
     "mockingoose": "^2.3.0"
   }

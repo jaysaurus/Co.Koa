@@ -13,7 +13,6 @@ module.exports = (conf) => {
       partials: `${conf.root}/api/views/partials`,
       helpers: `${conf.root}/api/views/helpers`
     },
-    helperNamespaces: false,
     Promise: bluebird
   };
 };
