@@ -26,7 +26,7 @@
     "validator": "^8.1.0"
   },
   "devDependencies": {
-    "grunt": "^1.0.1",
+    "grunt-contrib-uglify": "git://github.com/gruntjs/grunt-contrib-uglify.git#harmony",
     "jest": "^21.2.1",
     "mockingoose": "^2.3.0"
   }

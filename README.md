@@ -43,7 +43,7 @@ let's run through it line by line:
 - [x] Model Implementation
 - [x] Dependency Injection Implementation
 - [x] Support for Jest testing
-- [ ] Support for Grunt asset management
+- [ ] Support for Gulp build and asset management
 - [ ] Command line interface
 - [ ] Incorporate asset management tools (Grunt)
 - [ ] Enable view support for .hbs
