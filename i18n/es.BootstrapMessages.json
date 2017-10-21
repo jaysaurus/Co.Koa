@@ -1,0 +1,4 @@
+{
+  "failed": "El Boostrap failed to do its job: {0}",
+  "getSampleService": "El Bootstrap is about to call SampleService"
+}

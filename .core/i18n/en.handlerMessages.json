@@ -1,7 +1,0 @@
-{
-  "ehFailed": "Failed to load {0}",
-  "eh.i18nTooLong": "the i18n region code is too long",
-  "ehNotInitialised": "$('{0}').{1}() call detected. Your definition must be initialised first: $('{0}').init()",
-  "enumNotFound": "The requested enum member: \"{0}\", was not found.",
-  "enumNotUnique": "An enum contained more than one identical value for: {0}. Enum values MUST be unqiue."
-}

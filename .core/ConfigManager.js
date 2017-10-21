@@ -1,16 +1,19 @@
 const bluebird = require('bluebird');
 const mongoose = require('mongoose');
-
-const EchoHandler = require('./handlers/EchoHandler.js');
+const echoHandler = require('echo-handler');
 
 module.exports = function ConfigManager (root) {
   const config = require(`${root}/config/config.json`);
-  const confMessages = require(`./i18n/${config['defaultLanguage']}.confManMessages.json`);
+  const confMessages = require(`./i18n/${config.defaultLanguage}.confManMessages.json`);
   const Logger = require(`${root}/config/Logger.js`);
 
   const getEchoObject = (env) => {
     try {
-      return new EchoHandler(confMessages, new Logger(env));
+      const echo =
+        echoHandler.configure({
+          factoryOverride: `${root}/.core/i18n/${config.defaultLanguage}.confManMessages.json`,
+          logger: new Logger(env) });
+      return echo;
     } catch (e) { return undefined; }
   };
 
@@ -42,7 +45,8 @@ module.exports = function ConfigManager (root) {
           environment: env,
           i18n: config['defaultLanguage'],
           logger: new Logger(env, spy),
-          root: root,
+          messageFolder: config['messageFolder'].replace(/^\.*/, root),
+          root,
           useHBS: config['useHBS']
         };
       } catch (e) {

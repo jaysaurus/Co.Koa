@@ -1,13 +1,14 @@
+const echoHandler = require('echo-handler');
+
 const AssetHandler = require('./handlers/AssetHandler.js');
 const AsyncHandler = require('./handlers/AsyncHandler.js');
-const EchoHandler = require('./handlers/EchoHandler.js');
-const EchoHandlerFactory = require('./handlers/EchoHandlerFactory.js');
-const EnumHandler = require('./handlers/EnumHandler.js');
 const MongooseHandler = require('./handlers/MongooseHandler.js');
 
 module.exports = function DependencyManager (conf) {
   const _this = this;
-  const echo = new EchoHandler(require(`./i18n/${conf['i18n']}.depManMessages.json`), conf.logger);
+  const echo = echoHandler.configure({ factoryOverride: `${conf.root}/.core/i18n/${conf.i18n}.depManMessages.json`, logger: conf.logger });
+
+  // new EchoHandler(require(`./i18n/${conf['i18n']}.depManMessages.json`), conf.logger);
   const enumsDir = require(`${conf.root}/api/Enums.js`);
   const Mongoose = new MongooseHandler(conf).fetch();
 
@@ -22,8 +23,6 @@ module.exports = function DependencyManager (conf) {
 
   const fetchFile = (type, item) => {
     switch (type) {
-      case 'Messages':
-        return new EchoHandlerFactory(conf, item);
       case 'Service':
         return new (getter(type, item))(_this.call);
       case 'Validator':
@@ -38,8 +37,11 @@ module.exports = function DependencyManager (conf) {
     switch (type) {
       case ':async':
         return new AsyncHandler();
+      case ':echo':
+        return echoHandler.configure(conf);
       case ':enums':
-        return new EnumHandler(conf).mapEnumMethods(enumsDir);
+        return enumsDir;
+        // return new EnumHandler(conf).mapEnumMethods(enumsDir);
       case ':schema':
         Mongoose.Schema.Types.create = (obj, opts) => new Mongoose.Schema(obj, opts);
         return Mongoose.Schema.Types;

@@ -1,10 +1,10 @@
 module.exports = {
   bootstrap: async ($) => {
-    const echo = $('BootstrapMessages').init(); // retrieve the sample messages for bootstrap
+    const _echo = $(':echo').load('BootstrapMessages', 'es'); // retrieve the sample messages for bootstrap
     try {
       const sampleService = $('SampleService'); // require a sample service.
 
-      echo.log('getSampleService'); // log a locale-friendly message from BootstrapMessages
+      _echo.log('getSampleService'); // log a locale-friendly message from BootstrapMessages
       const generated = await sampleService.generateNewSamples();
 
       // if you don't want to use the i18n messages, you can defer to your build's default logger with $.logger.log():
@@ -12,7 +12,7 @@ module.exports = {
           ? 'Sample services successfully generated'
           : 'Sample services were found');
     } catch (e) {
-      echo.log('failed', e.message);
+      _echo.log('failed', e.message);
     }
   }
 };

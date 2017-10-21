@@ -1,5 +1,3 @@
-global.__root = __dirname;
-
 /*
 * KOA IMPORTS
 */
@@ -29,6 +27,7 @@ try {
   const hbsOptions = require('./config/hbsConfig');
 
   require('./config/bootstrap').bootstrap($.call);
+
 
   var app = new Koa();
   var router = new Router();

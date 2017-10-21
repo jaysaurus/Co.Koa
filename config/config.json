@@ -10,5 +10,6 @@
       "mongoDB_URI": "mongodb://localhost:27017/coKoa"
     }
   },
+  "messageFolder": "./i18n/",
   "useHBS": true
 }

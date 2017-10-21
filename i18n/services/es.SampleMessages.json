@@ -1,0 +1,5 @@
+{
+  "failed": "Something went wrong while trying to generate Samples: {0}",
+  "generating": "Generating Sample Objects.",
+  "success": "El Sample Objects successfully generated!"
+}

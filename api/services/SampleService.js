@@ -1,7 +1,7 @@
 module.exports = function SampleService ($) {
   const _async = $(':async'); // retrieve the async library
+  const _echo = $(':echo').load('services/SampleMessages', 'es'); // initialise SampleMessages with your Co.Koa build's default language;
   const _enum = $(':enums'); // retrieve the Sample enum
-  const echo = $('services/SampleMessages').init(); // initialise SampleMessages with your Co.Koa build's default language;
   const Sample = $('Sample'); // retrieve the Sample model
 
   this.fetchAllToList = async () => {
@@ -17,20 +17,21 @@ module.exports = function SampleService ($) {
     try {
       const sampleData = await Sample.findOne();
       if (!sampleData) {
-        echo.log('generating');
+        _echo.log('generating');
         // a normal each closure will not work for iterating over model creation so the _async library is employed.
         await _async.each(_enum.Sample.Action, async (action) => { // use the async library's each method to iterate over the sample enum
+          console.log(`getting: ${_enum.Sample.Action.indexOf(action)} which is ${action}`);
           new Sample({
             name: `Sample Object: ${action}`,
-            action: _enum.Sample.Action.get(action) // retrieve the index number of enum by it's given string name
+            action: _enum.Sample.Action.indexOf(action) // retrieve the index number of enum by it's given string name
           }).save();
         });
-        echo.log('success'); // log locale-friendly message from **.SampleMessages.json
+        _echo.log('success'); // log locale-friendly message from **.SampleMessages.json
         return true;
       }
       return false;
     } catch (e) {
-      echo.throw('failed', e.message); // generate locale friendly message and throw it.
+      _echo.throw('failed', e.message); // generate locale friendly message and throw it.
     }
   };
 };

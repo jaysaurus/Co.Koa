@@ -1,9 +1,11 @@
+const echoHandler = require('echo-handler');
 const fs = require('fs');
 
-const EchoHandler = require('./handlers/EchoHandler.js');
-
 module.exports = function (conf) {
-  const echo = new EchoHandler(require(`./i18n/${conf.i18n}.buildMessages.json`), conf.logger);
+  const echo =
+    echoHandler.configure({
+      factoryOverride: `${conf.root}/.core/i18n/${conf.i18n}.buildMessages.json`,
+      logger: conf.logger });
 
   const appendFileCommands = (files, type, next) => {
     if (files) {

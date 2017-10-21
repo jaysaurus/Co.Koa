@@ -16,14 +16,16 @@
   "dependencies": {
     "bluebird": "^3.5.1",
     "dependencies": "0.0.1",
+    "echo-handler": "^1.4.1",
     "fs": "0.0.1-security",
     "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
     "koa-hbs-renderer": "^1.2.0",
     "koa-router": "^7.2.1",
-    "mongoose": "^4.11.10",
-    "npm": "^5.4.1",
-    "validator": "^8.1.0"
+    "mongoose": "^4.12.3",
+    "mongoose-type-number-enums": "^1.0.2",
+    "npm": "^5.5.1",
+    "validator": "^8.2.0"
   },
   "devDependencies": {
     "grunt-contrib-uglify": "git://github.com/gruntjs/grunt-contrib-uglify.git#harmony",
