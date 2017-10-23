@@ -28,7 +28,6 @@ try {
 
   require('./config/bootstrap').bootstrap($.call);
 
-
   var app = new Koa();
   var router = new Router();
 

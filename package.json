@@ -8,6 +8,8 @@
     "test-watch": "nodemon --exec 'npm test'"
   },
   "keywords": [
+    "nodeJS",
+    "Koa",
     "MVC"
   ],
   "author": "Jay Edwards",
@@ -28,7 +30,6 @@
     "validator": "^8.2.0"
   },
   "devDependencies": {
-    "grunt-contrib-uglify": "git://github.com/gruntjs/grunt-contrib-uglify.git#harmony",
     "jest": "^21.2.1",
     "mockingoose": "^2.3.0"
   }
