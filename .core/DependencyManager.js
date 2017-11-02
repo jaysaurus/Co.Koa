@@ -1,3 +1,5 @@
+'use strict';
+
 const echoHandler = require('echo-handler');
 
 const AssetHandler = require('./handlers/AssetHandler.js');

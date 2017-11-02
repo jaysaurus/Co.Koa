@@ -17,19 +17,19 @@ const Router = require('koa-router');
 const Builder = require('./.core/Builder');
 const ConfigFactory = require('./.core/ConfigManager');
 const DependencyManager = require('./.core/DependencyManager');
-const welcome = require('./.core/welcomeMessage');
+const WelcomeMessage = require('./.core/WelcomeMessage');
 
 const conf = new ConfigFactory(__dirname).build(process.env.NODE_ENV || 'development');
 
 try {
-  welcome(conf);
+  new WelcomeMessage(conf).sayHello();
   const $ = new DependencyManager(conf);
   const hbsOptions = require('./config/hbsConfig');
 
   require('./config/bootstrap').bootstrap($.call);
 
-  var app = new Koa();
-  var router = new Router();
+  const app = new Koa();
+  const router = new Router();
 
   /*
   * VIEW SUPPORT
@@ -56,7 +56,7 @@ try {
   */
   new Builder(conf)
     .build('Controller', (controller, prefix) => {
-      var routes = controller($.call);
+      const routes = controller($.call);
       Object.keys(routes)
         .forEach(
           (route) => {

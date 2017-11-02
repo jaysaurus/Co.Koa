@@ -1,7 +1,9 @@
+'use strict';
+
 const echoHandler = require('echo-handler');
 const fs = require('fs');
 
-module.exports = function (conf) {
+module.exports = function Builder (conf) {
   const echo =
     echoHandler.configure({
       factoryOverride: `${conf.root}/.core/i18n/${conf.i18n}.buildMessages.json`,
