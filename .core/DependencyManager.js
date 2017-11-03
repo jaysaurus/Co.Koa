@@ -1,5 +1,3 @@
-'use strict';
-
 const echoHandler = require('echo-handler');
 
 const AssetHandler = require('./handlers/AssetHandler.js');
@@ -12,7 +10,7 @@ module.exports = function DependencyManager (conf) {
 
   // new EchoHandler(require(`./i18n/${conf['i18n']}.depManMessages.json`), conf.logger);
   const enumsDir = require(`${conf.root}/api/Enums.js`);
-  const Mongoose = new MongooseHandler(conf).fetch();
+  const mongooseHandler = new MongooseHandler(conf);
 
   const appendConfigToCallerMethod = () => {
     if (!_this.call.environment) {
