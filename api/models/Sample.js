@@ -1,6 +1,4 @@
 module.exports = function Sample ($) {
-  const _enums = $(':enums'); // import the enums object
-
   return {
     schema: {
       description: { type: require('./TextBlock')($) },
@@ -13,7 +11,7 @@ module.exports = function Sample ($) {
 
       action: {
         type: 'Enum',
-        enum: _enums.Sample.Action
+        enum: $(':enums').Sample.Action
       }
     }
   };

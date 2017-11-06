@@ -1,6 +1,5 @@
 module.exports = function SampleController ($) {
   var sampleService = $('SampleService');
-
   return {
     'GET /FindAll': async (ctx) => {
       try {

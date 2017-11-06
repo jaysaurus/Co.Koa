@@ -1,32 +1,5 @@
 module.exports = function TextBlock ($) {
-  const _schema = $(':schema');
   const validator = $('TextBlockValidator');
-
-  var Schema = _schema.create({
-    extraLong: {
-      type: String,
-      maxlength: 10000,
-      trim: true
-    },
-
-    long: {
-      type: String,
-      maxlength: 5000,
-      trim: true
-    },
-
-    medium: {
-      type: String,
-      maxlength: 2000,
-      trim: true
-    },
-
-    short: {
-      type: String,
-      maxlength: 255,
-      trim: true
-    }
-  }, { runSettersOnQuery: true });
 
   function getText () {
     var Schema = this._doc;
@@ -62,15 +35,55 @@ module.exports = function TextBlock ($) {
     } else return new Error('Invalid text object.');
   }
 
-  Schema.methods.updateText = async function (text) {
-    var textObject = setText.call({ $unset: {} }, text);  // override "this" with custom obj.
-    await this.update(textObject);
+  return {
+    options: { runSettersOnQuery: true },
+    schema: {
+      extraLong: {
+        type: String,
+        maxlength: 10000,
+        trim: true
+      },
+
+      long: {
+        type: String,
+        maxlength: 5000,
+        trim: true
+      },
+
+      medium: {
+        type: String,
+        maxlength: 2000,
+        trim: true
+      },
+
+      short: {
+        type: String,
+        maxlength: 255,
+        trim: true
+      }
+    },
+    methods: {
+      updateText: async function (text) {
+        var textObject = setText.call({ $unset: {} }, text);  // override "this" with custom obj.
+        await this.update(textObject);
+      }
+    },
+    virtuals: {
+      Text: {
+        get: getText,
+        set: setText
+      }
+    }
   };
-
-  Schema
-    .virtual('text')
-    .get(getText)
-    .set(setText);
-
-  return Schema;
+// Schema.methods.updateText = async function (text) {
+//   var textObject = setText.call({ $unset: {} }, text);  // override "this" with custom obj.
+//   await this.update(textObject);
+// };
+//
+// Schema
+//   .virtual('text')
+//   .get(getText)
+//   .set(setText);
+//
+// return Schema;
 };
