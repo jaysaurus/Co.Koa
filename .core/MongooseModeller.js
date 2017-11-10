@@ -1,7 +1,6 @@
 'use strict';
 
 const Builder = require('./Builder');
-const DependencyManager = require('./DependencyManager');
 const mongoose = require('mongoose');
 const MongooseTypeNumberEnums = require('mongoose-type-number-enums');
 const echoHandler = require('echo-handler');
@@ -15,7 +14,7 @@ module.exports = function MongooseModeller (conf) {
     factoryOverride: `${conf.root}/.core/i18n/${conf.i18n}.depManMessages.json`,
     logger: conf.logger });
   const mongooseEnums = new MongooseTypeNumberEnums(conf.i18n);
-  const $ = new DependencyManager(conf);
+  // const $ = new DependencyManager(conf);
 
   const assignVirtuals = (schema, virtuals) => {
     Object.keys(virtuals).forEach(key => {
@@ -30,21 +29,28 @@ module.exports = function MongooseModeller (conf) {
 
   const buildModelCallback = ($, echo) => {
     return (modelCallback, modelName) => {
-      const model = modelCallback($.call);
+      const model = modelCallback($);
       if (model.hasOwnProperty('schema')) {
         const schema = new mongoose.Schema(model.schema, (model.hasOwnProperty('options') ? model.options : undefined));
+        let statics = [];
         Object.keys(model).forEach(key => {
           switch (key) {
             case 'virtuals':
               assignVirtuals(schema, model[key]);
               break;
             case 'methods':
+              Object.assign(schema[key], model[key]);
+              break;
             case 'statics':
-              Object.assign(schema.methods, model[key]);
+              statics = Object.keys(model[key]);
+              Object.assign(schema[key], model[key]);
               break;
           }
         });
-        mongoose.model(modelName, schema);
+        const Model = mongoose.model(modelName, schema);
+        statics.forEach(func => { // bind Model class as 'this' to statics
+          Model[func] = Model[func].bind(Model);
+        });
       } else this.echo.throw('noSchema', modelName);
     };
   };
@@ -59,7 +65,7 @@ module.exports = function MongooseModeller (conf) {
     mongoose.Schema.Types[tName] = newType;
   };
 
-  this.model = () => {
+  this.model = ($) => {
     mongooseEnums.upgradeMongoose(mongoose); // allow numeric Enum support by default
     builder.build('models/Type', buildType);
     builder.build('Model', buildModelCallback($, echo));

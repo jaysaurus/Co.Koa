@@ -6,12 +6,6 @@ const BodyParser = require('koa-bodyparser');
 const Router = require('koa-router');
 
 /*
-* NPM MISC IMPORTS
-*/
-// const _ = require('lodash');
-// const hbs = require('handlebars');
-
-/*
 * CO.KOA IMPORTS
 */
 const Builder = require('./.core/Builder');
@@ -23,25 +17,28 @@ const WelcomeMessage = require('./.core/WelcomeMessage');
 const conf = new ConfigFactory(__dirname).build(process.env.NODE_ENV || 'development');
 
 try {
-  new WelcomeMessage(conf).sayHello();
-  new MongooseModeller(conf).model();
-  const $ = new DependencyManager(conf);
-  const hbsOptions = require('./config/hbsConfig');
-
-  require('./config/bootstrap').bootstrap($.call);
-
   const app = new Koa();
   const router = new Router();
 
+  new WelcomeMessage(conf).sayHello();
+  const $ = new DependencyManager(conf);
+
   /*
-  * VIEW SUPPORT
+  * SETUP MODELS
+  */
+  new MongooseModeller(conf).model($.call);
+
+  /*
+  * SETUP VIEWS (OPTIONAL)
   */
   if (conf.useHBS) {
+    const hbsOptions = require('./config/hbsConfig');
     const renderer = require('koa-hbs-renderer');
     app.use(renderer(hbsOptions(conf)));
   }
+
   /*
-  * TODO MIDDLEWARE
+  * TODO SETUP MIDDLEWARE
   */
   app
     .use(BodyParser())
@@ -50,7 +47,7 @@ try {
       ctx.body = `${start} request received.`;
       await next();
       const ms = new Date() - start;
-      conf.logger.log(`${ctx.method} ${ctx.url} - ${ms}`);
+      conf.logger.error(`${ctx.method} ${ctx.url} - ${ms}`);
     });
 
   /*
@@ -69,10 +66,15 @@ try {
                   '/' + prefix + routeArray[1], routes[route]);
               } else throw new Error();
             } catch (e) {
-              conf.logger.log(`failed to generate action "${route}": is your verb valid?'}`);
+              conf.logger.error(`failed to generate action "${route}": is your verb valid?'}`);
             }
           });
     });
+
+  /*
+  * BOOTSTRAP
+  */
+  require('./config/bootstrap').bootstrap($.call);
 
   /*
   * MAIN APP LISTENER

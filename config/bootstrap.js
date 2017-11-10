@@ -11,7 +11,20 @@ module.exports = {
       $.logger.log(generated
           ? 'Sample services successfully generated'
           : 'Sample services were found');
+
+      $.logger.log('attempting to create TextBlock');
+      const Sample = $('Sample');
+      const s = await Sample.findStuff();
+      // console.log(s.name);
+      console.log(s.reduce(
+        (string, sample) => {
+          return (string += sample.name ? `${sample.name}\n` : '');
+        }, ''));
+      await Sample.createTextBlock($('TextBlock'));
+      $.logger.log('done');
     } catch (e) {
+      debugger;
+      console.error('test');
       _echo.log('failed', e.message);
     }
   }

@@ -5,7 +5,7 @@ module.exports = function SampleService ($) {
   const Sample = $('Sample'); // retrieve the Sample model
 
   this.fetchAllToList = async () => {
-    const samples = await Sample.find();
+    const samples = await Sample.findStuff();
     const sampleList = samples.reduce(
       (string, sample) => {
         return (string += sample.name ? `<li>${sample.name}</li>` : '');
