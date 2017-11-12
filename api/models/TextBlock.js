@@ -75,15 +75,4 @@ module.exports = function TextBlock ($) {
       }
     }
   };
-// Schema.methods.updateText = async function (text) {
-//   var textObject = setText.call({ $unset: {} }, text);  // override "this" with custom obj.
-//   await this.update(textObject);
-// };
-//
-// Schema
-//   .virtual('text')
-//   .get(getText)
-//   .set(setText);
-//
-// return Schema;
 };
