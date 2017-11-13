@@ -11,13 +11,14 @@ const Router = require('koa-router');
 const Builder = require('./.core/Builder');
 const ConfigFactory = require('./.core/ConfigManager');
 const DependencyManager = require('./.core/DependencyManager');
+const middleware = require('./config/middleware');
 const MongooseModeller = require('./.core/MongooseModeller');
 const WelcomeMessage = require('./.core/WelcomeMessage');
 
 const conf = new ConfigFactory(__dirname).build(process.env.NODE_ENV || 'development');
 
 try {
-  const app = new Koa();
+  const app = new Koa().use(BodyParser());
   const router = new Router();
 
   new WelcomeMessage(conf).sayHello();
@@ -38,17 +39,10 @@ try {
   }
 
   /*
-  * TODO SETUP MIDDLEWARE
+  * SETUP MIDDLEWARE
   */
-  app
-    .use(BodyParser())
-    .use(async (ctx, next) => {
-      const start = new Date();
-      ctx.body = `${start} request received.`;
-      await next();
-      const ms = new Date() - start;
-      conf.logger.error(`${ctx.method} ${ctx.url} - ${ms}`);
-    });
+  const wares = middleware($.call, conf);
+  Object.keys(wares).forEach(key => { app.use(wares[key]); });
 
   /*
   * BUILD CONTROLLERS

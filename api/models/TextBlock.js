@@ -43,19 +43,16 @@ module.exports = function TextBlock ($) {
         maxlength: 10000,
         trim: true
       },
-
       long: {
         type: String,
         maxlength: 5000,
         trim: true
       },
-
       medium: {
         type: String,
         maxlength: 2000,
         trim: true
       },
-
       short: {
         type: String,
         maxlength: 255,
