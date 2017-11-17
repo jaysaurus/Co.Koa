@@ -7,7 +7,7 @@ module.exports = function WelcomeMessage (conf) {
     if (conf.environment === 'development' ||
     conf.environment === 'test') {
       try {
-        fs.readFileSync(`${conf.root}/.core/welcomeMessage.txt`)
+        fs.readFileSync(`${__dirname}/welcomeMessage.txt`)
           .toString()
           .split('\n').forEach(
           (line) => {

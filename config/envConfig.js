@@ -1,7 +1,6 @@
 const bluebird = require('bluebird');
-const mongoose = require('mongoose');
 
-module.exports = (env, envConfig) => {
+module.exports = (env, envConfig, mongoose) => {
   switch (env) {
     case 'development':
     case 'test':

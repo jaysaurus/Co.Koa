@@ -6,7 +6,7 @@ const AsyncHandler = require('./handlers/AsyncHandler.js');
 const mongoose = require('mongoose');
 module.exports = function DependencyManager (conf) {
   const _this = this;
-  const echo = echoHandler.configure({ factoryOverride: `${conf.root}/.core/i18n/${conf.i18n}.depManMessages.json`, logger: conf.logger });
+  const echo = echoHandler.configure({ factoryOverride: `${__dirname}/i18n/${conf.i18n}.depManMessages.json`, logger: conf.logger });
 
   // new EchoHandler(require(`./i18n/${conf['i18n']}.depManMessages.json`), conf.logger);
   const enumsDir = require(`${conf.root}/api/Enums.js`);
@@ -51,7 +51,7 @@ module.exports = function DependencyManager (conf) {
 
   const getter = (type, item, lang) => {
     try {
-      return require(`${conf['root']}/api/${type.toLowerCase()}s/${item}`);
+      return require(`${conf.root}/api/${type.toLowerCase()}s/${item}`);
     } catch (e) { echo.throw('failed', item); }
   };
 

@@ -11,10 +11,9 @@ const echoHandler = require('echo-handler');
 module.exports = function MongooseModeller (conf) {
   const builder = new Builder(conf);
   const echo = echoHandler.configure({
-    factoryOverride: `${conf.root}/.core/i18n/${conf.i18n}.depManMessages.json`,
+    factoryOverride: `${__dirname}/i18n/${conf.i18n}.depManMessages.json`,
     logger: conf.logger });
   const mongooseEnums = new MongooseTypeNumberEnums(conf.i18n);
-  // const $ = new DependencyManager(conf);
 
   const assignVirtuals = (schema, virtuals) => {
     Object.keys(virtuals).forEach(key => {

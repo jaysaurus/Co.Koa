@@ -6,7 +6,7 @@ const fs = require('fs');
 module.exports = function Builder (conf) {
   const echo =
     echoHandler.configure({
-      factoryOverride: `${conf.root}/.core/i18n/${conf.i18n}.buildMessages.json`,
+      factoryOverride: `${__dirname}/i18n/${conf.i18n}.buildMessages.json`,
       logger: conf.logger });
 
   const appendFileCommands = (files, type, next) => {

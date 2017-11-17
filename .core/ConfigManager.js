@@ -1,8 +1,9 @@
 const echoHandler = require('echo-handler');
+const mongoose = require('mongoose');
 
 module.exports = function ConfigManager (root) {
   const config = require(`${root}/config/config.json`);
-  const environmentConfig = require(`${root}/config/environmentConfig`);
+  const envConfig = require(`${root}/config/envConfig`);
   const confMessages = require(`${__dirname}/i18n/${config.defaultLanguage}.confManMessages.json`);
   const Logger = require(`${root}/config/Logger.js`);
 
@@ -17,8 +18,8 @@ module.exports = function ConfigManager (root) {
   };
 
   const getEnvConfig = (env, echo) => {
-    const envConfig = environmentConfig(env, config['environment'][env]);
-    if (envConfig) return envConfig;
+    const ec = envConfig(env, config['environment'][env], mongoose);
+    if (ec) return ec;
     else echo.throw('invalidEnv');
   };
 
