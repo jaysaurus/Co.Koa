@@ -15,7 +15,8 @@ const middleware = require('./config/middleware');
 const MongooseModeller = require('./.core/MongooseModeller');
 const WelcomeMessage = require('./.core/WelcomeMessage');
 
-const conf = new ConfigFactory(__dirname).build(process.env.NODE_ENV || 'development');
+console.log(process.cwd())
+const conf = new ConfigFactory(process.cwd()).build(process.env.NODE_ENV || 'development');
 
 try {
   const app = new Koa().use(BodyParser());
