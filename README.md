@@ -1,4 +1,4 @@
-# Co.Koa 0.5.0
+# Co.Koa 0.4.0
 An opinionated MVC; inspired by Grails MVC, written for Koa.
 
 **Co.Koa** obeys convention over configuration. It is the fruit of a number of years of study and industry work with MVC products. **Co.Koa's** greatest strength comes in its implementation of Dependency Management.  Controllers, Models and Services are each supplied with a powerful callback that reads and feels like a JQuery call.  No need to worry about requiring reams of files from across your project.  This build is currently early alpha and, as such, available here for research and interest purposes.

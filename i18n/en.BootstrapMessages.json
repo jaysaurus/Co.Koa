@@ -1,4 +1,0 @@
-{
-  "failed": "Boostrap failed to do its job: {0}",
-  "getSampleService": "Bootstrap is about to call SampleService"
-}

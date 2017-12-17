@@ -1,5 +1,0 @@
-{
-  "invalidEnv": "Invalid environment detected.",
-  "failed": "Failed to build config object: {0}",
-  "fatalError": "FATAL: failed to retrieve messages for config, check your \"environment\" and \"defaultLanguage\" variables!"
-}

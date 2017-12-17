@@ -1,6 +1,5 @@
-const bluebird = require('bluebird');
-
 module.exports = (conf) => {
+  const bluebird = require('bluebird');
   return {
     // cacheExpires: 60,
     // contentTag: 'content',

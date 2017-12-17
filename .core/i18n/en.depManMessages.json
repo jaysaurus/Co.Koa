@@ -1,6 +1,0 @@
-{
-  "failed": "Failed to load {0}",
-  "invalidDependency": "attempt to retrieve a dependency failed: {0}\n{1}",
-  "invalidType": "dependency expects strings, but got: {0}.",
-  "unsupported": "unsupported dependency format: {0}."
-}
