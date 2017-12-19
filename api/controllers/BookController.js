@@ -5,6 +5,10 @@ module.exports = function BookController ($) {
   const bookService = $('BookService');
 
   return {
+    'GET /:id': async (ctx) => {
+      const book = await Book.findById(ctx.params.id);
+      ctx.body = book;
+    },
     'GET /Author': async (ctx) => {
       const book = await Book.find({ title: 'Harry Potter and the Philosopher\'s Stone' });
       const author = await book[0].findAssociatedAuthor();

@@ -111,10 +111,10 @@ module.exports = function Author ($) {
     schema: {
       firstName: String,
       lastName: String
-    }, // <- Model details go here
+    },
     /* ------ OPTIONAL COMPONENTS ----- */
-    virtuals: { // see mongoose
-      name: {
+    virtuals: { // virtuals behave exactly as they would if supplied to a mongoose schema
+      fullName: {
         get () { return `${this.lastName}, ${this.firstName}`; },
         set (name) {
           const fullName = name.split(' ');
@@ -127,8 +127,35 @@ module.exports = function Author ($) {
   };
 };
 ```
-
 ## Controller
+Controllers are also a piece of cake.  Under the hood, your controllers are routed by koa-router (https://www.npmjs.com/package/koa-router). 
+
+Continuing with our Bookish theme, let's look at a contrived book example:
+
+```javascript
+'use strict';
+
+module.exports = function BookController ($) {
+  const Book = $('Book');
+  const bookService = $('BookService');
+
+  return {
+    'GET /:id': async (ctx) => { // uri = Book/:id
+      const book = await Book.findById(ctx.params.id);
+      ctx.body = book;
+    },
+    'GET /Author': async (ctx) => { // uri = Book/Author
+      const book = await Book.find({ title: 'Harry Potter and the Philosopher\'s Stone' });
+      const author = await book[0].findAssociatedAuthor();
+      ctx.body = author;
+    },
+    'GET /HarryPotter': async (ctx) => { // Book/HarryPotter
+      const harryPotter = await Book.findCompleteReferenceByTitle('Harry Potter and the Philosopher\'s Stone');
+      ctx.body = harryPotter;
+    }
+  };
+};
+```
 
 ## Views
 **Co.Koa** Supports handlebars .hbs; this is a work in progress (I'm currently awaiting an update to koa-hbs-renderer so it can implement support for multiple helpers in one file) but should be available soon.  More details to follows
