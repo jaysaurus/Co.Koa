@@ -1,0 +1,10 @@
+I'm a partial, I have been injected into view {{parent}}
+<p>
+  I can also inject partials into myself; I will demonstrate by putting some content in an undordered list below:
+</p>
+  <ul>
+    <li>
+      {{> PartialInnerSample parent="PartialSample"}}
+    </li>
+  </ul>
+</div>

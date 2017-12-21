@@ -18,6 +18,9 @@ module.exports = function BookController ($) {
       const harryPotter = await Book.findCompleteReferenceByTitle('Harry Potter and the Philosopher\'s Stone');
       ctx.body = harryPotter;
     },
+    'GET /HBSDemo': async (ctx) => {
+      await ctx.render('SampleView', { action: '/HBSDemo' });
+    }
     'POST /': async (ctx) => {
       const author = await bookService.createAuthor();
       await new Book({
