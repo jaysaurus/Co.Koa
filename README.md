@@ -1,14 +1,15 @@
 # Co.Koa MVC
 **These notes are a work in progress, release on NPM is pending the release of documentation**
 
-
 An opinionated MVC; inspired by Grails MVC, written for Koa with support for MongoDB and Handlebars (HBS).
 
-**Co.Koa** obeys convention over configuration. It is the fruit of a number of years of study and industry work with MVC products. **Co.Koa's** greatest strength comes in its implementation of Dependency Management.  Controllers, Models and Services are each supplied with a powerful callback that reads and feels like a JQuery call.  No need to worry about requiring reams of files from across your project.  This build is currently early alpha and, as such, available here for research and interest purposes.
+**Co.Koa** obeys convention over configuration. It is the fruit of a number of years of study and industry work with MVC products. **Co.Koa's** greatest strength comes in its implementation of Dependency Management.  Controllers, Models and Services are each supplied with a powerful callback that reads and feels like a JQuery call.  No need to worry about requiring reams of files from across your project.  This build is currently available here for research and interest purposes.
 
 Comprehensive documentation will evolve over time.
 
 ## Structure & Installation
+To install **Co.Koa** please visit: https://github.com/jaysaurus/Co.Koa/wiki/Installation
+
 The majority of Co.Koa focuses around the api folder ()
 ```
 \api\controllers
