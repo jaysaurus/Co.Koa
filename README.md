@@ -184,7 +184,7 @@ module.exports = function BookService ($) {
 ```
 
 rendering .hbs is simple and powerful; suppose we have a view called `SampleView.hbs` saved in the  `\api\views` directory.  The view is expecting a single variable called `action` to be passed to it:
-```html
+```hbs
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en"><head></head>
 <body> <p>I'm a view, I was called by the action: {{action}}</p> </body>
@@ -192,7 +192,7 @@ rendering .hbs is simple and powerful; suppose we have a view called `SampleView
 ```
 
 If we add the following to `BookController`, we're good to go!
-```HBS
+```javascript
 'GET /HBSDemo': async (ctx) => {
   await ctx.render('SampleView', { action: '/HBSDemo' });
 }
