@@ -10,7 +10,7 @@ Comprehensive documentation will evolve over time.
 ## Structure & Installation
 To install **Co.Koa** please visit: https://github.com/jaysaurus/Co.Koa/wiki/Installation
 
-The majority of Co.Koa focuses around the api folder ()
+Co.Koa's directory structure is as below
 ```
 \api\controllers
     \models
@@ -22,7 +22,7 @@ The majority of Co.Koa focuses around the api folder ()
 \i18n
 \node_modules
 ```
-Setting things up is a piece of cake thanks to the Co.Koa CLI (Installation Documentation to follow)
+at the root of the project is an `app.js` file that loads in the `co-koa-core` module and configures it accordingly.
 
 ## Dependency Injection
 Nearly every component in the Co.Koa toolchain has access to a Dependency Management tool (signified by the `$` symbol supplied to each Controller, Model and Service function) via Dependency Injection.  The Dependency Management tool allows you to - among other things - easily load in Models, Services and Controllers.
