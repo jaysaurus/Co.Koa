@@ -197,7 +197,7 @@ If we add the following to `BookController`, we're good to go!
   await ctx.render('SampleView', { action: '/HBSDemo' });
 }
 ```
-you can add custom helpers with ease! for example, maybe you want to make hbs files handle more complex conditional statements.  No prob:
+you can add custom helpers with ease! for example, maybe you want to make hbs files handle more complex conditional statements.  No prob, suppose we have a file saved at `\api\views\helpers\CK.js`:
 ```javascript
 module.exports = {
   eq: (foo, bar) => foo === bar,
