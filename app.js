@@ -1,12 +1,22 @@
-const CoKoa = require('../co-koa-core/dist/index.js');
+const CoKoa = require('../co-koa-core/src/index.js');
+const yargs = require('yargs');
+const {argv} =
+  yargs.options({
+    environment: {
+      describe: 'choose the environment to run, defaults to "development"',
+      string: true
+    }
+  })
+  .help()
+  .alias('help', 'h');
 
 try {
   const coKoa =
     new CoKoa(
-      __dirname, process.env.NODE_ENV || 'development') // <- environment goes here!
+      __dirname,
+      argv['environment'] || 'development')
       .launch();
-
-  coKoa
+  coKoa // koa-router is exposed below as "coKoa.router"
     .app
     .use(coKoa.router.routes())
     .use(coKoa.router.allowedMethods())

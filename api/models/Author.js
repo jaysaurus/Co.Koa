@@ -12,7 +12,7 @@ module.exports = function Author ($) {
     options: { runSettersOnQuery: true }, // <- mongoose optional configurations
     // statics: {}, // <- custom Model static methods
     virtuals: {
-      name: {
+      fullName: {
         get () { return `${this.lastName}, ${this.firstName}`; },
         set (name) {
           const fullName = name.split(' ');

@@ -27,7 +27,8 @@
     "mongoose": "^4.13.1",
     "mongoose-type-number-enums": "^1.0.3",
     "npm": "^5.5.1",
-    "validator": "^8.2.0"
+    "validator": "^8.2.0",
+    "yargs": "^10.0.3"
   },
   "devDependencies": {
     "jest": "^21.2.1",
