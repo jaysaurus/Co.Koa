@@ -3,6 +3,7 @@ const yargs = require('yargs');
 const {argv} =
   yargs.options({
     environment: {
+      alias: 'e',
       describe: 'choose the environment to run, defaults to "development"',
       string: true
     }
