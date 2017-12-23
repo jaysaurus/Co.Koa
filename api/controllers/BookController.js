@@ -5,16 +5,16 @@ module.exports = function BookController ($) {
   const bookService = $('BookService');
 
   return {
-    'GET /Author': async (ctx) => {
+    async  'GET /Author' (ctx) {
       const book = await Book.find({ title: 'Harry Potter and the Philosopher\'s Stone' });
       const author = await book[0].findAssociatedAuthor();
       ctx.body = author;
     },
-    'GET /HarryPotter': async (ctx) => {
+    async  'GET /HarryPotter' (ctx) {
       const harryPotter = await Book.findCompleteReferenceByTitle('Harry Potter and the Philosopher\'s Stone');
       ctx.body = harryPotter;
     },
-    'POST /': async (ctx) => {
+    async 'POST /' (ctx) {
       const author = await bookService.createAuthor();
       await new Book({
         Accredited: {
