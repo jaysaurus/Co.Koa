@@ -1,6 +1,6 @@
 {
   "name": "Co.Koa",
-  "version": "0.7.0",
+  "version": "0.0.1",
   "description": "A Model View Controller built on Koa",
   "main": "app.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "Koa",
     "MVC"
   ],
-  "author": "Jonathan (Jay) Edwards",
+  "author": "Jay Edwards",
   "license": "MIT",
   "repository": "https://github.com/jaysaurus/Co.Koa.git",
   "dependencies": {
@@ -24,7 +24,6 @@
     "koa-bodyparser": "^4.2.0",
     "koa-hbs-renderer": "^1.2.0",
     "koa-router": "^7.2.1",
-    "lodash.clonedeep": "^4.5.0",
     "mongoose": "^4.13.1",
     "mongoose-type-number-enums": "^1.0.3",
     "npm": "^5.5.1",

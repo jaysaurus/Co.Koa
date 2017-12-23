@@ -1,4 +1,4 @@
 module.exports = {
-  bootstrap: async ($) => {
+  async bootstrap ($) {
   }
 };
