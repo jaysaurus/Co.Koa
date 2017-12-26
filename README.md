@@ -1,12 +1,12 @@
 # Co.Koa MVC
-**co-koa-core module status**
+**<a href="https://github.com/jaysaurus/co-koa-core" target="_blank">co-koa-core</a> module status**
 
 [![Build Status](https://travis-ci.org/jaysaurus/co-koa-core.svg?branch=master)](https://travis-ci.org/jaysaurus/co-koa-core)
 [![Coverage Status](https://coveralls.io/repos/github/jaysaurus/co-koa-core/badge.svg?branch=master)](https://coveralls.io/github/jaysaurus/co-koa-core?branch=master)
 [![Greenkeeper badge](https://badges.greenkeeper.io/jaysaurus/co-koa-core.svg)](https://greenkeeper.io/)
 [![Known Vulnerabilities](https://snyk.io/test/github/jaysaurus/co-koa-core/badge.svg)](https://snyk.io/test/github/jaysaurus/co-koa-core)
 
-**co-koa-cli module status**
+**<a href="https://github.com/jaysaurus/co-koa-cli" target="_blank">co-koa-cli</a> module status**
 
 [![Build Status](https://travis-ci.org/jaysaurus/co-koa-cli.svg?branch=master)](https://travis-ci.org/jaysaurus/co-koa-cli)
 [![Coverage Status](https://coveralls.io/repos/github/jaysaurus/co-koa-cli/badge.svg?branch=master)](https://coveralls.io/github/jaysaurus/co-koa-cli?branch=master)
