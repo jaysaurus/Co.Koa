@@ -6,7 +6,7 @@ module.exports = function BookService ($) {
   return {
     async createAuthor () {
       const author = await new Author({
-        name: 'J.K Rowling' }).save();
+        fullName: 'J.K Rowling' }).save();
       return author;
     }
   };

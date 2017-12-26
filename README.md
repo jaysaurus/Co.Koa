@@ -1,26 +1,12 @@
-<<<<<<< HEAD
-# Co.Koa 0.4.0
-An opinionated MVC; inspired by Grails MVC, written for Koa.
-=======
 # Co.Koa MVC
 **These notes are a work in progress, release on NPM is pending the release of documentation**
 
 An opinionated MVC; inspired by Grails MVC, written for Koa with support for MongoDB and Handlebars (HBS).
->>>>>>> 7a4f92a20c824be114ba10c41cfea95de7c5766f
 
 **Co.Koa** obeys convention over configuration. It is the fruit of a number of years of study and industry work with MVC products. **Co.Koa's** greatest strength comes in its implementation of Dependency Management.  Controllers, Models and Services are each supplied with a powerful callback that reads and feels like a JQuery call.  No need to worry about requiring reams of files from across your project.  This build is currently available here for research and interest purposes.
 
 Comprehensive documentation will evolve over time.
 
-<<<<<<< HEAD
-## Structure
-
-
-## Dependency Injection
-
-
-## Model
-=======
 ## Structure & Installation
 To install **Co.Koa** please visit: https://github.com/jaysaurus/Co.Koa/wiki/Installation
 
@@ -142,7 +128,6 @@ module.exports = function Author ($) {
   };
 };
 ```
->>>>>>> 7a4f92a20c824be114ba10c41cfea95de7c5766f
 
 ## Controllers
 Controllers are also a piece of cake.  Under the hood, your controllers are routed by koa-router (https://www.npmjs.com/package/koa-router).
