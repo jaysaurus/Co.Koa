@@ -14,7 +14,6 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/jaysaurus/co-koa-cli/badge.svg)](https://snyk.io/test/github/jaysaurus/co-koa-cli)
 
 ---
-**These notes are a work in progress, release on NPM is pending the release of documentation**
 
 An opinionated MVC; inspired by Grails MVC, written for Koa with support for MongoDB and Handlebars (HBS).
 
