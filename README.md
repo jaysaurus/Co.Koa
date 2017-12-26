@@ -23,7 +23,7 @@ An opinionated MVC; inspired by Grails MVC, written for Koa with support for Mon
 Comprehensive documentation will evolve over time.
 
 ## Structure & Installation
-To install **Co.Koa** please visit: https://github.com/jaysaurus/Co.Koa/wiki/Installation
+To install **Co.Koa** please visit: the <a href="https://github.com/jaysaurus/Co.Koa/wiki/Installation-&-Execution">wiki installation page</a>
 
 Co.Koa's directory structure is as below
 ```
