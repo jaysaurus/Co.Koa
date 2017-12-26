@@ -241,15 +241,3 @@ now your .hbs file can use custom logic!
 ```
 
 For more information on how to use Handlebars, please visit: http://handlebarsjs.com/
-
-## To Do
-- [x] Controller Implementation
-- [x] Model Implementation (improved)
-- [x] Dependency Injection Implementation
-- [x] Support for Jest testing
-- [x] Middleware implementation
-- [ ] Support for Gulp build and asset management (sort of there)
-- [ ] Command line interface
-- [x] Enable view support for .hbs
-
-Co.Koa will implement Grunt for asset management
