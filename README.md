@@ -2,7 +2,7 @@
 style="width: 100%;
 margin-left: 25%;"
 align="centre">
-<img src="https://github.com/jaysaurus/Co.Koa/blob/master/co.koa.svg" style="margin-left:-8px" width="450" height="450" />
+<img src="https://github.com/jaysaurus/Co.Koa/blob/master/co.koa.banner.svg" />
 </p>
 
 **<a href="https://github.com/jaysaurus/co-koa-core" target="_blank">co-koa-core</a> module status**
