@@ -1,4 +1,4 @@
-# Co.Koa MVC
+<img src="https://github.com/jaysaurus/Co.Koa/blob/master/co.koa.svg" width="700" height="700" />
 **<a href="https://github.com/jaysaurus/co-koa-core" target="_blank">co-koa-core</a> module status**
 
 [![Build Status](https://travis-ci.org/jaysaurus/co-koa-core.svg?branch=master)](https://travis-ci.org/jaysaurus/co-koa-core)
