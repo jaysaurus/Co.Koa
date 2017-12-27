@@ -9,9 +9,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 744.09448819 1052.3622047"
+   width="179.65732mm"
+   height="192.72839mm"
+   viewBox="0 0 636.58105 682.89588"
    id="svg4594"
    version="1.1"
    inkscape:version="0.91 r13725"
@@ -26,19 +26,26 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.35"
-     inkscape:cx="-35.836838"
-     inkscape:cy="488.63018"
+     inkscape:cx="59.714058"
+     inkscape:cy="586.94768"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
-     showgrid="true"
+     showgrid="false"
      inkscape:window-width="1366"
      inkscape:window-height="695"
      inkscape:window-x="0"
      inkscape:window-y="27"
-     inkscape:window-maximized="1">
+     inkscape:window-maximized="1"
+     inkscape:snap-bbox="true"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0">
     <inkscape:grid
        type="xygrid"
-       id="grid5164" />
+       id="grid5164"
+       originx="-38.263567"
+       originy="-109.88573" />
   </sodipodi:namedview>
   <metadata
      id="metadata4599">
@@ -55,7 +62,8 @@
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-38.263567,-259.58058)">
     <ellipse
        style="opacity:1;fill:none;fill-opacity:1;stroke:#ede994;stroke-width:56.80088425;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path4518"
@@ -119,7 +127,7 @@
        y="655.099" />
     <path
        style="fill:#ffdd55;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 418.28805,439.23086 280.1422,249.28037 l 138.14585,0 0,-155.414078 138.14584,224.486988 -138.14584,0 z"
+       d="m 423.43091,427.80229 -67.2887,-92.52193 67.2887,0 0,-75.69978 67.28869,109.34412 -67.28869,0 z"
        id="path4532"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccccc" />
