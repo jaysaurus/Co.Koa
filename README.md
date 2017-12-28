@@ -1,9 +1,4 @@
-<p 
-style="width: 100%;
-margin-left: 25%;"
-align="centre">
-<img src="https://github.com/jaysaurus/Co.Koa/blob/master/co.koa.banner.svg" />
-</p>
+<img src="https://raw.githubusercontent.com/jaysaurus/Co.Koa/master/co.koa.banner.svg?sanitize=true" />
 
 **<a href="https://github.com/jaysaurus/co-koa-core" target="_blank">co-koa-core</a> module status**
 
