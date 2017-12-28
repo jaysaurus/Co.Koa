@@ -7,7 +7,7 @@ module.exports = function Book ($) {
     schema: {
       Accredited: {
         authors: [{
-          type: 'ObjectId',
+          type: 'ForeignKey',
           ref: 'Author'
         }]
       },
