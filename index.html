@@ -99,29 +99,59 @@
     text-align: center;
     text-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
   }
+  #topRibbon {
+    text-align: right;
+    background-color: #513E21;
+    height: 45px;
+    color: #cbc48f;
+  }
+  .link {
+    padding: 15px;
+    font-weight: bolder;
+    vertical-align: middle;
+    position: relative;
+    top: 10px;
+  }
   #coKoaMug {
-    position:static;
+    position:relative;
     width: 30%;
-    z-index: -10;
-    margin-left: -5%;
+    margin: 2% 0% 2% -8%;
+  }
+  #introRibbon {
+    background-color: #fffad5ff;
   }
   .slogan {
-    color: red;
-    letter-spacing: 5px;
+    color: #ff9553;
+
   }
   .head {
-    font-weight: bolder;
+    font-weight: 900;
+    letter-spacing: 5px;
+  }
+  #bodyText {
+    margin-top: 10px;
   }
   </style>
 </head>
 
 <body>
-  <img
-    id="coKoaMug"
-    src="https://raw.githubusercontent.com/jaysaurus/Co.Koa/master/co.koa.svg?sanitize=true" />
-    <div id=body>
+  <div id="topRibbon">
+    <span class="link">TODO</span>
+    <span class="link">TODO</span>
+    <span class="link">TODO</span>
+    <span class="link">TODO</span>
+  </div>
+  <div id="introRibbon">
+    <img
+      id="coKoaMug"
+      src="https://raw.githubusercontent.com/jaysaurus/Co.Koa/master/co.koa.svg?sanitize=true" />
+    <div id="wrapper">
       <h1 class="slogan head">A Common Sense MVC</h1>
       <h2 class="slogan">With Added Marshmallows</h2>
     </div>
+  </div>
+  <div id="bodyText">
+    body
+  </div>
 </body>
 </html>
