@@ -1,0 +1,69 @@
+body {
+  text-align: center;
+  text-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+}
+#topRibbon {
+  text-align: right;
+  background-color: #513E21;
+  height: 45px;
+}
+.topRibbonMobile {
+  height: 70px !important;
+}
+#dropDown {
+  position: absolute;
+  width: 100%;
+  background-color: #605534;
+  z-index: 10;
+  display:none;
+}
+.hamburger {
+  width: 90%;
+}
+#hamburger {
+  width: 85px;
+  padding: 15px;
+  background-color: #775b38;
+  border: 0;
+}
+.anchor {
+  font-weight: bolder;
+  text-decoration: none !important;
+  color: #cbc48f;
+}
+.link {
+  padding: 15px;
+  vertical-align: middle;
+  position: relative;
+  top: 10px;
+}
+.mobileLink {
+  position: relative;
+  display: block;
+  top: 0px !important;
+  padding: 0 0 27px 0;
+  border-bottom: 1px solid white;
+}
+#coKoaMug {
+  position:relative;
+  width: 30%;
+  min-width:350px;
+  margin: 2% 0% 2% -8%;
+}
+.coKoaMugMobile {
+  width: 80% !important;
+}
+#introRibbon {
+  background-color: #fffad5ff;
+}
+.slogan {
+  color: #ff9553;
+
+}
+.head {
+  font-weight: 900;
+  letter-spacing: 5px;
+}
+#bodyText {
+  margin-top: 10px;
+}
