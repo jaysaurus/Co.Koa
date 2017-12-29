@@ -10,7 +10,7 @@
   <script type="text/javascript" src="./miniSite/Menu.js"></script>
   <script type="text/javascript">
   $('document').ready(function() {
-    if (jQuery.browser.mobile) {
+    if (!jQuery.browser.mobile) {
       $('#coKoaMug').addClass('coKoaMugMobile');
     }
     Menu().build(jQuery.browser.mobile,
