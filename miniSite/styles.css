@@ -8,7 +8,7 @@ body {
   height: 45px;
 }
 .topRibbonMobile {
-  height: 70px !important;
+  height: 150px !important;
 }
 #dropDown {
   position: absolute;
@@ -21,8 +21,8 @@ body {
   width: 90%;
 }
 #hamburger {
-  width: 85px;
-  padding: 15px;
+  width: 189px;
+  padding: 32px;
   background-color: #775b38;
   border: 0;
 }
@@ -41,8 +41,9 @@ body {
   position: relative;
   display: block;
   top: 0px !important;
-  padding: 0 0 27px 0;
+  padding: 5px 0px 30px 0;
   border-bottom: 1px solid white;
+  font-size: 65px;
 }
 #coKoaMug {
   position:relative;
