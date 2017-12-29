@@ -3,4 +3,4 @@
 <a title="co-koa-cli on github" href="./miniSite/https://github.com/jaysaurus/co-koa-cli">CLI</a>
 
 * [Controller](documentation/Controller.md)
-* [Model](documentation/Model.md)
+* Model
