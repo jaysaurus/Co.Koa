@@ -1,4 +1,4 @@
-<a title="documentation page" href="./miniSite/Documentation.md">Documentation</a> |
+<a title="documentation page" href="https://github.com/jaysaurus/Co.Koa/blob/master/miniSite/Documentation.md">Documentation</a> |
 <a title="co-koa-core on github" href="./miniSite/https://github.com/jaysaurus/co-koa-core">Core</a> |
 <a title="co-koa-cli on github" href="./miniSite/https://github.com/jaysaurus/co-koa-cli">CLI</a>
 
