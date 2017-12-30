@@ -1,6 +1,19 @@
 [Home](https://jaysaurus.github.io/Co.Koa) | [Documentation](miniSite/Documentation.md) | <a title="co-koa-core on github" href="https://github.com/jaysaurus/co-koa-core">Core</a> | <a title="co-koa-cli on github" href="https://github.com/jaysaurus/co-koa-cli">CLI</a>
 
-<img src="https://raw.githubusercontent.com/jaysaurus/Co.Koa/master/co.koa.banner.svg?sanitize=true" />
+<pre>
+     ___          ___                 ___          ___          ___
+    /\  \        /\  \               /\__\        /\  \        /\  \
+   /##\  \      /##\  \             /#/  /       /##\  \      /##\  \
+  /#/\#\  \    /#/\#\  \    ___    /#/__/       /#/\#\  \    /#/\#\  \
+ /#/  \#\  \  /#/  \#\  \  /\  \  /##\__\____  /#/  \#\  \  /##\─\#\  \
+/#/__/ \#\__\/#/__/ \#\__\/##\__\/#/\#####\__\/#/__/ \#\__\/#/\#\ \#\__\
+\#\  \  \/__/\#\  \ /#/  /\##/  /\/_|#,~~~'──'\#\  \ /#/  /\/__\#\/#/  /
+ \#\  \       \#\  /#/  /  \/__/    |#|  |     \#\  /#/  /      \##/  /
+  \#\  \       \#\/#/  /            |#|  |      \#\/#/  /       /#/  /
+   \#\__\       \##/  /             |#|  |       \##/  /       /#/  /
+    \/__/        \/__/               \|__|        \/__/        \/__/
+
+</pre>
 
 **<a href="https://github.com/jaysaurus/co-koa-core" target="_blank">co-koa-core</a> module status**
 
