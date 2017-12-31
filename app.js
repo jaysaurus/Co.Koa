@@ -1,6 +1,6 @@
 const fs = require('fs');
 if (fs.existsSync('./node_modules')) {
-  const CoKoa = require('co-koa-core');
+  const CoKoa = require('../co-koa-core/src/index.js');
   const yargs = require('yargs');
   const {argv} =
     yargs.options({

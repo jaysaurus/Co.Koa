@@ -2,7 +2,7 @@
 
 * [Config](Config.md)
 * [Controller](Controller.md)
-* [Dependency Manager](DependencyManager.md)
-* Model
+* Dependency Manager
+* [Model](Model.md)
 * [Service](Service.md)
 * [View](View.md)

@@ -4,16 +4,16 @@ module.exports = ['development', 'test', 'production'].reduce(
       case 'development':
       case 'test':
         return Object.assign(obj, { [environment]: {
-          'css': '/public/css',
-          'html': '/public/html',
-          'img': '/public/images',
-          'js': '/public/js'
+          'css': '/css',
+          'html': '/html',
+          'img': '/images',
+          'js': '/js'
         } });
       case 'production':
         return Object.assign(obj, { [environment]: {
           'css': '/.min/css',
-          'html': '/public/html',
-          'img': '/public/images',
+          'html': '/html',
+          'img': '/images',
           'js': '/.min/js'
         } });
     }

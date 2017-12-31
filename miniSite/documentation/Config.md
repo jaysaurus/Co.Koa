@@ -1,7 +1,107 @@
 [Home](https://jaysaurus.github.io/Co.Koa) | Documentation | <a title="co-koa-core on github" href="https://github.com/jaysaurus/co-koa-core">Core</a> | <a title="co-koa-cli on github" href="https://github.com/jaysaurus/co-koa-cli">CLI</a>
 
+* Config
 * [Controller](Controller.md)
+* [Dependency Manager](DependencyManager.md)
 * [Model](Model.md)
 * [Service](Service.md)
 * [View](View.md)
-* Config
+
+## Config
+
+The Config folder is perhaps the most intimidating component of Co.Koa. Don't worry, just like everything else in Co.Koa, it's designed to keep things simple!
+
+---
+
+### AssetConfig.js
+
+The AssetConfig file tells Co.Koa's [Dependency Manager](DependencyManager.md) where to look for CSS, HTML, IMG & JS files within the public folder.
+
+**For Example**
+
+when you call `$(':css').loadURL('foo')`, the [Dependency Manager](DependencyManager.md) will cross reference the folder based on the running environment.  For example, by default we can see that the `development` css uri points to:
+
+```javascript
+'css': '/css',
+```
+
+if we call `$(':css').loadURL('foo')` in any function that exposes the [Dependency Manager](DependencyManager.md), a string will be returned as follows: '/html/foo.css' that points to the physical directory './public/html/foo.css'.
+
+---
+
+### bootstrap.js
+
+As the name would suggest, bootstrap is the place to inject code you would like to execute when starting your server.  Bootstrap is injected with the [Dependency Manager](DependencyManager.md) and operates much like a method in a service object
+
+---
+
+### config.json
+
+The config.json file houses a number of core configurations for your project:
+
+```javascript
+"defaultLanguage":"en",
+```
+
+Default language specifies the language you want Co.Koa to use both within its core files and by default for your local i18n folder.  It adheres to the 2 letter language codes acknowledged by the W3C.  Currently, co-koa-core will default to English (contributions welcome!) But don't let that stop you from using other languages within your i18n folder.  For more information on i18n and Co.Koa, visit the [Dependency Manager](DependencyManager.md) page.
+
+---
+
+```javascript
+"environment": {
+  "test": {
+    "port": 3000,
+    "mongoDB_URI": "mongodb://localhost:27017/coKoaTest"
+  },
+  "development": {
+    "port": 3000,
+    "mongoDB_URI": "mongodb://localhost:27017/coKoa"
+  }
+},
+```
+The environment property allows you to supply a port and the connection data required to connect to mongodb.  This is used in conjunction with the envConfig.js we discuss further down.
+
+---
+
+```javascript
+"messageFolder": "./i18n/",
+```
+
+The messageFolder tells the Co.Koa's DependencyManager, where to look for the messages you wish to echo to your users
+//TODO
+
+---
+
+```javascript
+"useHBS": true
+```
+
+Co.Koa supports handlebars by default, but can be made into a pure API simply by setting the `useHBS` flag to `false`.  Co.Koa will not load any HBS components on launch if the flag is set to `false`.  This will not affect your access to static resources within the `/public` folder.
+
+---
+
+### envConfig.js
+
+envConfig exposes the mongoose module to your local instance.  This is largely available for convenience should you have specific access needs related to your mongoose instance.  Most importantly, you may choose your mongoose instance's promise library here:
+
+```javascript
+mongoose.Promise = bluebird;
+```
+
+By default, mongoose uses [bluebird](https://www.npmjs.com/package/bluebird).  Should you wish or need to change this, you may do so here by installing a suitable alternative.
+
+---
+
+### hbsConfig.js
+
+The hbsConfig exposes, like-for-like the configurations file for [koa-hbs-renderer](https://www.npmjs.com/package/koa-hbs-renderer).  Needless to say, be careful changing this file!
+
+---
+
+### logger.js
+
+The logger is the brains behind the `$.logger.log()` method exposed by the [Dependency Manager](DependencyManager.md). It allows you to log messages based on the running environment.  Perhaps you'd like to have console.log() calls for dev, but store the same data in a log file on your production box.  Co.Koa encourages you to use `$.logger.log()` and `$.logger.error()` rather than - for example - `console.log()`.
+
+By default, the development environment will simply default to `console.log()` and `console.error()`.  For convenience, the test environment expects a secondary array argument and will push the message to that array.  Production is entirely up to you!
+
+The logger is also passed to the `$(':echo')` component and will be used therein when calling `.log()` or `.error()`.  For more information on `$(':echo')`, please see the [Dependency Manager](DependencyManager.md) documentation.

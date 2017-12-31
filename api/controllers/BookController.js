@@ -15,7 +15,7 @@ module.exports = function BookController ($) {
       ctx.body = harryPotter;
     },
     async 'GET /HBSDemo' (ctx) {
-      await ctx.render('SampleView', { action: '/HBSDemo' });
+      await ctx.render('SampleView', { action: '/HBSDemo', imgURL: $(':img').loadURL('co.koa.banner', 'svg') });
     },
     async 'GET /static' (ctx) {
       ctx.type = 'html';
