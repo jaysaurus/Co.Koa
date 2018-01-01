@@ -67,8 +67,15 @@ The environment property allows you to supply a port and the connection data req
 "messageFolder": "./i18n/",
 ```
 
-The messageFolder tells the Co.Koa's DependencyManager, where to look for the messages you wish to echo to your users
-//TODO
+The messageFolder tells Co.Koa's DependencyManager where to look for internationalised messages to echo to your users.  For example, by default, suppose you had a file stored at:
+```
+./i18n/en.messages.json
+```
+ this could be loaded in a model/controller/service/middleware function as follows:
+ ```javascript
+ $(':echo').load('messages');
+ ```
+for more information on `$(':echo')`, please see the [Dependency Manager](DependencyManager.md) documentation.
 
 ---
 
@@ -76,7 +83,7 @@ The messageFolder tells the Co.Koa's DependencyManager, where to look for the me
 "useHBS": true
 ```
 
-Co.Koa supports handlebars by default, but can be made into a pure API simply by setting the `useHBS` flag to `false`.  Co.Koa will not load any HBS components on launch if the flag is set to `false`.  This will not affect your access to static resources within the `/public` folder.
+Co.Koa supports handlebars by default, but can be made into a pure API simply by setting the `useHBS` flag to `false`.  Co.Koa will not load any HBS components on launch if the flag is set to `false` (this has no effect on accessing static resources within the `/public` folder).
 
 ---
 
@@ -105,3 +112,25 @@ The logger is the brains behind the `$.logger.log()` method exposed by the [Depe
 By default, the development environment will simply default to `console.log()` and `console.error()`.  For convenience, the test environment expects a secondary array argument and will push the message to that array.  Production is entirely up to you!
 
 The logger is also passed to the `$(':echo')` component and will be used therein when calling `.log()` or `.error()`.  For more information on `$(':echo')`, please see the [Dependency Manager](DependencyManager.md) documentation.
+
+---
+
+### middleware.js
+
+the middleware.js is the definitive location to perform koa-style middleware actions.  Each method supplied to the middleware.js object will be called (sequentially) by koa's app.use() on launch.  As an example, Co.Koa sets up a simple function that will be called each time it receives a request:
+
+```javascript
+module.exports = function ($, conf) {
+  return {
+    async logRequest (ctx, next) {
+      const start = new Date();
+      await next();
+      const ms = new Date() - start;
+      // use the aforementioned logger to log the load time
+      $.logger.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
+    }
+  };
+};
+```
+
+As you can see, it has full access to the [Dependency Manager](DependencyManager.md).
