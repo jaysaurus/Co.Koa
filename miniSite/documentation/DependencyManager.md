@@ -3,6 +3,9 @@
 * [Config](Config.md)
 * [Controller](Controller.md)
 * Dependency Manager
+  * [Dynamic Resources](DMDynamicResources.md)
+  * [Static Resources](DMStaticResources.md)
+  * [Properties](DMProperties.md)
 * [Model](Model.md)
 * [Service](Service.md)
 * [View](View.md)
@@ -13,9 +16,19 @@ The Dependency Manager is kind of a Swiss-Army knife of useful interrelated tool
 
 The Dependency Manager breaks down into 3 use categories:
 
-### Static Resources
+#### [DynamicResources](DMDynamicResources.md)
 
-prefixing your argument string with ':' tells Co.Koa you are requesting a static resource of some kind.  At the time of writing, the following resources are available:
+The DependencyManager knows to look for Models and Services within their respective folders.  the example below demonstrates the syntax:
+
+```javascript
+const sampleService = $('SampleService'); // load an instance of SampleService in ./api/services/SampleService.js
+const Sample = $('Sample') // call a Mongoose model instance derived from the Sample schema in ./api/models/Sample.js
+const SampleValidator = $('SampleValidator') // call a validator library for your mongoose instance from ./api/models/validators/SampleValidator.js
+```
+
+#### [Static Resources](DMStaticResources.md)
+
+prefixing your argument string with ':' tells Co.Koa you are requesting a static resource of some kind.  The following resources are available:
 
 <table>
 <tr>
@@ -28,34 +41,103 @@ $(':async')
 Exposes await/async-friendly .each() and .reduce() methods.
 </td>
 </tr>
+<tr>
+<td>
+```
+$(':echo')
+```
+</td>
+<td>
+Exposes the [echo-handler](http://npmjs.com/echo-handler) NPM module
+</td>
+</tr>
+<tr>
+<td>
+```
+$(':enums')
+```
+</td>
+<td>
+returns `./api/Enums.js`
+</td>
+</tr>
+<tr>
+<td>
+```
+$(':tree')
+```
+</td>
+<td>
+returns a stack-tree algorithm that can be used to iterate through object trees.
+</td>
+</tr>
 </table>
 
-You will likely be familiar with [`.forEach`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) and [`.reduce`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce) closures.  Unfortunately, using `await/async` in ecma 8+ is merely syntactic sugar disguising an underlying `promise` methodology.  Therefore, if you use JavaScript's traditional `.forEach()` and `.reduce()` methods on asynchronous calls you probably wont get the results you're after.  The async call resolves this issue as illustrated in the contrived example below.
+more information on Static Resources can be found [here](DMDynamicResources.md)
 
-Suppose you want to create a couple of `Sample` objects; assigning each a distinct name:
+#### Properties
 
-```javascript
-const _async = $(':async'); // retrieve the async library
-const Sample = $('Sample');
-await _async.each(
-  ['Foo','Bar'], // the array to iterate over
-  async (name) => { // use the async library's each method to iterate over array
-  await new Sample({ name: `My name is: ${name}` }).save();
-});
+The Dependency Manager is also supplied with some handy properties:
+
+<table>
+<tr>
+<td>
 ```
-
-perhaps you'd like to return a count as well, for this we could employ `_async.reduce()`.  The syntax should look familiar:
-
-```javascript
-const _async = $(':async'); // retrieve the async library
-const Sample = $('Sample');
-const count = await _async.reduce(
-  ['Foo','Bar'], // the array to iterate over
-  async (i, name) => { // use the async library's each method to iterate over array
-  await new Sample({ name: `My name is: ${name}` }).save();
-  return ++i; // i must be returned at the end of this function.
-  },
-  0 // the number to count assigned to 'i' in the function above.
-);
-$.logger.log(count == 2);
+$.environment
 ```
+</td>
+<td>
+The name of the running environment (specified when launching Co.Koa)
+</td>
+</tr>
+<tr>
+<td>
+```
+$.i18n
+```
+</td>
+<td>
+the default language specified in config.json
+</td>
+</tr>
+<tr>
+<td>
+```
+$.logger
+```
+</td>
+<td>
+Simply returns the `.log()` and `.error()` methods defined in your `./config/logger.js`
+</td>
+</tr>
+<tr>
+<td>
+```
+$.messageFolder
+```
+</td>
+<td>
+The absolute location of your i18n folder
+</td>
+</tr>
+<tr>
+<td>
+```
+$.root
+```
+</td>
+<td>
+The root directory of your project
+</td>
+</tr>
+<tr>
+<td>
+```
+$.useHBS
+```
+</td>
+<td>
+whether the environment is currently using handlebars templating engine (as specified in your config.json)
+</td>
+</tr>
+</table>
