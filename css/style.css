@@ -1,0 +1,14 @@
+header {
+  display:none;
+}
+
+.container {
+  max-width: 95%;
+}
+
+.highlighter-rouge {
+  color: #c7ec80;
+  background-color: #292929;
+  padding: 2px 5px;
+  font-weight: bold;
+}

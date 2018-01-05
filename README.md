@@ -1,5 +1,13 @@
-[Home](https://jaysaurus.github.io/Co.Koa) | [Documentation](miniSite/Documentation.md) | <a title="co-koa-core on github" href="https://github.com/jaysaurus/co-koa-core">Core</a> | <a title="co-koa-cli on github" href="https://github.com/jaysaurus/co-koa-cli">CLI</a>
-
+<table class="headerTable">
+<tr class="headerTR">
+<td class="headerTD">
+[Home](https://jaysaurus.github.io/Co.Koa) |
+[Documentation](miniSite/Documentation.md) |
+<a title="co-koa-core on github" href="https://github.com/jaysaurus/co-koa-core">Core</a> |
+<a title="co-koa-cli on github" href="https://github.com/jaysaurus/co-koa-cli">CLI</a>
+</td>
+</tr>
+</table>
 <img src="https://raw.githubusercontent.com/jaysaurus/Co.Koa/master/CoKoaFinalImage.png?sanitize=true" />
 
 **<a href="https://github.com/jaysaurus/co-koa-core" target="_blank">co-koa-core</a> module status**
