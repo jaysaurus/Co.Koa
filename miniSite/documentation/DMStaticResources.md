@@ -6,9 +6,7 @@
 <table>
 <tr>
 <td>
-```
 $(':async')
-```
 </td>
 <td>
 Exposes await/async-friendly .each() and .reduce() methods.
@@ -51,9 +49,7 @@ $.logger.log(count == 2);
 <table>
 <tr>
 <td>
-```
 $(':echo')
-```
 </td>
 <td>
 Exposes the [echo-handler](http://npmjs.com/echo-handler) NPM module
@@ -112,15 +108,54 @@ echoEs.log('hello'); // will log '¡hola todo el mundo!'
 <table>
 <tr>
 <td>
-```
 $(':enums')
-```
 </td>
 <td>
 returns `./api/Enums.js`
 </td>
 </tr>
 </table>
+
+Co.Koa extends mongoose's core functionality with a numeric enum type courtesy of the ['mongoose-type-number-enums'](https://www.npmjs.com/package/mongoose-type-number-enums) npm package.
+
+**Example use:**
+Let's suppose you're coding an application for a book shop.  The book shop only sells 3 formats of physical books: paperback, hardback and spiral-bound.  We could, arguably, model this logic with an enum.  JavaScript doesn't natively support the Enum type, but we could simulate something similar by adding such an enum to Co.Koa's `./api/Enums.js` file:
+
+```javascript
+module.exports = {
+  BookFormats: ['PAPERBACK', 'HARDBACK', 'SPIRAL_BOUND'];
+}
+```
+
+mongoose supports an enum type by default, but stores that enum as a string in the database.  in so doing, it doesn't really fall in-line with the "C-like" conventions we might expect.  Co.Koa supports mongoose's default enums, but encourages the definition of numeric integers as below:
+
+```javascript
+module.exports = function Book ($) {
+  const _enums = $(':enums');
+  return {
+    schema: {    
+      format: {
+        type: 'Enum',
+        enum: _enums.BookFormats
+      }
+      ...
+    }
+    ...
+  }
+}
+```
+
+Subsequently, you can perform requests against that type as below:
+
+```javascript
+const _enums = $(':enums');
+await new Book({
+  format: _enums.BookFormats.indexOf('HARDBACK'),
+  ...
+}).save();
+```
+
+The database will store the index number of 'HARDBACK' (1) as type "number"
 
 ---
 
@@ -136,3 +171,82 @@ returns a stack-tree algorithm that can be used to iterate through object trees.
 </td>
 </tr>
 </table>
+
+This is a powerful tool used by [co-koa-core](https://npmjs.come/package/co-koa-core) that has been exposed for your convenience. It is used to map mongoose ObjectIds to the place-holder types: "ForeignKey", "FK" and "ObjectId" defined by clients in their models.  You can see it in action on the [`ModelFactoryHelper`](https://github.com/jaysaurus/co-koa-core/blob/master/lib/helpers/ModelFactoryHelper.js).
+
+suppose you have a complex object you wish to analyse:
+
+```javascript
+const dataset = {
+  a: {
+    a1: 'a1',
+    a2: 'a2',
+    a3: {
+      a3_1: {
+        a3_1_1: {
+          a3_1_1_1: 'a3_1_1_1'
+        }
+      }
+    }
+  },
+  b: {
+    b1: {
+      b1_1: 'b1_1',
+      b1_2: 'b1_2',
+      b1_3: {
+        b1_3_1: 'b1_3_1',
+        b1_3_2: {
+          b_deep: { deeper: { deepest: 'Deep!' } }
+        }
+      },
+      b1_4: 'b1_4'
+    }
+  },
+  c: 'c'
+};
+```
+
+The following code easily digests the above:
+
+```javascript
+const keyObserver = [];
+const nodeObserver = {};
+let outObserver = null;
+const _tree = $(':tree');
+
+_tree(dataset)
+  .process((it) => {
+    // args:
+    // it._keyTree: an array of the path to the current node;
+    // it._out: a pointer to the observed object.
+    // it.item: the current node's value
+    // it.key: the current node's key
+    keyObserver.push(it._keyTree.reduce((list, i) => {
+      list.push(i);
+      return list;
+    }, []));
+    if (!outObserver) outObserver = it._out
+    nodeObserver[it.key] = it.item;  
+  });
+
+console.log(keyObserver[0]) // [ 'a', 'a3', 'a3_1', 'a3_1_1' ]
+console.log(keyObserver[1]) // [ 'a' ]
+console.log(keyObserver[2]) // [ 'a' ]
+console.log(keyObserver[3]) // [ 'b', 'b1' ]
+console.log(keyObserver[4]) // [ 'b', 'b1', 'b1_3', 'b1_3_2', 'b_deep', 'deeper' ]
+console.log(keyObserver[5]) // [ 'b', 'b1', 'b1_3' ]
+console.log(keyObserver[6]) // [ 'b', 'b1' ]
+console.log(keyObserver[7]) // [ 'b', 'b1' ]
+console.log(outObserver === tree) // true
+console.log(nodeObserver) // would render an object as below:
+
+{ a3_1_1_1: 'a3_1_1_1',
+        a2: 'a2',
+        a1: 'a1',
+        b1_4: 'b1_4',
+        deepest: 'Deep!',
+        b1_3_1: 'b1_3_1',
+        b1_2: 'b1_2',
+        b1_1: 'b1_1',
+        c: 'c' }
+```

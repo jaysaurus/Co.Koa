@@ -2,12 +2,11 @@
 
 module.exports = function Book ($) {
   const Author = $('Author');
-
   return {
     schema: {
       Accredited: {
         authors: [{
-          type: 'ForeignKey',
+          type: 'FK',
           ref: 'Author'
         }]
       },

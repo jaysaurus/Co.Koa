@@ -33,9 +33,7 @@ prefixing your argument string with ':' tells Co.Koa you are requesting a static
 <table>
 <tr>
 <td>
-```
 $(':async')
-```
 </td>
 <td>
 Exposes await/async-friendly .each() and .reduce() methods.
@@ -43,9 +41,7 @@ Exposes await/async-friendly .each() and .reduce() methods.
 </tr>
 <tr>
 <td>
-```
 $(':echo')
-```
 </td>
 <td>
 Exposes the [echo-handler](http://npmjs.com/echo-handler) NPM module
@@ -53,9 +49,7 @@ Exposes the [echo-handler](http://npmjs.com/echo-handler) NPM module
 </tr>
 <tr>
 <td>
-```
 $(':enums')
-```
 </td>
 <td>
 returns `./api/Enums.js`
@@ -63,9 +57,7 @@ returns `./api/Enums.js`
 </tr>
 <tr>
 <td>
-```
 $(':tree')
-```
 </td>
 <td>
 returns a stack-tree algorithm that can be used to iterate through object trees.
@@ -82,9 +74,7 @@ The Dependency Manager is also supplied with some handy properties:
 <table>
 <tr>
 <td>
-```
 $.environment
-```
 </td>
 <td>
 The name of the running environment (specified when launching Co.Koa)
@@ -92,9 +82,7 @@ The name of the running environment (specified when launching Co.Koa)
 </tr>
 <tr>
 <td>
-```
 $.i18n
-```
 </td>
 <td>
 the default language specified in config.json
@@ -102,9 +90,7 @@ the default language specified in config.json
 </tr>
 <tr>
 <td>
-```
 $.logger
-```
 </td>
 <td>
 Simply returns the `.log()` and `.error()` methods defined in your `./config/logger.js`
@@ -112,9 +98,7 @@ Simply returns the `.log()` and `.error()` methods defined in your `./config/log
 </tr>
 <tr>
 <td>
-```
 $.messageFolder
-```
 </td>
 <td>
 The absolute location of your i18n folder
@@ -122,9 +106,7 @@ The absolute location of your i18n folder
 </tr>
 <tr>
 <td>
-```
 $.root
-```
 </td>
 <td>
 The root directory of your project
@@ -132,9 +114,7 @@ The root directory of your project
 </tr>
 <tr>
 <td>
-```
 $.useHBS
-```
 </td>
 <td>
 whether the environment is currently using handlebars templating engine (as specified in your config.json)
