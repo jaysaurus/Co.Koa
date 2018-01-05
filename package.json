@@ -17,22 +17,7 @@
   "repository": "https://github.com/jaysaurus/Co.Koa.git",
   "dependencies": {
     "bluebird": "^3.5.1",
-    "co-koa-core": "^0.12.3",
-    "dependencies": "0.0.1",
-    "echo-handler": "^1.5.2",
-    "fs": "0.0.1-security",
-    "koa": "^2.4.1",
-    "koa-bodyparser": "^4.2.0",
-    "koa-hbs-renderer": "^1.2.0",
-    "koa-router": "^7.2.1",
-    "mongoose": "^4.13.1",
-    "mongoose-type-number-enums": "^1.0.3",
-    "npm": "^5.5.1",
-    "validator": "^8.2.0",
-    "yargs": "^10.0.3"
+    "co-koa-core": "^0.12.3"
   },
-  "devDependencies": {
-    "jest": "^21.2.1",
-    "mockingoose": "^2.4.0"
-  }
+  "devDependencies": {}
 }

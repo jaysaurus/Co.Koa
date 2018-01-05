@@ -22,6 +22,15 @@ An opinionated MVC; inspired by Grails MVC, written for Koa with support for Mon
 
 **Co.Koa** obeys convention over configuration. It is the fruit of a number of years of study and industry work with MVC products. **Co.Koa's** greatest strength comes in its implementation of Dependency Management.  Controllers, Models and Services are each supplied with a powerful callback that reads and feels like a JQuery call.  No need to worry about requiring reams of files from across your project.  
 
+**Note on latest release** if you installed Co.Koa with a version of co-koa-cli prior to 0.12.0 and wish to use co-koa-core@0.14.0 or higher, simply remove the `new` keyword from your app.js and amend your config.json by replacing the `useHBS` parameter with:
+
+```json
+"optionalModules": {
+  "koa-hbs-renderer": true,
+  "koa-locale": true
+}
+```
+
 ## Structure & Installation
 To install **Co.Koa** please visit: the <a href="https://github.com/jaysaurus/Co.Koa/wiki/Installation-&-Execution">wiki installation page</a>
 

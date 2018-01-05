@@ -1,4 +1,5 @@
 {
+  "appKeys": [],
   "defaultLanguage":"en",
   "environment": {
     "test": {
@@ -11,5 +12,8 @@
     }
   },
   "messageFolder": "./i18n/",
-  "useHBS": true
+  "optionalModules": {
+    "koa-hbs-renderer": true,
+    "koa-locale": true
+  }
 }
