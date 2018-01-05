@@ -2,14 +2,14 @@
 <table class="headerTable">
 <tr class="headerTR">
 <td class="headerTD">
-<a title="Co.Koa on github" href="(https://jaysaurus.github.io/Co.Koa)">Home</a> |
-<a title="Documentation" href="https://miniSite/Documentation.md">Documentation</a> |
+<a title="Co.Koa on github" href="https://jaysaurus.github.io/Co.Koa">Home</a> |
+<a title="Documentation" href="https://jaysaurus.github.io/Co.Koa/miniSite/Documentation.md">Documentation</a> |
 <a title="co-koa-core on github" href="https://github.com/jaysaurus/co-koa-core">Core</a> |
 <a title="co-koa-cli on github" href="https://github.com/jaysaurus/co-koa-cli">CLI</a>
 </td>
 </tr>
 </table>
-<img src="https://raw.githubusercontent.com/jaysaurus/Co.Koa/master/CoKoaFinalImage.png?sanitize=true" />
+<img style="margin: 0 15%; width: 70%" src="https://raw.githubusercontent.com/jaysaurus/Co.Koa/master/CoKoaFinalImage.png?sanitize=true" />
 
 **<a href="https://github.com/jaysaurus/co-koa-core" target="_blank">co-koa-core</a> module status**
 
@@ -27,11 +27,11 @@
 
 ---
 
-An opinionated MVC; inspired by Grails MVC, written for Koa with support for MongoDB and Handlebars (HBS).
+An opinionated MVC; inspired by [Grails](https://grails.org/) MVC, written for Koa with support for MongoDB and Handlebars (HBS).
 
-**Co.Koa** obeys convention over configuration. It is the fruit of a number of years of study and industry work with MVC products. **Co.Koa's** greatest strength comes in its implementation of Dependency Management.  Controllers, Models and Services are each supplied with a powerful callback that reads and feels like a JQuery call.  No need to worry about requiring reams of files from across your project.  
+**Co.Koa** obeys convention over configuration. It is the fruit of a number of years of study and industry work with MVC products. **Co.Koa's** greatest strength comes in its implementation of Dependency Management.  Controllers, Models and Services are each supplied with a powerful callback that reads and feels like a JQuery call.  No need to worry about requiring reams of files from across your project.
 
-**Note on latest release** if you installed Co.Koa with a version of co-koa-cli prior to 0.12.0 and wish to use co-koa-core@0.14.0 or higher, simply remove the `new` keyword from your app.js and amend your config.json by replacing the `useHBS` parameter with:
+**Note on latest release** if you installed Co.Koa with a version of co-koa-cli prior to 0.12.0 and wish to use co-koa-core@0.14.0 or higher, simply remove the `new` keyword from your `app.js` file and amend your `config.json` by replacing the `useHBS` parameter with:
 
 ```json
 "optionalModules": {

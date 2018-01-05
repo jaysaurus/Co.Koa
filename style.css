@@ -6,6 +6,10 @@ header {
   max-width: 95%;
 }
 
+.headerTable {
+  text-align: center;
+}
+
 .highlighter-rouge {
   color: #c7ec80;
   background-color: #292929;
