@@ -1,8 +1,9 @@
+<link rel='stylesheet' type='text/css' href='style.css' />
 <table class="headerTable">
 <tr class="headerTR">
 <td class="headerTD">
-[Home](https://jaysaurus.github.io/Co.Koa) |
-[Documentation](miniSite/Documentation.md) |
+<a title="Co.Koa on github" href="(https://jaysaurus.github.io/Co.Koa)">Home</a> |
+<a title="Documentation" href="https://miniSite/Documentation.md">Documentation</a> |
 <a title="co-koa-core on github" href="https://github.com/jaysaurus/co-koa-core">Core</a> |
 <a title="co-koa-cli on github" href="https://github.com/jaysaurus/co-koa-cli">CLI</a>
 </td>
