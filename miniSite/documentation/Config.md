@@ -10,7 +10,7 @@
 </tr>
 </table>
 
-<img style="margin: 0 15%; width: 70%" src="https://raw.githubusercontent.com/jaysaurus/Co.Koa/master/siteStrapCoKoa.png?sanitize=true" />
+<img alt="Co.Koa header" title="Co.Koa" style="margin: 0 15%; width: 70%" src="https://raw.githubusercontent.com/jaysaurus/Co.Koa/master/siteStrapCoKoa.png?sanitize=true" />
 
 * Config
 * [Controller](Controller.md)
@@ -101,7 +101,7 @@ Co.Koa supports handlebars by default, but can be made into a pure API simply by
 
 ### envConfig.js
 
-envConfig exposes the mongoose module to your local instance.  This is largely available for convenience should you have specific access needs related to your mongoose instance.  Most importantly, you may choose your mongoose instance's promise library here:
+envConfig exposes the mongoose module to your local instance.  This is largely available for convenience should you have specific access needs related to your mongoose instance.  Most importantly, you may choose your mongoose instance's promise library here.  By default it is set to `global.Promise`; it is strongly recommended that you use an alternative such as Bluebird instead.
 
 ```javascript
 mongoose.Promise = bluebird;

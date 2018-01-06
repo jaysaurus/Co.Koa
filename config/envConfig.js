@@ -1,10 +1,8 @@
-const bluebird = require('bluebird');
-
 module.exports = (env, envConfig, mongoose) => {
   switch (env) {
     case 'development':
     case 'test':
-      mongoose.Promise = bluebird;
+      mongoose.Promise = global.Promise;
       mongoose.connect(envConfig['mongoDB_URI'], { useMongoClient: true });
       envConfig.mongoose = mongoose;
       return envConfig;

@@ -10,7 +10,7 @@ Documentation |
 </tr>
 </table>
 
-<img style="margin: 0 15%; width: 70%" src="https://raw.githubusercontent.com/jaysaurus/Co.Koa/master/siteStrapCoKoa.png?sanitize=true" />
+<img alt="Co.Koa header" title="Co.Koa" style="margin: 0 15%; width: 70%" src="https://raw.githubusercontent.com/jaysaurus/Co.Koa/master/siteStrapCoKoa.png?sanitize=true" />
 
 * [Config](documentation/Config.md)
 * [Controller](documentation/Controller.md)

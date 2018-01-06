@@ -9,7 +9,7 @@
 </td>
 </tr>
 </table>
-<img style="margin: 0 15%; width: 70%" src="https://raw.githubusercontent.com/jaysaurus/Co.Koa/master/CoKoaFinalImage.png?sanitize=true" />
+<img alt="Co.Koa header" title="Co.Koa MVC" style="margin: 0 15%; width: 70%" src="https://raw.githubusercontent.com/jaysaurus/Co.Koa/master/CoKoaFinalImage.png?sanitize=true" />
 
 **<a href="https://github.com/jaysaurus/co-koa-core" target="_blank">co-koa-core</a> module status**
 

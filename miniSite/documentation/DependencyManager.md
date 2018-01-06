@@ -10,7 +10,7 @@
 </tr>
 </table>
 
-<img style="margin: 0 15%; width: 70%" src="https://raw.githubusercontent.com/jaysaurus/Co.Koa/master/siteStrapCoKoa.png?sanitize=true" />
+<img alt="Co.Koa header" title="Co.Koa" style="margin: 0 15%; width: 70%" src="https://raw.githubusercontent.com/jaysaurus/Co.Koa/master/siteStrapCoKoa.png?sanitize=true" />
 
 * [Config](Config.md)
 * [Controller](Controller.md)
@@ -24,13 +24,13 @@
 
 ## Dependency Manager
 
-The Dependency Manager is kind of a Swiss-Army knife of useful interrelated tools. It is exposed throughout Co.Koa; controllers, services, models and middleware all have access to the Dependency Manager courtesy of the supplied `$` parameter.
+The Dependency Manager is kind of a Swiss-Army knife of useful interrelated tools. It is exposed throughout Co.Koa; [Controllers](Controller.md), [Bootstrap](Config.md), [Middleware](Config.md), [Models](Model.md) (and their) [Validators](Model.md), [Services](Service.md) and middleware all have access to the Dependency Manager courtesy of the supplied `$` parameter.
 
-The Dependency Manager breaks down into 3 use categories:
+The Dependency Manager breaks down into 2 use categories:
 
 #### [DynamicResources](DMDynamicResources.md)
 
-The DependencyManager knows to look for Models and Services within their respective folders.  the example below demonstrates the syntax:
+The DependencyManager knows how to find [Services](Service.md), [Models](Model.md) and [Validators](Model.md) within their respective folders.  the example below demonstrates the syntax:
 
 ```javascript
 const sampleService = $('SampleService'); // load an instance of SampleService in ./api/services/SampleService.js
@@ -78,58 +78,3 @@ returns a stack-tree algorithm that can be used to iterate through object trees.
 </table>
 
 more information on Static Resources can be found [here](DMDynamicResources.md)
-
-#### Properties
-
-The Dependency Manager is also supplied with some handy properties:
-
-<table>
-<tr>
-<td class="tdHilight">
-$.environment
-</td>
-<td>
-The name of the running environment (specified when launching Co.Koa)
-</td>
-</tr>
-<tr>
-<td class="tdHilight">
-$.i18n
-</td>
-<td>
-the default language specified in config.json
-</td>
-</tr>
-<tr>
-<td class="tdHilight">
-$.logger
-</td>
-<td>
-Simply returns the `.log()` and `.error()` methods defined in your `./config/logger.js`
-</td>
-</tr>
-<tr>
-<td class="tdHilight">
-$.messageFolder
-</td>
-<td>
-The absolute location of your i18n folder
-</td>
-</tr>
-<tr>
-<td class="tdHilight">
-$.root
-</td>
-<td>
-The root directory of your project
-</td>
-</tr>
-<tr>
-<td class="tdHilight">
-$.useHBS
-</td>
-<td>
-whether the environment is currently using handlebars templating engine (as specified in your config.json)
-</td>
-</tr>
-</table>
