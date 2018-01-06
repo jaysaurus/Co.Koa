@@ -21,3 +21,6 @@
 * [Model](Model.md)
 * [Service](Service.md)
 * [View](View.md)
+
+## Dependency Manager:
+### Properties

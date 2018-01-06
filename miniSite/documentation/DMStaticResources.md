@@ -22,7 +22,7 @@
 * [Service](Service.md)
 * [View](View.md)
 
-## DependencyManager:
+## Dependency Manager:
 ### Static Resources
 
 <table>
