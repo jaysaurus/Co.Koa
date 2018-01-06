@@ -10,6 +10,8 @@
 </tr>
 </table>
 
+<img style="margin: 0 15%; width: 70%" src="https://raw.githubusercontent.com/jaysaurus/Co.Koa/master/siteStrapCoKoa.png?sanitize=true" />
+
 * [Config](Config.md)
 * Controller
 * [Dependency Manager](DependencyManager.md)
