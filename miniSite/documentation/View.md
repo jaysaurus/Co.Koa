@@ -35,12 +35,14 @@ The principal is simple: store your views in the `views` directory and your `hel
 
 Suppose we have a view called `SampleView.hbs` saved in the  `\api\views` directory.  The view is expecting a single variable called `action` to be passed to it:
 
-```HBS
-...
-<div>
-<p>I'm a view, I was called by the action: {{action}}</p> </body>
-</div>
+{% raw %}
+```HTML
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head></head>
+<body> <p>I'm a view, I was called by the action: {{action}}</p> </body>
+</html>
 ```
+{% endraw %}
 
 If we add the following to a controller, we're good to go!
 
@@ -69,7 +71,8 @@ module.exports = {
 
 now your `.hbs` file can use custom logic!
 
-```HBS
+{% raw %}
+```HTML
 <ul>
   <li>
     {{#if (CK_and (CK_eq parent 'PartialSample')
@@ -81,6 +84,7 @@ now your `.hbs` file can use custom logic!
   </li>
 </ul>
 ```
+{% endraw %}
 
 Note that your helpers are prefixed with `CK_`.  helper methods are prefixed with their filenames (acting like a namespace).
 
@@ -88,7 +92,8 @@ Note that your helpers are prefixed with `CK_`.  helper methods are prefixed wit
 
 Layouts, as their name suggests, are intended to layout pages. They can be useful for maintaining generic client-side JS libraries, styling, etc.  You could have a layout manage the theme of your website with something as elementary as:
 
-```HBS
+{% raw %}
+```HTML
 <head>
   <title>Website Title</title>
   <script ... >
@@ -98,23 +103,27 @@ Layouts, as their name suggests, are intended to layout pages. They can be usefu
 <h3>Website Title</h3>
 {{{content}}}
 ```
+{% endraw %}
 
 ### Partials
 
 Cached partials allow you to modularise your HTML pages, perhaps we have a partial called `partialsSample.hbs` we would like to inject data into.  That might look as below:
 
-```HBS
+{% raw %}
+```HTML
 <ul>
   <li>
     {{> PartialSample parent="SampleView"}}
   </li>
 </ul>
 ```
+{% endraw %}
 
 Our partial might look something like the following:
 
-```HBS
-I am a partial, I have been injected into view {{parent}}
+{% raw %}
+```HTML
+I'm a partial, I have been injected into view {{parent}}
 <p>
   I can also inject partials into myself; I will demonstrate by putting some content in an undordered list below:
 </p>
@@ -125,5 +134,6 @@ I am a partial, I have been injected into view {{parent}}
   </ul>
 </div>
 ```
+{% endraw %}
 
 Note that the above reads the `parent` variable supplied by the view and - in turn - can be passed partials as well (for example: `PartialInnerSample`).
