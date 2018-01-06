@@ -38,6 +38,8 @@ const Sample = $('Sample') // call a Mongoose model instance derived from the Sa
 const SampleValidator = $('SampleValidator') // call a validator library for your mongoose instance from ./api/models/validators/SampleValidator.js
 ```
 
+---
+
 #### [Static Resources](DMStaticResources.md)
 
 prefixing your argument string with ':' tells Co.Koa you are requesting a static resource of some kind.  The following resources are available:
