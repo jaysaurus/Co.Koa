@@ -251,7 +251,7 @@ module.exports = {
 now your .hbs file can use custom logic!
 
 {% raw %}
-```HBS
+```hbs
 <ul>
   <li>
     {{#if (CK_and (CK_eq parent 'PartialSample')
