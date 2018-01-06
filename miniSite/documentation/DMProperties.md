@@ -78,12 +78,4 @@ $.root
 The root directory of your project
 </td>
 </tr>
-<tr>
-<td class="tdHilight">
-$.useHBS
-</td>
-<td>
-whether the environment is currently using handlebars templating engine (as specified in your config.json)
-</td>
-</tr>
 </table>
