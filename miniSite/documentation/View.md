@@ -34,7 +34,7 @@ The principal is simple: store your views in the `views` directory and your `hel
 ### Requesting a View
 
 Suppose we have a view called `SampleView.hbs` saved in the  `\api\views` directory.  The view is expecting a single variable called `action` to be passed to it:
-```hbs
+```HBS
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en"><head></head>
 <body> <p>I'm a view, I was called by the action: {{action}}</p> </body>
@@ -84,7 +84,7 @@ Note that your helpers are prefixed with `CK_`.  helper methods are prefixed wit
 
 Layouts, as their name suggests, are intended to layout pages. They can be useful for maintaining generic client-side JS libraries, styling, etc.  You could have a layout manage the theme of your website with something as elementary as:
 
-```hbs
+```HBS
 <head>
   <title>Website Title</title>
   <script ... >
@@ -98,7 +98,7 @@ Layouts, as their name suggests, are intended to layout pages. They can be usefu
 
 Cached partials allow you to modularise your HTML pages, perhaps we have a partial called `partialsSample.hbs` we would like to inject data into.  That might look as below:
 
-```hbs
+```HBS
 <ul>
   <li>
     {{> PartialSample parent="SampleView"}}
@@ -108,7 +108,7 @@ Cached partials allow you to modularise your HTML pages, perhaps we have a parti
 
 Our partial might loos something like the following:
 
-```hbs
+```HBS
 I'm a partial, I have been injected into view {{parent}}
 <p>
   I can also inject partials into myself; I will demonstrate by putting some content in an undordered list below:
