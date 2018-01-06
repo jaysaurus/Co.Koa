@@ -1,11 +1,33 @@
+<link rel='stylesheet' type='text/css' href='style.css' />
+<table class="headerTable">
+<tr class="headerTR">
+<td class="headerTD">
+<a title="Co.Koa on github" href="https://jaysaurus.github.io/Co.Koa">Home</a> |
+<a title="Documentation" href="https://jaysaurus.github.io/Co.Koa/miniSite/Documentation.html">Documentation</a> |
+<a title="co-koa-core on github" href="https://github.com/jaysaurus/co-koa-core">Core</a> |
+<a title="co-koa-cli on github" href="https://github.com/jaysaurus/co-koa-cli">CLI</a>
+</td>
+</tr>
+</table>
 
+<a title="Co.Koa on github" href="https://jaysaurus.github.io/Co.Koa">Home</a> > <a title="Documentation" href="https://jaysaurus.github.io/Co.Koa/miniSite/Documentation.html">Documentation</a> > [Dependency Manager](DependencyManager.md) > Static Resources
+
+* [Config](Config.md)
+* [Controller](Controller.md)
+* Dependency Manager
+  * [Dynamic Resources](DMDynamicResources.md)
+  * Static Resources
+  * [Properties](DMProperties.md)
+* [Model](Model.md)
+* [Service](Service.md)
+* [View](View.md)
 
 ## DependencyManager:
 ### Static Resources
 
 <table>
 <tr>
-<td>
+<td class="tdHilight">
 $(':async')
 </td>
 <td>
@@ -48,7 +70,7 @@ $.logger.log(count == 2);
 
 <table>
 <tr>
-<td>
+<td class="tdHilight">
 $(':echo')
 </td>
 <td>
@@ -107,7 +129,7 @@ echoEs.log('hello'); // will log '¡hola todo el mundo!'
 
 <table>
 <tr>
-<td>
+<td class="tdHilight">
 $(':enums')
 </td>
 <td>
@@ -161,7 +183,7 @@ The database will store the index number of 'HARDBACK' (1) as type "number"
 
 <table>
 <tr>
-<td>
+<td class="tdHilight">
 ```
 $(':tree')
 ```

@@ -3,7 +3,7 @@
 <tr class="headerTR">
 <td class="headerTD">
 <a title="Co.Koa on github" href="https://jaysaurus.github.io/Co.Koa">Home</a> |
-<a title="Documentation" href="https://jaysaurus.github.io/Co.Koa/miniSite/Documentation.md">Documentation</a> |
+<a title="Documentation" href="https://jaysaurus.github.io/Co.Koa/miniSite/Documentation.html">Documentation</a> |
 <a title="co-koa-core on github" href="https://github.com/jaysaurus/co-koa-core">Core</a> |
 <a title="co-koa-cli on github" href="https://github.com/jaysaurus/co-koa-cli">CLI</a>
 </td>

@@ -6,8 +6,20 @@ header {
   max-width: 95%;
 }
 
+table {
+  border-collapse: collapse;
+}
+
+td {
+  border: 1px solid #254826;
+}
+
 .headerTable {
   text-align: center;
+}
+
+.headerTD {
+  border: 0;
 }
 
 .highlighter-rouge {
@@ -15,4 +27,8 @@ header {
   background-color: #292929;
   padding: 2px 5px;
   font-weight: bold;
+}
+
+.tdHilight {
+  color: #c7ec80;
 }
