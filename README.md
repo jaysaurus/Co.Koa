@@ -218,12 +218,15 @@ module.exports = function BookService ($) {
 ```
 
 rendering .hbs is simple and powerful; suppose we have a view called `SampleView.hbs` saved in the  `\api\views` directory.  The view is expecting a single variable called `action` to be passed to it:
+
+{% raw %}
 ```hbs
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en"><head></head>
 <body> <p>I'm a view, I was called by the action: {{action}}</p> </body>
 </html>
 ```
+{% endraw %}
 
 If we add the following to `BookController`, we're good to go!
 ```javascript
