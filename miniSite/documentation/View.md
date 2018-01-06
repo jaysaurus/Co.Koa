@@ -34,6 +34,7 @@ The principal is simple: store your views in the `views` directory and your `hel
 ### Requesting a View
 
 Suppose we have a view called `SampleView.hbs` saved in the  `\api\views` directory.  The view is expecting a single variable called `action` to be passed to it:
+
 ```HBS
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en"><head></head>
@@ -42,6 +43,7 @@ Suppose we have a view called `SampleView.hbs` saved in the  `\api\views` direct
 ```
 
 If we add the following to a controller, we're good to go!
+
 ```javascript
 'GET /HBSDemo': async (ctx) => {
   await ctx.render('SampleView', { action: '/HBSDemo' });
@@ -51,6 +53,7 @@ If we add the following to a controller, we're good to go!
 ### Helpers
 
 you can add custom helpers with ease! for example, maybe you want to make hbs files handle more complex conditional statements.  No prob, suppose we have a file saved at `\api\views\helpers\CK.js`:
+
 ```javascript
 module.exports = {
   eq: (foo, bar) => foo === bar,
@@ -64,7 +67,7 @@ module.exports = {
 };
 ```
 
-now your .hbs file can use custom logic!
+now your `.hbs` file can use custom logic!
 
 ```HBS
 <ul>
@@ -120,4 +123,5 @@ I'm a partial, I have been injected into view {{parent}}
   </ul>
 </div>
 ```
+
 Note that the above reads the `parent` variable supplied by the view and - in turn - can be passed partials as well (for example: `PartialInnerSample`).
