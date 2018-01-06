@@ -16,8 +16,8 @@
 * [Controller](Controller.md)
 * Dependency Manager
   * [Dynamic Resources](DMDynamicResources.md)
-  * [Static Resources](DMStaticResources.md)
   * [Properties](DMProperties.md)
+  * [Static Resources](DMStaticResources.md)
 * [Model](Model.md)
 * [Service](Service.md)
 * [View](View.md)
