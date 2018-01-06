@@ -247,6 +247,7 @@ module.exports = {
 
 now your .hbs file can use custom logic!
 
+{% raw %}
 ```HBS
 <ul>
   <li>
@@ -259,4 +260,6 @@ now your .hbs file can use custom logic!
   </li>
 </ul>
 ```
+{% endraw %}
+
 Note that your helpers are prefixed with `CK_`.  **Co.Koa** uses `koa-hbs-renderer`.  For more information please navigate to the <a href="https://github.com/ConnorWiseman/koa-hbs-renderer/">koa-hbs-renderer github</a>.  For more information on how to use Handlebars, please visit: http://handlebarsjs.com/
