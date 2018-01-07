@@ -68,7 +68,7 @@ Exposes the [echo-handler](http://npmjs.com/echo-handler) NPM module
 $(':enums')
 </td>
 <td>
-returns <span class=".highlighter-rouge">./api/Enums.js<span class=".highlighter-rouge">
+returns ./api/Enums.js
 </td>
 </tr>
 <tr>
