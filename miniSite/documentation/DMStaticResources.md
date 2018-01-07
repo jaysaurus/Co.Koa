@@ -12,7 +12,9 @@
 
 <a title="Co.Koa on github" href="https://jaysaurus.github.io/Co.Koa">Home</a> > <a title="Documentation" href="https://jaysaurus.github.io/Co.Koa/miniSite/Documentation.html">Documentation</a> > [Dependency Manager](DependencyManager.md) > Static Resources
 
+<a title="Co.Koa on github" href="https://jaysaurus.github.io/Co.Koa">
 <img alt="Co.Koa header" title="Co.Koa" style="margin: 0 15%; width: 70%" src="https://raw.githubusercontent.com/jaysaurus/Co.Koa/master/siteStrapCoKoa.png?sanitize=true" />
+</a>
 
 * [Config](Config.md)
 * [Controller](Controller.md)
@@ -26,6 +28,10 @@
 
 ## Dependency Manager:
 ### Static Resources
+
+---
+
+#### Async
 
 <table>
 <tr>
@@ -69,6 +75,8 @@ $.logger.log(count == 2);
 ```
 
 ---
+
+#### Echo
 
 <table>
 <tr>
@@ -129,6 +137,8 @@ echoEs.log('hello'); // will log '¡hola todo el mundo!'
 
 ---
 
+#### Enums
+
 <table>
 <tr>
 <td class="tdHilight">
@@ -157,7 +167,7 @@ mongoose supports an enum type by default, but stores that enum as a string in t
 module.exports = function Book ($) {
   const _enums = $(':enums');
   return {
-    schema: {    
+    schema: {
       format: {
         type: 'Enum',
         enum: _enums.BookFormats
@@ -182,6 +192,8 @@ await new Book({
 The database will store the index number of 'HARDBACK' (1) as type "number"
 
 ---
+
+#### Tree
 
 <table>
 <tr>

@@ -10,7 +10,13 @@ Documentation |
 </tr>
 </table>
 
+<a title="Co.Koa on github" href="https://jaysaurus.github.io/Co.Koa">
 <img alt="Co.Koa header" title="Co.Koa" style="margin: 0 15%; width: 70%" src="https://raw.githubusercontent.com/jaysaurus/Co.Koa/master/siteStrapCoKoa.png?sanitize=true" />
+</a>
+
+## Documentation
+
+Follow the links below for detailed information about the **Co.Koa** MVC framework.  The Dependency Manager link contains additional links to documents about its [properties](documentation/DMProperties.md), [Dynamic Resources](documentation/DMDynamicResources.md) and [Static Resources](documentation/DMStaticResources.md).
 
 * [Config](documentation/Config.md)
 * [Controller](documentation/Controller.md)
@@ -18,3 +24,9 @@ Documentation |
 * [Model](documentation/Model.md)
 * [Service](documentation/Service.md)
 * [View](documentation/View.md)
+
+#### Miscellaneous
+
+Links below contain other information for your consideration related to this framework.
+
+* [A note on convention](documentation/Conventions.md)

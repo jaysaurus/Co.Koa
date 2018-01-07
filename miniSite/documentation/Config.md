@@ -10,7 +10,9 @@
 </tr>
 </table>
 
+<a title="Co.Koa on github" href="https://jaysaurus.github.io/Co.Koa">
 <img alt="Co.Koa header" title="Co.Koa" style="margin: 0 15%; width: 70%" src="https://raw.githubusercontent.com/jaysaurus/Co.Koa/master/siteStrapCoKoa.png?sanitize=true" />
+</a>
 
 * Config
 * [Controller](Controller.md)

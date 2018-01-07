@@ -10,7 +10,9 @@
 </tr>
 </table>
 
+<a title="Co.Koa on github" href="https://jaysaurus.github.io/Co.Koa">
 <img alt="Co.Koa header" title="Co.Koa" style="margin: 0 15%; width: 70%" src="https://raw.githubusercontent.com/jaysaurus/Co.Koa/master/siteStrapCoKoa.png?sanitize=true" />
+</a>
 
 * [Config](Config.md)
 * [Controller](Controller.md)
@@ -24,7 +26,7 @@
 Services allow us to separate our business concerns from the nuts and bolts of serving data to users/storing data to the database.  Services sit between Models and Controllers as below:
 
 {% raw %}
-```HTML
+```
   model
     ↑
     ↓
@@ -77,3 +79,5 @@ module.exports = function ($) {
   };
 };
 ```
+
+With [co-koa-cli](https://npmjs.com/co-koa-cli) installed, you can install a fresh service template by typing `co-koa-cli --createService <ServiceName>` in your project's root directory. (do not append the name with the word "service!")

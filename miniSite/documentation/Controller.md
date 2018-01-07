@@ -10,7 +10,9 @@
 </tr>
 </table>
 
+<a title="Co.Koa on github" href="https://jaysaurus.github.io/Co.Koa">
 <img alt="Co.Koa header" title="Co.Koa" style="margin: 0 15%; width: 70%" src="https://raw.githubusercontent.com/jaysaurus/Co.Koa/master/siteStrapCoKoa.png?sanitize=true" />
+</a>
 
 * [Config](Config.md)
 * Controller
@@ -30,6 +32,8 @@ coKoa
   .use(coKoa.router.allowedMethods())
   .listen(coKoa.port);
 ```
+
+With [co-koa-cli](https://npmjs.com/co-koa-cli) installed, you can install a fresh controller template by typing `co-koa-cli --createController <ControllerName>` in your project's root directory. (do not append the name with the word "service!")
 
 ### Verbs
 
@@ -66,11 +70,11 @@ module.exports = function ($) {
 }
 ```
 
-In the above instance, if `:id` was before `foo`, your controller would treat "/foo" as an `:id` parameter.
+In the above instance, if `:id` was before `foo`, your controller would treat a "/foo" request as if it was an `:id` parameter.
 
 ### IndexController.js
 
-Each project is supplied with an **"IndexController.js"**.  Routes within this file will point directly to the virtual root of your web application.  For example, in a development instance at `localhost:3000`, `GET /` will route to the address `localhost:3000/`.  It is **strongly** advised that, at most, you supply only the following actions to this controller:
+Each project is supplied with an `"IndexController.js"`.  Routes within this file will point directly to the virtual root of your web application.  For example, in a development instance at `localhost:3000`, `GET /` will route to the address `localhost:3000/`.  It is **strongly** advised that, at most, you supply only the following actions to this controller:
 
 ```javascript
 module.exports = function IndexController ($) {
