@@ -39,7 +39,7 @@ $(':img')
 $(':js')
 </td>
 <td>
-returns an object containing the methods <span class=".highlighter-rouge">.stream(filename)</span> (under the hood this employs <span class=".highlighter-rouge">fs.createReadStream()</span>) and <span class=".highlighter-rouge">.loadURL(fileName)</span>.  You can add more static assets to this list via the [AssetConfig.js](Config.md).
+returns an object containing the methods <span class=".highlighter-rouge">.stream(filename)</span> (under the hood this employs <span class=".highlighter-rouge">fs.createReadStream()</span>) and <span class=".highlighter-rouge">.loadURL(fileName)</span>.  You can add more static assets to this list via the AssetConfig.js.
 </td>
 </tr>
 </table>
@@ -99,12 +99,12 @@ $.logger.log(count == 2);
 $(':echo')
 </td>
 <td>
-Exposes the [echo-handler](http://npmjs.com/echo-handler) NPM module
+Exposes the echo-handler NPM module
 </td>
 </tr>
 </table>
 
-The echo call Will load messages based on the folder location specified in `config/logger.js` (see the [config](Config.md) documentation).
+The echo call Will load messages based on the folder location specified in `config/logger.js` (see the [config](Config.md) documentation).  See also the [echo-handler]((http://npmjs.com/echo-handler) for more information.
 
 **example**
 You have your default language set as 'en' in `./config/config.json` and a json file called `en.test.json` in your `./i18n` folder with the following content:
