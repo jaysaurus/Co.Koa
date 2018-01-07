@@ -21,9 +21,10 @@
 
 ## Services
 
-Services allow us to separate our business concerns from the nuts and bolts of serving data to users and storing data to the database.  Effectively, they sit between Models and Controllers as below:
+Services allow us to separate our business concerns from the nuts and bolts of serving data to users/storing data to the database.  Services sit between Models and Controllers as below:
 
-```
+{% raw %}
+```HTML
   model
     ↑
     ↓
@@ -32,25 +33,30 @@ Services allow us to separate our business concerns from the nuts and bolts of s
     ↓
 Controller
 ```
+{% endraw %}
 
-Choosing when to use services to manage business logic and when to use Model methods is at the client's discretion.  One tactic is to think out loud what the business you are trying to model is doing.
+Choosing when to use services to manage business logic and when to use Model methods is at the client's discretion.  One tactic is to think about what you real life problem you are trying to solve.
 
-For example, consider a book distributor who has set up a `Publisher` model.  Perhaps they have a series of complex logic that can be amalgamated into one call to represent when a Publisher publishes a new book.  Maybe that logic could be expressed by defining a model method like: `Publisher.publish()`.  However, maybe calling `Publisher.publish()` is only one of a number of tasks that need performing when the book distributor calls the request `/Publisher/NewBook`.  Maybe 2 or 3 other complex tasks need writing.  We could store that in a controller action, but in so doing we are adding business logic to the system logic required to request and respond to a user's request.  It would be better to amalgamate these business tasks into `PublisherService.handleNewBookRequest()`:
+For example, consider a book distributor who has set up a `Publisher` model and a `/Publisher/NewBook` controller action intended to alert the system to a publisher publishing a new book.  Perhaps distributer has a series of complex logic they perform in this situation that could be discretely stored in one call.  Then the logic could be expressed by defining a model method like: `Publisher.publish()`.  
+
+However, maybe calling `Publisher.publish()` is only one of a number of tasks that need performing when the book distributor calls the request `/Publisher/NewBook`.  Maybe a bunch of Book Stores need to be informed as well.  It doesn't make sense to record the communications within Publisher.publish(); that's a separate concern! Sure, we could store the additional logic in a controller action, but in so doing we are adding business logic to system-logic.  Remember, the actions within a controller route requests and send responses; it would be better to have a service method call `Publisher.publish()` and the Book Store logic: `PublisherService.handleNewBookRequest()`:
 
 ```javascript
 module.exports = function PublisherService ($) {
+  const Book = $('Book');
   const Publisher = $('Publisher');
 
   return {
     async handleNewBookRequest () {
       try {
-        const published = await Publisher.publish()
+        const published = await Publisher.publish({ bookTitle: 'Co.Koa Rocks!' });
         if (published) {
-          ... // more tasks
+          ... // notify interested bookstores
         }
-        return ...
+        return true;
       } catch (e) {
         ...
+        return false;
       }
     }
   };
