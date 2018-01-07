@@ -20,7 +20,9 @@
 
 It is advised to play by the following rules:
 
-#### The Model folder must only contain models, most other locations are fair game!
+---
+
+### The Model folder must only contain models, most other locations are fair game!
 
 Because of how the [Dependency Manager](DependencyManager.md) works, you will run in to problems if you put Plain Old JavaScript files in there.
 
@@ -28,7 +30,9 @@ The same is not true with [Controllers](Controller.md),  [Services](Service.md),
 
 Keep in mind when adding unconventional JS to your software that **Co.Koa** will not know what to do with it.  At some stage there may be scope for making **Co.Koa** smart to custom dynamic types; but, at present, what you see within this <a title="Documentation" href="https://jaysaurus.github.io/Co.Koa/miniSite/Documentation.html">Documentation</a> is what you get.
 
-#### Co.Koa has rules, but play by them and the rest is really all yours
+---
+
+### Co.Koa has rules, but play by them and the rest is really all yours
 
 NPM modules and your own unconventional code is only ever a `require` call away! if you want to use custom libraries within the different conventional js components of the build, simply require them as usual:
 
@@ -45,7 +49,9 @@ module.exports = function TestController ($) {
 }
 ```
 
-#### Try to keep the nomenclature consistent
+---
+
+### Try to keep the nomenclature consistent
 
 Nomenclature is not enforced with an iron fist, but if we work to the same conventions across builds, our code becomes much easier to share and understand.  Please try to use the conventions below wherever using the [Dependency Manager](DependencyManager.md):
 
@@ -69,7 +75,9 @@ const _enums = $(':enums');
 const _echo =  $(':echo');
 ```
 
-#### Be Wary of Calling the Dependency Manager repeatedly when a variable assignment will do
+---
+
+### Be Wary of Calling the Dependency Manager repeatedly when a variable assignment will do
 
 Much like JQuery, it is a good idea to assign your Dependency Manager calls to variable at the top of your module export rather than having them occur repeatedly.  Calls to the Dependency Manager (particularly calls to models) are computationally expensive.  Be very careful to **avoid** writing code like the below:
 
@@ -93,10 +101,14 @@ await _async.each(
 });
 ```
 
-#### Only put non-sensitive data in the Public folder
+---
+
+### Only put non-sensitive data in the Public folder
 
 If it's in the Public folder it's available to the world at large.  **Co.Koa** uses [koa-static](npmjs.com/koa-static) under the hood, feel free to serve your own custom static assets.
 
-#### If all else fails, defer to app.js
+---
+
+### If all else fails, defer to app.js
 
 `app.js` exposes the [Koa](npmjs.com/koa) modules' `app` object via `coKoa.app`.  If you're struggling to implement [middleware](Config.md) via `./config/middleware.js`, you can inject your middleware within `app.js` itself.  Bear in mind that any middleware implemented in this fashion will be triggered **after** the middleware within `./config/middleware.js`.
