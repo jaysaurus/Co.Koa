@@ -5,7 +5,7 @@
 <a title="Co.Koa on github" href="https://jaysaurus.github.io/Co.Koa">Home</a> |
 Documentation |
 <a title="co-koa-core on github" href="https://github.com/jaysaurus/co-koa-core">Core</a> |
-<a title="co-koa-cli on github" href="https://github.com/jaysaurus/co-koa-cli">CLI</a>
+<a title="co-koa-cli on github" href="https://github.com/jaysaurus/co-koa-cli">CLI</a> | <a href="https://github.com/jaysaurus/Co.Koa/wiki/Installation-&-Execution">Install</a>
 </td>
 </tr>
 </table>

@@ -5,7 +5,8 @@
 <a title="Co.Koa on github" href="https://jaysaurus.github.io/Co.Koa">Home</a> |
 <a title="Documentation" href="https://jaysaurus.github.io/Co.Koa/miniSite/Documentation.html">Documentation</a> |
 <a title="co-koa-core on github" href="https://github.com/jaysaurus/co-koa-core">Core</a> |
-<a title="co-koa-cli on github" href="https://github.com/jaysaurus/co-koa-cli">CLI</a>
+<a title="co-koa-cli on github" href="https://github.com/jaysaurus/co-koa-cli">CLI</a> |
+<a href="https://github.com/jaysaurus/Co.Koa/wiki/Installation-&-Execution">Install</a>
 </td>
 </tr>
 </table>
@@ -16,14 +17,14 @@
 [![Build Status](https://travis-ci.org/jaysaurus/co-koa-core.svg?branch=master)](https://travis-ci.org/jaysaurus/co-koa-core)
 [![Coverage Status](https://coveralls.io/repos/github/jaysaurus/co-koa-core/badge.svg?branch=master)](https://coveralls.io/github/jaysaurus/co-koa-core?branch=master)
 [![Greenkeeper badge](https://badges.greenkeeper.io/jaysaurus/co-koa-core.svg)](https://greenkeeper.io/)
-[![Known Vulnerabilities](https://snyk.io/test/github/jaysaurus/co-koa-core/badge.svg)](https://snyk.io/test/github/jaysaurus/co-koa-core)
+[![Test for Vulnerabilities](https://snyk.io/test/github/jaysaurus/co-koa-core/badge.svg)](https://snyk.io/test/github/jaysaurus/co-koa-core)
 
 **<a href="https://github.com/jaysaurus/co-koa-cli" target="_blank">co-koa-cli</a> module status**
 
 [![Build Status](https://travis-ci.org/jaysaurus/co-koa-cli.svg?branch=master)](https://travis-ci.org/jaysaurus/co-koa-cli)
 [![Coverage Status](https://coveralls.io/repos/github/jaysaurus/co-koa-cli/badge.svg?branch=master)](https://coveralls.io/github/jaysaurus/co-koa-cli?branch=master)
 [![Greenkeeper badge](https://badges.greenkeeper.io/jaysaurus/co-koa-cli.svg)](https://greenkeeper.io/)
-[![Known Vulnerabilities](https://snyk.io/test/github/jaysaurus/co-koa-cli/badge.svg)](https://snyk.io/test/github/jaysaurus/co-koa-cli)
+[![Test for Vulnerabilities](https://snyk.io/test/github/jaysaurus/co-koa-cli/badge.svg)](https://snyk.io/test/github/jaysaurus/co-koa-cli)
 
 ---
 
@@ -39,6 +40,7 @@ An opinionated MVC; inspired by [Grails](https://grails.org/) MVC, written for K
   "koa-locale": true
 }
 ```
+---
 
 ## Structure & Installation
 To install **Co.Koa** please visit: the <a href="https://github.com/jaysaurus/Co.Koa/wiki/Installation-&-Execution">wiki installation page</a>
