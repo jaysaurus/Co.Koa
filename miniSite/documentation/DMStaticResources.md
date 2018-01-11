@@ -39,10 +39,12 @@ $(':img')
 $(':js')
 </td>
 <td>
-returns an object containing the methods <span class=".highlighter-rouge">.stream(filename)</span> (under the hood this employs <span class=".highlighter-rouge">fs.createReadStream()</span>) and <span class=".highlighter-rouge">.loadURL(fileName)</span>.  You can add more static assets to this list via the AssetConfig.js.
+returns an object containing the methods <span class=".highlighter-rouge">.stream(filename)</span> (under the hood this employs <span class=".highlighter-rouge">fs.createReadStream()</span>) and <span class=".highlighter-rouge">.loadURL(fileName, fileExtension)</span>.  The `fileExtension` argument is optional (use it with images).  You can add more static assets to this list via the AssetConfig.js.
 </td>
 </tr>
 </table>
+
+Assets work in conjunction with their respective config.  Please the [config](Config.md) documentation for more information.
 
 ---
 
@@ -59,7 +61,7 @@ Exposes await/async-friendly .each() and .reduce() methods.
 </tr>
 </table>
 
-You will likely be familiar with [`.forEach`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) and [`.reduce`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce) closures.  Unfortunately, using `await/async` in ecma 8+ is merely syntactic sugar disguising an underlying `promise` methodology.  Therefore, if you use JavaScript's traditional `.forEach()` and `.reduce()` methods on asynchronous calls you probably wont get the results you're after.  The async call resolves this issue as illustrated in the contrived example below.
+You will likely be familiar with [`.forEach`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) and [`.reduce`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce) closures.  Unfortunately, using `await/async` in ecma 8+ is merely syntactic sugar for an underlying `promise` structure.  Therefore, if you use JavaScript's traditional `.forEach()` and `.reduce()` methods on asynchronous calls you probably wont get the results you're after.  The async call resolves this issue as illustrated in the contrived example below.
 
 Suppose you want to create a couple of `Sample` objects; assigning each a distinct name:
 
@@ -104,7 +106,7 @@ Exposes the echo-handler NPM module
 </tr>
 </table>
 
-The echo call Will load messages based on the folder location specified in `config/logger.js` (see the [config](Config.md) documentation).  See also the [echo-handler]((http://npmjs.com/echo-handler) for more information.
+The echo call Will load messages based on the folder location specified in `config/logger.js` (see the [config](Config.md) documentation).  See also the [echo-handler](http://npmjs.com/echo-handler) for more information.
 
 **example**
 You have your default language set as 'en' in `./config/config.json` and a json file called `en.test.json` in your `./i18n` folder with the following content:
@@ -118,19 +120,19 @@ You have your default language set as 'en' in `./config/config.json` and a json 
 you can load the file and call this message wherever DependencyManager is exposed as below:
 
 ```javascript
-  const echoEn = $(':echo').load('test'); // load ./i18n/en.test.json
-  echoEn.log('hello'); // log with logger.log()
-  echoEn.error('hello'); // log with logger.error()
-  echoEn.raw('hello'); // return the message as a string
-  echoEn.throw('hello'); // throw an error with the supplied message
+  const _echo = $(':echo').load('test'); // load ./i18n/en.test.json
+  _echo.log('hello'); // log with logger.log()
+  _echo.error('hello'); // log with logger.error()
+  _echo.raw('hello'); // return the message as a string
+  _echo.throw('hello'); // throw an error with the supplied message
 ```
 
 Using the default `./config/logger.js` configuration; running the call in a test environment, you can supply the log/error calls with an observer:
 
 ```javascript
-  const echoEn = $(':echo').load('test'); // load ./i18n/en.test.json
+  const _echo = $(':echo').load('test'); // load ./i18n/en.test.json
   const observer = [];
-  echoEn.log('hello', observer); // push hello message to observer
+  _echo.log('hello', observer); // push hello message to observer
   // using a test framework like jest, the below would pass:
   expect(observer[0]).toBe('hello world!');
 ```
@@ -146,8 +148,8 @@ Most importantly, the chosen language can be decided at runtime! suppose we also
 We can call this as below:
 
 ```javascript
-const echoEs = $(':echo').load('test', 'es');
-echoEs.log('hello'); // will log '¡hola todo el mundo!'
+const _echo = $(':echo').load('test', 'es');
+_echo.log('hello'); // will log '¡hola todo el mundo!'
 ```
 
 ---
@@ -168,7 +170,7 @@ returns `./api/Enums.js`
 Co.Koa extends mongoose's core functionality with a numeric enum type courtesy of the ['mongoose-type-number-enums'](https://www.npmjs.com/package/mongoose-type-number-enums) npm package.
 
 **Example use:**
-Let's suppose you're coding an application for a book shop.  The book shop only sells 3 formats of physical books: paperback, hardback and spiral-bound.  We could, arguably, model this logic with an enum.  JavaScript doesn't natively support the Enum type, but we could simulate something similar by adding such an enum to Co.Koa's `./api/Enums.js` file:
+Let's suppose you're coding an application for a book shop.  The book shop only sells 3 formats of physical book: paperback, hardback and spiral-bound.  We could (arguably) model this logic with an enum.  JavaScript doesn't natively support the Enum type, but we could simulate something similar by adding such an enum to Co.Koa's `./api/Enums.js` file:
 
 ```javascript
 module.exports = {
@@ -176,7 +178,7 @@ module.exports = {
 }
 ```
 
-mongoose supports an enum type by default, but stores that enum as a string in the database.  in so doing, it doesn't really fall in-line with the "C-like" conventions we might expect.  Co.Koa supports mongoose's default enums, but encourages the definition of numeric integers as below:
+mongoose supports an enum type by default, but stores that enum as a string in the database.  However, that doesn't really fall in-line with the "C-like" conventions we might expect.  Co.Koa supports mongoose's default enums, but encourages the definition of numeric integers as below:
 
 ```javascript
 module.exports = function Book ($) {

@@ -29,14 +29,14 @@
 ## Dependency Manager
 ### Dynamic Resources
 
-Dynamic resources are loaded by the conventions stipulated by Co.Koa.  Controllers, Services, Views and Models must all be stored in their respective folders.  Services and Controllers must be suffixed with `Service` and `Controller` respectively.  For example:
+Dynamic resources are loaded according to Co.Koa's conventions.  Controllers, Services, Views and Models must all be stored in their respective folders.  Services and Controllers must be suffixed with `Service` and `Controller` respectively.  For example:
 
 ```
 ./api/controllers/TestController.js
 ./api/services/TestService.js
 ```
 
-while you may place unconventional js files in these locations, `co-koa-core` will neither route nor expose anything it doesn't recognise.  Crucially, models are not suffixed with the word `Model` (since they represent like-for-like the real-world data you want your application to store and consume).  It is important, therefore, that **only** models are placed inside the `./api/models` folder!
+while you may place unconventional js files in conventional locations, `co-koa-core` will neither route nor expose anything it doesn't recognise.  Crucially, models are not suffixed with the word `Model` (since they represent like-for-like the real-world data you want your application to store and consume).  It is important, therefore, that **only** models are placed inside the `./api/models` folder!
 
 Presently, [Services](Service.md), [Models](Model.md) and [Validators](Model.md) can be accessed dynamically via the Dependency Manager wherever it is exposed:
 

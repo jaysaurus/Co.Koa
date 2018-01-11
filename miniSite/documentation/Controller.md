@@ -23,7 +23,7 @@
 
 ## Controllers
 
-Co.Koa's controllers are a facade for the [koa-router](https://www.npmjs.com/package/koa-router) module; it is advised that you read said documentation in conjunction with the below.  Should you wish to perform custom logic against the Koa-router module, you can access it via **Co.Koa's** app.js as `coKoa.router`:
+Co.Koa's controllers are a facade for the [koa-router](https://www.npmjs.com/package/koa-router) module; it is advised that you read said documentation in conjunction with the below.  Should you wish to perform custom logic against the Koa-router module, you can access it via Co.Koa's app.js as `coKoa.router`:
 
 ```javascript
 coKoa
@@ -51,7 +51,7 @@ module.exports = function ($) {
 }
 ```
 
-just as with `koa-router`, **Co.Koa** exposes the `ctx` and `next` arguments.  See `koa-router's` documentation for more details.
+just as with `koa-router`, Co.Koa exposes the `ctx` and `next` arguments.  See `koa-router's` documentation for more details.
 
 ### Routing
 

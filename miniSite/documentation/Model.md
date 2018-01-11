@@ -23,7 +23,7 @@
 
 ## Models
 
-Models are effectively window dressing for mongoose's framework.  Out of the box, Mongoose can get a little confusing; different mechanisms are supplied to it in different places.  **Co.Koa** tries to mitigate some of the complexity by allowing you to declare all the possible objects Mongoose expects in one discrete collection of objects:
+Models are effectively window dressing for mongoose's framework.  Out of the box, Mongoose models and schemas can get a little confusing; different mechanisms are supplied to it in different places.  Co.Koa tries to mitigate some of the complexity by allowing you to declare all the possible objects Mongoose expects in one discrete collection of objects:
 
 ```javascript
 module.exports = function SomeModel ($) {
@@ -39,13 +39,13 @@ module.exports = function SomeModel ($) {
 };
 ```
 
-With [co-koa-cli](https://npmjs.com/co-koa-cli) installed, you can install a fresh model template by typing `co-koa-cli --createModel <ModelName>` in your project's root directory. (do not append the name with the word "service!")
+Using [co-koa-cli](https://npmjs.com/co-koa-cli), you can install a fresh model template by typing `co-koa-cli --createModel <ModelName>` in your project's root directory. (do not append the name with the word "Model"!)
 
 ---
 
 ### Foreign Keys
 
-Mongoose tends toward embedded documents for many situations.  However, there may come times where you wish to associate 2 separate collections.  To do so, you do not have to define the type in your schema as `ObjectId` by loading in a Mongoose reference.  **Co.Koa** will inject the dependency on your behalf.  All you need to do is set your type to one of 3 preferred types: "ForeignKey", "FK" or "ObjectId".  For example:
+Mongoose tends toward embedded documents for many situations.  However, there may be times where you wish to associate 2 separate collections.  To do so, you do not have to define the type in your schema as `ObjectId` by loading in a Mongoose reference.  Co.Koa can inject the dependency on your behalf.  All you need to do is set your type to one of 3 preferred placeholder names: "ForeignKey", "FK" or "ObjectId".  For example:
 
 ```JavaScript
 authors: [{
@@ -54,7 +54,7 @@ authors: [{
 }]
 ```
 
-It's that simple, **Co.Koa** does the rest!
+It's that simple, Co.Koa will wire up the reference when the application is launched!
 
 ---
 
@@ -93,7 +93,7 @@ module.exports = function ($) {
 };
 ```
 
-Your vaildators are exposed dynamically wherever the [Dependency Manager](https://DependencyManager.md) is exposed.  Primarily, they are designed to help decouple your model logic (though they may be used elsewhere as well).  For example, given a "Book" model, perhaps you'd like to have a `BookeValidator.js` validate things like incoming book records' ISBN numbers:
+Your vaildators are exposed dynamically wherever the [Dependency Manager](https://DependencyManager.md) is exposed.  Primarily, they are designed to help decouple your model logic (though they may be used elsewhere as well).  For example, given a "Book" model, perhaps you'd like to have a `BookValidator.js` validate things like incoming book records' ISBN numbers:
 
 ```javascript
 module.exports = function Book ($) {
@@ -116,4 +116,4 @@ Please see [Mongoose's validation documentation](http://mongoosejs.com/docs/vali
 
 ### More Information
 
-Since the overwhelming majority of **Co.Koa's** model implementation is based on Mongoose's default behaviour, please visit its [documentation website](http://mongoosejs.com/docs/guide.html) for more information.
+Since the overwhelming majority of **Co.Koa's** model implementation is based on Mongoose's default behaviour, please visit the [Mongoose documentation website](http://mongoosejs.com/docs/guide.html) for more information.
