@@ -1,24 +1,38 @@
-[Home](https://jaysaurus.github.io/Co.Koa) | Documentation | <a title="co-koa-core on github" href="https://github.com/jaysaurus/co-koa-core">Core</a> | <a title="co-koa-cli on github" href="https://github.com/jaysaurus/co-koa-cli">CLI</a>
+<link rel='stylesheet' type='text/css' href='style.css' />
+<table class="headerTable">
+<tr class="headerTR">
+<td class="headerTD">
+<a title="Co.Koa on github" href="https://jaysaurus.github.io/Co.Koa">Home</a> |
+<a title="Documentation" href="https://jaysaurus.github.io/Co.Koa/miniSite/Documentation.html">Documentation</a> |
+<a title="co-koa-core on github" href="https://github.com/jaysaurus/co-koa-core">Core</a> |
+<a title="co-koa-cli on github" href="https://github.com/jaysaurus/co-koa-cli">CLI</a> | <a href="https://github.com/jaysaurus/Co.Koa/wiki/Installation-&-Execution">Install</a>
+</td>
+</tr>
+</table>
+
+<a title="Co.Koa on github" href="https://jaysaurus.github.io/Co.Koa">
+<img alt="Co.Koa header" title="Co.Koa" style="margin: 0 15%; width: 70%" src="https://raw.githubusercontent.com/jaysaurus/Co.Koa/master/siteStrapCoKoa.png?sanitize=true" />
+</a>
 
 * [Config](Config.md)
 * [Controller](Controller.md)
 * Dependency Manager
   * [Dynamic Resources](DMDynamicResources.md)
-  * [Static Resources](DMStaticResources.md)
   * [Properties](DMProperties.md)
+  * [Static Resources](DMStaticResources.md)
 * [Model](Model.md)
 * [Service](Service.md)
 * [View](View.md)
 
 ## Dependency Manager
 
-The Dependency Manager is kind of a Swiss-Army knife of useful interrelated tools. It is exposed throughout Co.Koa; controllers, services, models and middleware all have access to the Dependency Manager courtesy of the supplied `$` parameter.
+The Dependency Manager is kind of a Swiss-Army knife of useful interrelated tools. It is exposed throughout Co.Koa; [Controllers](Controller.md), [Bootstrap](Config.md), [Middleware](Config.md), [Models](Model.md) (and their) [Validators](Model.md), [Services](Service.md) and middleware all have access to the Dependency Manager courtesy of the supplied `$` parameter.
 
-The Dependency Manager breaks down into 3 use categories:
+The Dependency Manager breaks down into 2 use categories:
 
 #### [DynamicResources](DMDynamicResources.md)
 
-The DependencyManager knows to look for Models and Services within their respective folders.  the example below demonstrates the syntax:
+The DependencyManager knows how to find [Services](Service.md), [Models](Model.md) and [Validators](Model.md) within their respective folders.  the example below demonstrates the syntax:
 
 ```javascript
 const sampleService = $('SampleService'); // load an instance of SampleService in ./api/services/SampleService.js
@@ -26,13 +40,15 @@ const Sample = $('Sample') // call a Mongoose model instance derived from the Sa
 const SampleValidator = $('SampleValidator') // call a validator library for your mongoose instance from ./api/models/validators/SampleValidator.js
 ```
 
+---
+
 #### [Static Resources](DMStaticResources.md)
 
 prefixing your argument string with ':' tells Co.Koa you are requesting a static resource of some kind.  The following resources are available:
 
 <table>
 <tr>
-<td>
+<td class="tdHilight">
 $(':async')
 </td>
 <td>
@@ -40,84 +56,40 @@ Exposes await/async-friendly .each() and .reduce() methods.
 </td>
 </tr>
 <tr>
-<td>
+<td class="tdHilight">
 $(':echo')
 </td>
 <td>
-Exposes the [echo-handler](http://npmjs.com/echo-handler) NPM module
+Exposes the echo-handler NPM module
 </td>
 </tr>
 <tr>
-<td>
+<td class="tdHilight">
 $(':enums')
 </td>
 <td>
-returns `./api/Enums.js`
+returns ./api/Enums.js
 </td>
 </tr>
 <tr>
-<td>
+<td class="tdHilight">
 $(':tree')
 </td>
 <td>
 returns a stack-tree algorithm that can be used to iterate through object trees.
 </td>
 </tr>
+<tr>
+<td class="tdHilight">
+$(':html')
+$(':css')
+$(':img')
+$(':js')
+</td>
+<td>
+returns an object containing the methods <span class=".highlighter-rouge">.stream(filename)</span> (under the hood this employs <span class=".highlighter-rouge">fs.createReadStream()</span>) and <span class=".highlighter-rouge">.loadURL(fileName)</span>.  You can add more static assets to this list via the AssetConfig.js.
+</td>
+</tr>
 </table>
 
 more information on Static Resources can be found [here](DMDynamicResources.md)
-
-#### Properties
-
-The Dependency Manager is also supplied with some handy properties:
-
-<table>
-<tr>
-<td>
-$.environment
-</td>
-<td>
-The name of the running environment (specified when launching Co.Koa)
-</td>
-</tr>
-<tr>
-<td>
-$.i18n
-</td>
-<td>
-the default language specified in config.json
-</td>
-</tr>
-<tr>
-<td>
-$.logger
-</td>
-<td>
-Simply returns the `.log()` and `.error()` methods defined in your `./config/logger.js`
-</td>
-</tr>
-<tr>
-<td>
-$.messageFolder
-</td>
-<td>
-The absolute location of your i18n folder
-</td>
-</tr>
-<tr>
-<td>
-$.root
-</td>
-<td>
-The root directory of your project
-</td>
-</tr>
-<tr>
-<td>
-$.useHBS
-</td>
-<td>
-whether the environment is currently using handlebars templating engine (as specified in your config.json)
-</td>
-</tr>
-</table>

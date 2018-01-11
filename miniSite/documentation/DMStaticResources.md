@@ -1,11 +1,56 @@
+<link rel='stylesheet' type='text/css' href='style.css' />
+<table class="headerTable">
+<tr class="headerTR">
+<td class="headerTD">
+<a title="Co.Koa on github" href="https://jaysaurus.github.io/Co.Koa">Home</a> |
+<a title="Documentation" href="https://jaysaurus.github.io/Co.Koa/miniSite/Documentation.html">Documentation</a> |
+<a title="co-koa-core on github" href="https://github.com/jaysaurus/co-koa-core">Core</a> |
+<a title="co-koa-cli on github" href="https://github.com/jaysaurus/co-koa-cli">CLI</a> | <a href="https://github.com/jaysaurus/Co.Koa/wiki/Installation-&-Execution">Install</a>
+</td>
+</tr>
+</table>
 
+<a title="Co.Koa on github" href="https://jaysaurus.github.io/Co.Koa">Home</a> > <a title="Documentation" href="https://jaysaurus.github.io/Co.Koa/miniSite/Documentation.html">Documentation</a> > [Dependency Manager](DependencyManager.md) > Static Resources
 
-## DependencyManager:
+<a title="Co.Koa on github" href="https://jaysaurus.github.io/Co.Koa">
+<img alt="Co.Koa header" title="Co.Koa" style="margin: 0 15%; width: 70%" src="https://raw.githubusercontent.com/jaysaurus/Co.Koa/master/siteStrapCoKoa.png?sanitize=true" />
+</a>
+
+* [Config](Config.md)
+* [Controller](Controller.md)
+* [Dependency Manager](DependencyManager.md)
+  * [Dynamic Resources](DMDynamicResources.md)
+  * [Properties](DMProperties.md)
+  * Static Resources
+* [Model](Model.md)
+* [Service](Service.md)
+* [View](View.md)
+
+## Dependency Manager:
 ### Static Resources
+---
+#### Assets
+<table>
+<tr>
+<td class="tdHilight">
+$(':html')
+$(':css')
+$(':img')
+$(':js')
+</td>
+<td>
+returns an object containing the methods <span class=".highlighter-rouge">.stream(filename)</span> (under the hood this employs <span class=".highlighter-rouge">fs.createReadStream()</span>) and <span class=".highlighter-rouge">.loadURL(fileName)</span>.  You can add more static assets to this list via the AssetConfig.js.
+</td>
+</tr>
+</table>
+
+---
+
+#### Async
 
 <table>
 <tr>
-<td>
+<td class="tdHilight">
 $(':async')
 </td>
 <td>
@@ -46,18 +91,20 @@ $.logger.log(count == 2);
 
 ---
 
+#### Echo
+
 <table>
 <tr>
-<td>
+<td class="tdHilight">
 $(':echo')
 </td>
 <td>
-Exposes the [echo-handler](http://npmjs.com/echo-handler) NPM module
+Exposes the echo-handler NPM module
 </td>
 </tr>
 </table>
 
-The echo call Will load messages based on the folder location specified in `config/logger.js` (see the [config](Config.md) documentation).
+The echo call Will load messages based on the folder location specified in `config/logger.js` (see the [config](Config.md) documentation).  See also the [echo-handler]((http://npmjs.com/echo-handler) for more information.
 
 **example**
 You have your default language set as 'en' in `./config/config.json` and a json file called `en.test.json` in your `./i18n` folder with the following content:
@@ -105,9 +152,11 @@ echoEs.log('hello'); // will log '¡hola todo el mundo!'
 
 ---
 
+#### Enums
+
 <table>
 <tr>
-<td>
+<td class="tdHilight">
 $(':enums')
 </td>
 <td>
@@ -133,7 +182,7 @@ mongoose supports an enum type by default, but stores that enum as a string in t
 module.exports = function Book ($) {
   const _enums = $(':enums');
   return {
-    schema: {    
+    schema: {
       format: {
         type: 'Enum',
         enum: _enums.BookFormats
@@ -159,9 +208,11 @@ The database will store the index number of 'HARDBACK' (1) as type "number"
 
 ---
 
+#### Tree
+
 <table>
 <tr>
-<td>
+<td class="tdHilight">
 ```
 $(':tree')
 ```

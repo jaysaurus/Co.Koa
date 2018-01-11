@@ -1,28 +1,38 @@
-[Home](https://jaysaurus.github.io/Co.Koa) | [Documentation](miniSite/Documentation.md) | <a title="co-koa-core on github" href="https://github.com/jaysaurus/co-koa-core">Core</a> | <a title="co-koa-cli on github" href="https://github.com/jaysaurus/co-koa-cli">CLI</a>
-
-<img src="https://raw.githubusercontent.com/jaysaurus/Co.Koa/master/co.koa.banner.svg?sanitize=true" />
+<link rel='stylesheet' type='text/css' href='style.css' />
+<table class="headerTable">
+<tr class="headerTR">
+<td class="headerTD">
+<a title="Co.Koa on github" href="https://jaysaurus.github.io/Co.Koa">Home</a> |
+<a title="Documentation" href="https://jaysaurus.github.io/Co.Koa/miniSite/Documentation.html">Documentation</a> |
+<a title="co-koa-core on github" href="https://github.com/jaysaurus/co-koa-core">Core</a> |
+<a title="co-koa-cli on github" href="https://github.com/jaysaurus/co-koa-cli">CLI</a> |
+<a href="https://github.com/jaysaurus/Co.Koa/wiki/Installation-&-Execution">Install</a>
+</td>
+</tr>
+</table>
+<img alt="Co.Koa header" title="Co.Koa MVC" style="margin: 0 15%; width: 70%" src="https://raw.githubusercontent.com/jaysaurus/Co.Koa/master/CoKoaFinalImage.png?sanitize=true" />
 
 **<a href="https://github.com/jaysaurus/co-koa-core" target="_blank">co-koa-core</a> module status**
 
 [![Build Status](https://travis-ci.org/jaysaurus/co-koa-core.svg?branch=master)](https://travis-ci.org/jaysaurus/co-koa-core)
 [![Coverage Status](https://coveralls.io/repos/github/jaysaurus/co-koa-core/badge.svg?branch=master)](https://coveralls.io/github/jaysaurus/co-koa-core?branch=master)
 [![Greenkeeper badge](https://badges.greenkeeper.io/jaysaurus/co-koa-core.svg)](https://greenkeeper.io/)
-[![Known Vulnerabilities](https://snyk.io/test/github/jaysaurus/co-koa-core/badge.svg)](https://snyk.io/test/github/jaysaurus/co-koa-core)
+[![Test for Vulnerabilities](https://snyk.io/test/github/jaysaurus/co-koa-core/badge.svg)](https://snyk.io/test/github/jaysaurus/co-koa-core)
 
 **<a href="https://github.com/jaysaurus/co-koa-cli" target="_blank">co-koa-cli</a> module status**
 
 [![Build Status](https://travis-ci.org/jaysaurus/co-koa-cli.svg?branch=master)](https://travis-ci.org/jaysaurus/co-koa-cli)
 [![Coverage Status](https://coveralls.io/repos/github/jaysaurus/co-koa-cli/badge.svg?branch=master)](https://coveralls.io/github/jaysaurus/co-koa-cli?branch=master)
 [![Greenkeeper badge](https://badges.greenkeeper.io/jaysaurus/co-koa-cli.svg)](https://greenkeeper.io/)
-[![Known Vulnerabilities](https://snyk.io/test/github/jaysaurus/co-koa-cli/badge.svg)](https://snyk.io/test/github/jaysaurus/co-koa-cli)
+[![Test for Vulnerabilities](https://snyk.io/test/github/jaysaurus/co-koa-cli/badge.svg)](https://snyk.io/test/github/jaysaurus/co-koa-cli)
 
 ---
 
-An opinionated MVC; inspired by Grails MVC, written for Koa with support for MongoDB (via [mongoose](http://mongoosejs.com/)) and [Handlebars](http://handlebarsjs.com/) (HBS).
+An opinionated MVC; inspired by [Grails](https://grails.org/) MVC, written for Koa with support for MongoDB (via [mongoose](http://mongoosejs.com/)) and [Handlebars](http://handlebarsjs.com/) (HBS).
 
-**Co.Koa** obeys convention over configuration. It is the fruit of a number of years of study and industry work with MVC products. **Co.Koa's** greatest strength comes in its implementation of Dependency Management.  Controllers, Models and Services are each supplied with a powerful callback that reads and feels like a JQuery call.  No need to worry about requiring reams of files from across your project.  
+**Co.Koa** obeys convention over configuration. It is the fruit of a number of years of study and industry work with MVC products. **Co.Koa's** greatest strength comes in its implementation of Dependency Management.  Controllers, Models and Services are each supplied with a powerful callback that reads and feels like a JQuery call.  No need to worry about requiring reams of files from across your project.
 
-**Note on latest release** if you installed Co.Koa with a version of co-koa-cli prior to 0.12.0 and wish to use co-koa-core@0.14.0 or higher, simply remove the `new` keyword from your app.js and amend your config.json by replacing the `useHBS` parameter with:
+**Note on latest release** if you installed Co.Koa with a version of co-koa-cli prior to 0.12.0 and wish to use co-koa-core@0.14.0 or higher, simply remove the `new` keyword from your `app.js` file and amend your `config.json` by replacing the `useHBS` parameter with:
 
 ```json
 "optionalModules": {
@@ -30,6 +40,7 @@ An opinionated MVC; inspired by Grails MVC, written for Koa with support for Mon
   "koa-locale": true
 }
 ```
+---
 
 ## Structure & Installation
 To install Co.Koa please visit: the <a href="https://github.com/jaysaurus/Co.Koa/wiki/Installation-&-Execution">wiki installation page</a>
@@ -210,12 +221,15 @@ module.exports = function BookService ($) {
 ```
 
 rendering .hbs is simple and powerful; suppose we have a view called `SampleView.hbs` saved in the  `\api\views` directory.  The view is expecting a single variable called `action` to be passed to it:
+
+{% raw %}
 ```hbs
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en"><head></head>
 <body> <p>I'm a view, I was called by the action: {{action}}</p> </body>
 </html>
 ```
+{% endraw %}
 
 If we add the following to `BookController`, we're good to go!
 ```javascript
@@ -239,7 +253,8 @@ module.exports = {
 
 now your .hbs file can use custom logic!
 
-```HBS
+{% raw %}
+```hbs
 <ul>
   <li>
     {{#if (CK_and (CK_eq parent 'PartialSample')
@@ -251,4 +266,6 @@ now your .hbs file can use custom logic!
   </li>
 </ul>
 ```
+{% endraw %}
+
 Note that your helpers are prefixed with `CK_`. Co.Koa uses `koa-hbs-renderer`.  For more information please navigate to the <a href="https://github.com/ConnorWiseman/koa-hbs-renderer/">koa-hbs-renderer github</a>.  For more information on how to use Handlebars, please visit: http://handlebarsjs.com/

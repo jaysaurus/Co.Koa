@@ -1,4 +1,18 @@
-[Home](https://jaysaurus.github.io/Co.Koa) | Documentation | <a title="co-koa-core on github" href="https://github.com/jaysaurus/co-koa-core">Core</a> | <a title="co-koa-cli on github" href="https://github.com/jaysaurus/co-koa-cli">CLI</a>
+<link rel='stylesheet' type='text/css' href='style.css' />
+<table class="headerTable">
+<tr class="headerTR">
+<td class="headerTD">
+<a title="Co.Koa on github" href="https://jaysaurus.github.io/Co.Koa">Home</a> |
+<a title="Documentation" href="https://jaysaurus.github.io/Co.Koa/miniSite/Documentation.html">Documentation</a> |
+<a title="co-koa-core on github" href="https://github.com/jaysaurus/co-koa-core">Core</a> |
+<a title="co-koa-cli on github" href="https://github.com/jaysaurus/co-koa-cli">CLI</a> | <a href="https://github.com/jaysaurus/Co.Koa/wiki/Installation-&-Execution">Install</a>
+</td>
+</tr>
+</table>
+
+<a title="Co.Koa on github" href="https://jaysaurus.github.io/Co.Koa">
+<img alt="Co.Koa header" title="Co.Koa" style="margin: 0 15%; width: 70%" src="https://raw.githubusercontent.com/jaysaurus/Co.Koa/master/siteStrapCoKoa.png?sanitize=true" />
+</a>
 
 * Config
 * [Controller](Controller.md)
@@ -15,7 +29,7 @@ The Config folder is perhaps the most intimidating component of Co.Koa. Don't wo
 
 ### AssetConfig.js
 
-The AssetConfig file tells Co.Koa's [Dependency Manager](DependencyManager.md) where to look for CSS, HTML, IMG & JS files within the public folder.
+The AssetConfig file tells Co.Koa's [Dependency Manager](DependencyManager.md) where to look for CSS, HTML, IMG & JS files within the public folder.  You can also supply other assets within your public folder from this location (txt, pdf, etc.)
 
 **For Example**
 
@@ -43,7 +57,7 @@ The config.json file houses a number of core configurations for your project:
 "defaultLanguage":"en",
 ```
 
-Default language specifies the language you want Co.Koa to use both within its core files and by default for your local i18n folder.  It adheres to the 2 letter language codes acknowledged by the W3C.  Currently, co-koa-core will default to English (contributions welcome!) But don't let that stop you from using other languages within your i18n folder.  For more information on i18n and Co.Koa, visit the [Dependency Manager](DependencyManager.md) page.
+Default language specifies the language you want Co.Koa to use both within its core files and by default for your local i18n folder.  This should adhere to the 2 letter language codes acknowledged by the W3C.  Currently, co-koa-core will default to English (contributions welcome!) But don't let that stop you from using other languages within your i18n folder.  For more information on i18n and Co.Koa, visit the [Dependency Manager](DependencyManager.md) page.
 
 ---
 
@@ -80,22 +94,19 @@ for more information on `$(':echo')`, please see the [Dependency Manager](Depend
 ---
 
 ```javascript
-"useHBS": true
+"optionalModules": {
+  "koa-hbs-renderer": true,
+  "koa-locale": true
+}
 ```
 
-Co.Koa supports handlebars by default, but can be made into a pure API simply by setting the `useHBS` flag to `false`.  Co.Koa will not load any HBS components on launch if the flag is set to `false` (this has no effect on accessing static resources within the `/public` folder).
+Optional modules are added to Co.Koa via the "optionalModules" object.  Most notably, Co.Koa supports handlebars by default, but can be made into a pure API simply by setting the (`koa-hbs-renderer`)[https://npmjs.com/koa-hbs-renderer] flag to `false`.  Co.Koa will not load any HBS components on launch if the flag is set to `false` (this has no effect on accessing static resources within the `/public` folder).
 
 ---
 
 ### envConfig.js
 
-envConfig exposes the mongoose module to your local instance.  This is largely available for convenience should you have specific access needs related to your mongoose instance.  Most importantly, you may choose your mongoose instance's promise library here:
-
-```javascript
-mongoose.Promise = bluebird;
-```
-
-By default, mongoose uses [bluebird](https://www.npmjs.com/package/bluebird).  Should you wish or need to change this, you may do so here by installing a suitable alternative.
+envConfig exposes the mongoose module to your local instance.  This is largely available for convenience should you have specific access needs related to your mongoose instance.  Most importantly, you may choose your mongoose instance's promise library here.  By default it is set to `global.Promise`; it is strongly recommended that you use an alternative such as Bluebird instead.
 
 ---
 
