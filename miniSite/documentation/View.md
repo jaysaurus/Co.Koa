@@ -35,7 +35,7 @@ The principal is simple: store your views in the `views` directory and your `hel
 
 ### Requesting a View
 
-Suppose we have a view called `SampleView.hbs` saved in the  `\api\views` directory.  The view is expecting a single variable called `action` to be passed to it:
+Suppose we have a view called `SampleView.hbs` saved in the  `\api\views` directory.  The view expects a single variable called `action` to be passed to it:
 
 {% raw %}
 ```hbs
@@ -95,7 +95,7 @@ Note that your helpers are prefixed with `CK_`.  helper methods are prefixed wit
 Layouts, as their name suggests, are intended to layout pages. They can be useful for maintaining generic client-side JS libraries, styling, etc.  You could have a layout manage the theme of your website with something as elementary as:
 
 {% raw %}
-```hbs
+```html
 <head>
   <title>Website Title</title>
   <script ... >

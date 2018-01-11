@@ -37,11 +37,11 @@ Controller
 ```
 {% endraw %}
 
-Choosing when to use services to manage business logic and when to use Model methods is at the client's discretion.  One tactic is to think about what you real life problem you are trying to solve.
+Choosing when to use services to manage business logic and when to use Model methods is at the client's discretion.  One tactic is to think about what real life problem you are trying to solve.
 
-For example, consider a book distributor who has set up a `Publisher` model and a `/Publisher/NewBook` controller action intended to alert the system to a publisher publishing a new book.  Perhaps distributer has a series of complex logic they perform in this situation that could be discretely stored in one call.  Then the logic could be expressed by defining a model method like: `Publisher.publish()`.  
+For example, consider a book distributor who has set up a `Publisher` model and a `/Publisher/NewBook` controller action.  The action is used by publishers to alert the system to that they have published a new book.  Perhaps the distributer has a series of complex logic it performs in this situation; and maybe that could be stored in one call.  In this instance, the logic could be expressed by defining the model method: `Publisher.publish()`.  
 
-However, maybe calling `Publisher.publish()` is only one of a number of tasks that need performing when the book distributor calls the request `/Publisher/NewBook`.  Maybe a bunch of Book Stores need to be informed as well.  It doesn't make sense to record the communications within Publisher.publish(); that's a separate concern! Sure, we could store the additional logic in a controller action, but in so doing we are adding business logic to system-logic.  Remember, the actions within a controller route requests and send responses; it would be better to have a service method call `Publisher.publish()` and the Book Store logic: `PublisherService.handleNewBookRequest()`:
+That said, what if calling `Publisher.publish()` is only one of a number of tasks that need performing when `/Publisher/NewBook` is requested?  Maybe a bunch of stakeholders need to be informed as well.  It doesn't read well recording this behaviour in Publisher.publish(); it's a separate concern! Likewise, we don't want to store the extra logic in a controller action; in so doing we would be adding business logic to our system's logic.  The actions within a controller should route requests and send responses.  It would be better therefore to have a service method call `Publisher.publish()` and the Book Store logic: `PublisherService.handleNewBookRequest()`:
 
 ```javascript
 module.exports = function PublisherService ($) {
@@ -80,4 +80,4 @@ module.exports = function ($) {
 };
 ```
 
-With [co-koa-cli](https://npmjs.com/co-koa-cli) installed, you can install a fresh service template by typing `co-koa-cli --createService <ServiceName>` in your project's root directory. (do not append the name with the word "service!")
+With [co-koa-cli](https://npmjs.com/co-koa-cli) installed, you can create a fresh service template by typing `co-koa-cli --createService <ServiceName>` in your project's root directory. (do not append the name with the word "service!")
