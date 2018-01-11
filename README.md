@@ -18,7 +18,7 @@
 
 ---
 
-An opinionated MVC; inspired by Grails MVC, written for Koa with support for MongoDB and Handlebars (HBS).
+An opinionated MVC; inspired by Grails MVC, written for Koa with support for MongoDB (via [mongoose](http://mongoosejs.com/)) and [Handlebars](http://handlebarsjs.com/) (HBS).
 
 **Co.Koa** obeys convention over configuration. It is the fruit of a number of years of study and industry work with MVC products. **Co.Koa's** greatest strength comes in its implementation of Dependency Management.  Controllers, Models and Services are each supplied with a powerful callback that reads and feels like a JQuery call.  No need to worry about requiring reams of files from across your project.  
 
@@ -32,7 +32,7 @@ An opinionated MVC; inspired by Grails MVC, written for Koa with support for Mon
 ```
 
 ## Structure & Installation
-To install **Co.Koa** please visit: the <a href="https://github.com/jaysaurus/Co.Koa/wiki/Installation-&-Execution">wiki installation page</a>
+To install Co.Koa please visit: the <a href="https://github.com/jaysaurus/Co.Koa/wiki/Installation-&-Execution">wiki installation page</a>
 
 Co.Koa's directory structure is as below
 ```
@@ -48,10 +48,10 @@ Co.Koa's directory structure is as below
 ```
 at the root of the project is an `app.js` file that loads in the `co-koa-core` module and configures it accordingly.
 
-## Dependency Injection
-Nearly every component in the Co.Koa toolchain has access to a Dependency Management tool (signified by the `$` symbol supplied to each Controller, Model and Service function) via Dependency Injection.  The Dependency Management tool allows you to - among other things - easily load in Models, Services and Controllers.
+## Dependency Management
+Nearly every component in the Co.Koa toolchain is supplied a Dependency Management tool (signified by a `$`).  The Dependency Management tool allows you to - among other things - easily load in Models, Services and Controllers.
 
-Controllers, Models and their associated Services are all designed around the following basic boilerplate:
+Controllers, Models and their associated Services are all designed around the following boilerplate:
 ```javascript
 module.exports = function ($) {
   return {};
@@ -64,6 +64,7 @@ Suppose we have a `Book` document (table) in our Mongo database that we have mod
 module.exports = function BookService ($) {
   const Book = $('Book');
   return {
+    const book = new Book({ ... }).save();
     ...
   };
 };
@@ -201,7 +202,7 @@ module.exports = function BookService ($) {
 **Co.Koa** will sort out the requirements for you! The service is exposed via the `$` DependencyManager in your controllers, models and other services as `$('BookService')`.
 
 ## Views
-**Co.Koa** Supports handlebars' .hbs extension using "koa-hbs-renderer" (https://www.npmjs.com/package/koa-hbs-renderer). supply your views, helpers, layouts and partials within the directories indicated below:
+**Co.Koa** Supports the handlebars .hbs extension using "koa-hbs-renderer" (https://www.npmjs.com/package/koa-hbs-renderer). supply your views, helpers, layouts and partials within the directories indicated below:
 ```
 \api\views\helpers
           \layouts
@@ -250,4 +251,4 @@ now your .hbs file can use custom logic!
   </li>
 </ul>
 ```
-Note that your helpers are prefixed with `CK_`.  **Co.Koa** uses `koa-hbs-renderer`.  For more information please navigate to the <a href="https://github.com/ConnorWiseman/koa-hbs-renderer/">koa-hbs-renderer github</a>.  For more information on how to use Handlebars, please visit: http://handlebarsjs.com/
+Note that your helpers are prefixed with `CK_`. Co.Koa uses `koa-hbs-renderer`.  For more information please navigate to the <a href="https://github.com/ConnorWiseman/koa-hbs-renderer/">koa-hbs-renderer github</a>.  For more information on how to use Handlebars, please visit: http://handlebarsjs.com/
