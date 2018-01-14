@@ -30,3 +30,5 @@ Follow the links below for detailed information about the **Co.Koa** MVC framewo
 Links below contain other information for your consideration related to this framework.
 
 * [A note on convention](documentation/Conventions.md)
+* [Core Execution Order](documentation/Core.md)
+* [Plugins](documentation/Plugins.md)
