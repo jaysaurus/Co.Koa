@@ -92,4 +92,4 @@ returns an object containing the methods <span class=".highlighter-rouge">.strea
 </tr>
 </table>
 
-more information on Static Resources can be found [here](DMDynamicResources.md)
+more information on Static Resources can be found [here](DMStaticResources.md)

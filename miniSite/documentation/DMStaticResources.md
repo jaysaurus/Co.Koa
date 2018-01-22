@@ -215,9 +215,7 @@ The database will store the index number of 'HARDBACK' (1) as type "number"
 <table>
 <tr>
 <td class="tdHilight">
-```
 $(':tree')
-```
 </td>
 <td>
 returns a stack-tree algorithm that can be used to iterate through object trees.
