@@ -54,6 +54,15 @@ As the name would suggest, bootstrap is the place to inject code you would like 
 The config.json file houses a number of core configurations for your project:
 
 ```javascript
+"appKeys": [],
+```
+
+supply a default list of keys for koa's implementation of [key grip](https://github.com/crypto-utils/keygrip).
+**Note** If you set app.keys in a Co.Koa [plugin](Plugins.md), this config property will be ignored.
+
+---
+
+```javascript
 "defaultLanguage":"en",
 ```
 

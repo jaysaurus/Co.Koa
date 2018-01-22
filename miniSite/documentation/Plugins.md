@@ -26,7 +26,7 @@ Really, though, this conundrum betrayed something the build would probably alway
 
 ### Plugin Specification
 
-the boilerplate for a plugin is as below:
+Plugins are triggered **directly before** Co.Koa's built-in middleware.  The boilerplate for a plugin is as below:
 
 ```javascript
 module.exports = {
