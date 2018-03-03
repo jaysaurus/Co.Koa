@@ -10,7 +10,7 @@
 </td>
 </tr>
 </table>
-<img alt="Co.Koa header" title="Co.Koa MVC" style="margin: 0 15%; width: 68%" src="https://raw.githubusercontent.com/jaysaurus/Co.Koa/master/CoKoaFinalImage.png?sanitize=true" />
+<img alt="Co.Koa header" title="Co.Koa MVC" style="margin: 0 15%; width: 70%" src="https://raw.githubusercontent.com/jaysaurus/Co.Koa/master/CoKoaFinalImage.png?sanitize=true" />
 
 **<a href="https://github.com/jaysaurus/co-koa-core" target="_blank">co-koa-core</a> module status**
 
@@ -271,4 +271,4 @@ now your .hbs file can use custom logic!
 Note that your helpers are prefixed with `CK_`. Co.Koa uses `koa-hbs-renderer`.  For more information please navigate to the <a href="https://github.com/ConnorWiseman/koa-hbs-renderer/">koa-hbs-renderer github</a>.  For more information on how to use Handlebars, please visit: http://handlebarsjs.com/
 
 ## Vue Integration
-Co.koa now ships with `@koa/cors` and will very happily interface with a vue instance in tow.  With the release of [co-koa-cli](https://npmjs.com/co-koa-cli)@1.0.0 [VueJS](https://vuejs.org/) is easy to ship as your development front end!  For more information please visit the (CoKoa Documentation)[http://cokoajs.com/miniSite/documentation/VueIntegration.html]
+Co.koa now ships with `@koa/cors` and will very happily interface with a vue instance in tow.  With the release of [co-koa-cli](https://npmjs.com/co-koa-cli)@1.0.0 [VueJS](https://vuejs.org/) is easy to ship as your development front end!  For more information please visit the [CoKoa Documentation](http://cokoajs.com/miniSite/documentation/VueIntegration.html)
