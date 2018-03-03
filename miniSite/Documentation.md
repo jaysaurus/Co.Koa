@@ -32,3 +32,4 @@ Links below contain other information for your consideration related to this fra
 * [A note on convention](documentation/Conventions.md)
 * [Core Execution Order](documentation/Core.md)
 * [Plugins](documentation/Plugins.md)
+* [Vue Integration](documentation/VueIntegration.md)

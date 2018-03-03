@@ -36,10 +36,10 @@ The AssetConfig file tells Co.Koa's [Dependency Manager](DependencyManager.md) w
 when you call `$(':css').loadURL('foo')`, the [Dependency Manager](DependencyManager.md) will cross reference the folder based on the running environment.  For example, by default we can see that the `development` css uri points to:
 
 ```javascript
-'css': '/css',
+'css': '/src/assets/css',
 ```
 
-if we call `$(':css').loadURL('foo')` in any function that exposes the [Dependency Manager](DependencyManager.md), a string will be returned as follows: '/html/foo.css' that points to the physical directory './public/html/foo.css'.
+if we call `$(':css').loadURL('foo')` in any function that exposes the [Dependency Manager](DependencyManager.md), a string will be returned as follows: '/src/assets/css/foo.css' that points to the physical directory './public/src/assets/css/foo.css'.
 
 ---
 
@@ -105,11 +105,14 @@ for more information on `$(':echo')`, please see the [Dependency Manager](Depend
 ```javascript
 "optionalModules": {
   "koa-hbs-renderer": true,
-  "koa-locale": true
+  "koa-locale": true,
+  "@koa/cors": true
 }
 ```
 
 Optional modules are added to Co.Koa via the "optionalModules" object.  Most notably, Co.Koa supports handlebars by default, but can be made into a pure API simply by setting the (`koa-hbs-renderer`)[https://npmjs.com/koa-hbs-renderer] flag to `false`.  Co.Koa will not load any HBS components on launch if the flag is set to `false` (this has no effect on accessing static resources within the `/public` folder).
+
+If you wish to use [Vue](VueIntegration.md) with your instance, you will need to use `@koa/cors` to communicate between the Vue development instance server and Co.Koa 
 
 ---
 

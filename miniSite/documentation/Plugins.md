@@ -16,7 +16,7 @@
 
 ## Plugins
 
-As of [co-koa-core](https://npmjs.com/package/co-koa-core) release @0.17.0, Co.Koa will support plugin integration.  This is a more versatile way of implementing middleware in a discrete fashion.  The first official Co.Koa MVC plugin is [co-koa-session-plugin](https://www.npmjs.com/package/co-koa-session-plugin) which is designed to integrate [koa-session](https://www.npmjs.com/package/koa-session) with your mongoDB instance.  But feel free to write your own!
+As of [co-koa-core](https://npmjs.com/package/co-koa-core)@0.17.0 (and higher) Co.Koa will support plugin integration.  This is a more versatile way of implementing middleware in a discrete fashion.  The first official Co.Koa MVC plugin is [co-koa-session-plugin](https://www.npmjs.com/package/co-koa-session-plugin) which is designed to integrate [koa-session](https://www.npmjs.com/package/koa-session) with your mongoDB instance.  But feel free to write your own!
 
 ### Why plugins?
 
