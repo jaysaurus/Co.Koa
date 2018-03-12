@@ -10,7 +10,9 @@
 </td>
 </tr>
 </table>
-<img alt="Co.Koa header" title="Co.Koa MVC" style="margin: 0 15%; width: 70%" src="https://raw.githubusercontent.com/jaysaurus/Co.Koa/master/CoKoaFinalImage.png?sanitize=true" />
+<a title="Co.Koa on github" href="https://jaysaurus.github.io/Co.Koa">
+<img alt="Co.Koa header" title="Co.Koa" style="margin: 0 15%; width: 70%" src="https://raw.githubusercontent.com/jaysaurus/Co.Koa/master/siteStrapCoKoa.png?sanitize=true" />
+</a>
 
 **<a href="https://github.com/jaysaurus/co-koa-core" target="_blank">co-koa-core</a> module status**
 
@@ -32,14 +34,7 @@ An opinionated MVC; inspired by [Grails](https://grails.org/) MVC, written for K
 
 **Co.Koa** obeys convention over configuration. It is the fruit of a number of years of study and industry work with MVC products. **Co.Koa's** greatest strength comes in its implementation of Dependency Management.  Controllers, Models and Services are each supplied with a powerful callback that reads and feels like a JQuery call.  No need to worry about requiring reams of files from across your project.
 
-**Note on latest release** if you installed Co.Koa with a version of co-koa-cli prior to 0.12.0 and wish to use co-koa-core@0.14.0 or higher, simply remove the `new` keyword from your `app.js` file and amend your `config.json` by replacing the `useHBS` parameter with:
-
-```json
-"optionalModules": {
-  "koa-hbs-renderer": true,
-  "koa-locale": true
-}
-```
+**Note on release ^1.2.0** if you installed Co.Koa with a version of co-koa-cli prior to 1.2.0 and wish to use co-koa-core@1.2.0 or higher, simply add `"useMongoose":true` to your `config.json`.
 ---
 
 ## Structure & Installation

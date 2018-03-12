@@ -110,9 +110,17 @@ for more information on `$(':echo')`, please see the [Dependency Manager](Depend
 }
 ```
 
-Optional modules are added to Co.Koa via the "optionalModules" object.  Most notably, Co.Koa supports handlebars by default, but can be made into a pure API simply by setting the (`koa-hbs-renderer`)[https://npmjs.com/koa-hbs-renderer] flag to `false`.  Co.Koa will not load any HBS components on launch if the flag is set to `false` (this has no effect on accessing static resources within the `/public` folder).
+Optional modules are added to Co.Koa via the "optionalModules" object.  Most notably, Co.Koa supports handlebars by default, but can be made into a pure API simply by setting the [`koa-hbs-renderer`](https://npmjs.com/koa-hbs-renderer) flag to `false`.  Co.Koa will not load any HBS components on launch if the flag is set to `false` (this has no effect on accessing static resources within the `/public` folder).
 
-If you wish to use [Vue](VueIntegration.md) with your instance, you will need to use `@koa/cors` to communicate between the Vue development instance server and Co.Koa 
+If you wish to use [Vue](VueIntegration.md) with your instance, you will need to use `@koa/cors` to communicate between the Vue development instance server and Co.Koa
+
+---
+
+```javascript
+"useMongoose": true
+```
+
+set this value to `false` and mongoose will not be used anywhere within the system.  Calling a model with the [Dependency Manager](DependencyManager.md) will simply return the JS object within the Model location (rather than a mongoose model).  Combine this change with a custom [Plugin](Plugins.md) to maintain a centralised persistence mechanism; alternatively, defer to REST services within your models and Co.Koa can behave like a bus or an organised set of micro services; it's up to you!
 
 ---
 
