@@ -120,7 +120,7 @@ If you wish to use [Vue](VueIntegration.md) with your instance, you will need to
 "useMongoose": true
 ```
 
-set this value to `false` and mongoose will not be used anywhere within the system.  Calling a model with the [Dependency Manager](DependencyManager.md) will simply return the JS object within the Model location (rather than a mongoose model).  Combine this change with a custom [Plugin](Plugins.md) to maintain a centralised persistence mechanism; alternatively, defer to REST services within your models and Co.Koa can behave like a bus or an organised set of micro services; it's up to you!
+set this value to `false` and mongoose will not be used anywhere within the system.  Calling a model with the [Dependency Manager](DependencyManager.md) will simply return the JS object within the Model location (rather than a mongoose model).  Combine this change with a custom [Plugin](Plugins.md) to maintain a centralised persistence mechanism; alternatively, defer to REST services within your models and Co.Koa can behave as you see fit; it's up to you!
 
 ---
 
