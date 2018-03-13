@@ -30,7 +30,7 @@
 
 ---
 
-An opinionated MVC; inspired by [Grails](https://grails.org/) MVC, written for Koa with support for MongoDB (via [mongoose](http://mongoosejs.com/)) and [Handlebars](http://handlebarsjs.com/) (HBS).
+An opinionated MVC; inspired by [Grails](https://grails.org/) MVC, written for Koa with optional support for MongoDB (via [mongoose](http://mongoosejs.com/)) and [Handlebars](http://handlebarsjs.com/) (HBS).
 
 **Co.Koa** obeys convention over configuration. It is the fruit of a number of years of study and industry work with MVC products. **Co.Koa's** greatest strength comes in its implementation of Dependency Management.  Controllers, Models and Services are each supplied with a powerful callback that reads and feels like a JQuery call.  No need to worry about requiring reams of files from across your project.
 
@@ -65,7 +65,7 @@ module.exports = function ($) {
 ```
 
 **Example**
-Suppose we have a `Book` document (table) in our Mongo database that we have modelled within our Co.Koa project.  Now suppose we have a `BookService` that supports our controllers' interactions with the `Book` model.  To expose the `Book` mongoose model within our `Bookservice` we simply do as below:
+Suppose we are using Co.Koa's mongoose functionality OOB; and we have a `Book` document (table) in our Mongo database, modelled within our Co.Koa project.  Furthermore, let's suppose we've setup a `BookService` that supports our controllers' interactions with the `Book` model.  To expose the `Book` mongoose model within our `Bookservice` we simply do as below:
 ```javascript
 module.exports = function BookService ($) {
   const Book = $('Book');
@@ -76,7 +76,7 @@ module.exports = function BookService ($) {
 };
 ```
 
-Likewise, perhaps our `BookController` model would like access to the `BookService`; simple!
+Perhaps a `BookController` model would like access to the `BookService`; simple!
 ```javascript
 module.exports = function BookController ($) {
   const bookService = $('BookService');
@@ -85,10 +85,12 @@ module.exports = function BookController ($) {
   };
 };
 ```
-not a `require` statement in sight! Everything is routed for you under the hood thanks to Dependency Management!
+not a `require` or `import` statement in sight! Everything is routed for you under the hood thanks to Dependency Management!
 
 ## Models
-Co.Koa models are a light-touch abstraction of mongoose Schemas; they feature all the components one would expect to find therein.   To all intents and purposes, you're dealing with the same mongoose API you already know, only you're not having to worry about requirements and which object goes where! Thus, you need only defer to mongoose API's own documentation to know what a component does!
+Co.Koa models are a pragmatic concept. Out of the box, they're simply a light-touch abstraction of mongoose Schemas; featuring all the components one would expect to find therein.  However, you can easily switch mongoose off and roll out your own persistence mechanisms with Co.Koa's plugin functionality (using local Databases and ORMs, serverless configurations or whatever!)
+
+For the OOB Mongoose approach, you're dealing with the same mongoose API you already know, only you're not having to worry about requirements and which object goes where! Thus, you need only defer to mongoose API's own documentation to know what a component does!
 
 Continuing our example from above let's contrive simple `Book` and `Author` models.
 
