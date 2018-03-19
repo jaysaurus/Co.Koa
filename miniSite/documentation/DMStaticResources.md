@@ -90,6 +90,34 @@ const count = await _async.reduce(
 );
 $.logger.log(count == 2);
 ```
+---
+
+#### builder
+
+<table>
+<tr>
+<td class="tdHilight">
+$(':builder')
+</td>
+<td>
+returns the co-koa-core's builder tool for iterating through files.  This is an invaluable tool for handling custom database implementations in your plugins.  See the [index.js](https://github.com/jaysaurus/co-koa-mongoose-plugin/blob/master/index.js) of the co-koa-mongoose-plugin to get a feel for how it works.
+</td>
+</tr>
+</table>
+
+The builder takes 2 arguments, the name of the type it is address and a callback for handling each of the files it is being asked to parse.  For example:
+
+```JavaScript
+const _builder = $(':builder');
+_builder.build('Model', (model, modelName) => {
+  if (modelName === 'Foo') {
+    const file = model.doSomething();
+    ...
+  }
+});
+```
+
+it has been exposed with plugins in mind.  for more information on plugins, please visit the [plugins](Plugins.md) pages
 
 ---
 

@@ -21,13 +21,16 @@
 * [Service](Service.md)
 * [View](View.md)
 
+**Note** When you install Co.Koa with CLI@1.3.0 or higher, you Co.Koa instance will come installed with the mongoose plugin.  This can easily be removed should you wish (just remove the plugin from app.js and delete the dependency from your package.json).  The following document assumes you want to use the mongoose plugin to some degree; whether you will be writing your own plugin or using mongoose, it may be useful to read the below to get a feel for the way Co.Koa ticks.
+
 ## Models
 
-Models are effectively window dressing for mongoose's framework.  Out of the box, Mongoose models and schemas can get a little confusing; different mechanisms are supplied to it in different places.  Co.Koa tries to mitigate some of the complexity by allowing you to declare all the possible objects Mongoose expects in one discrete collection of objects:
+The Models associated with the co-koa-mongoose-plugin are effectively window dressing for mongoose's framework.  Out of the box, Mongoose models and schemas can get a little confusing; different mechanisms are supplied to mongoose in different places.  Co.Koa tries to mitigate some of the complexity by allowing you to declare all the possible objects Mongoose expects in one discrete collection of objects:
 
 ```javascript
 module.exports = function SomeModel ($) {
   return {
+    _modelType: 'mongoose',
     schema: {},  // <- Model details go here
     /* ------ OPTIONAL COMPONENTS ----- */
     index: {}, // <- custom indexes
@@ -99,6 +102,7 @@ Your vaildators are exposed dynamically wherever the [Dependency Manager](https:
 module.exports = function Book ($) {
   const bookValidator = $('BookValidator');
   return {
+    _modelType: 'mongoose',
     schema: {
       isbn: {
         trim: true,
@@ -116,4 +120,8 @@ Please see [Mongoose's validation documentation](http://mongoosejs.com/docs/vali
 
 ### More Information
 
-Since the overwhelming majority of **Co.Koa's** model implementation is based on Mongoose's default behaviour, please visit the [Mongoose documentation website](http://mongoosejs.com/docs/guide.html) for more information.
+Since the overwhelming majority of **Co.Koa's** mongoose plugin implementation is based on Mongoose's default behaviour, please visit the [Mongoose documentation website](http://mongoosejs.com/docs/guide.html) for more information.
+
+### shipping other ORMs and data persistence services
+
+The future for Co.Koa is looking bright for Co.Koa!  As of @1.7.0 and higher, the intention is to make Co.Koa's model behaviour entirely open to those who wish to use it.  In theory, you can integrate as many different APIs and services as you like.  Please keep an eye on the [Plugin documentation](Plugins.md) for information on how to introduce other data sources into the blend.

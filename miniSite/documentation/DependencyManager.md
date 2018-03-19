@@ -65,6 +65,15 @@ Exposes the echo-handler NPM module
 </tr>
 <tr>
 <td class="tdHilight">
+$(':builder')
+</td>
+<td>
+returns the co-koa-core's builder tool for iterating through files.  This is an invaluable tool for handling custom database implementations in your plugins.  See the [index.js](https://github.com/jaysaurus/co-koa-mongoose-plugin/blob/master/index.js) of the co-koa-mongoose-plugin to get a feel for how it works.
+</td>
+</tr>
+<tr>
+<tr>
+<td class="tdHilight">
 $(':enums')
 </td>
 <td>

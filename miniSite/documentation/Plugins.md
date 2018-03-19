@@ -60,3 +60,27 @@ const coKoa = CoKoa(__dirname).launch(
 ```
 
 In the spirit of Convention over Configuration, you are strongly encouraged to suffix your plugin files with the word "Plugin".
+
+### Writing a Model Plugin
+
+Arguably the greatest strength of Co.Koa is its pragmatism toward the concept of data models.  to create a plugin that supports data models the plugin must register it's desired model format against `app._modelRegister`.  For example, suppose we had some kind of database ORM that expected you to call `get(<theNameOfSomeDataModel>)` in order to load a model from memory.  Your plugin would need to do something like the below:
+
+```JavaScript
+module.exports = function someDB (app, $) {
+  ...
+  app._modelRegister.someDb = itemName => someDBInterface.get(itemName)
+}
+```
+
+then, in turn, each of the models you would like to wire to this plugin would need to be supplied with the `_modelType` property as below:
+
+```javascript
+module.exports = function Foo ($) {
+  return {
+    _modelType: 'someDb', // wording must precisely match your _modelRegister property
+    ... // your ORM-specific configuration
+  }
+}
+```
+
+Thus, when `$('Foo')` is called elsewhere in the system, `someDBInterface('Foo')` will be called!  In this fashion you can have different models pointing to different databases or completely different service behaviours! It's up to you!

@@ -28,13 +28,40 @@
 [![Greenkeeper badge](https://badges.greenkeeper.io/jaysaurus/co-koa-cli.svg)](https://greenkeeper.io/)
 [![Test for Vulnerabilities](https://snyk.io/test/github/jaysaurus/co-koa-cli/badge.svg)](https://snyk.io/test/github/jaysaurus/co-koa-cli)
 
+**<a href="https://github.com/jaysaurus/co-koa-mongoose-plugin" target="_blank">co-koa-mongoose-plugin</a> module status**
+
+[![Build Status](https://travis-ci.org/jaysaurus/co-koa-mongoose-plugin.svg?branch=master)](https://travis-ci.org/jaysaurus/co-koa-mongoose-plugin.svg?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/jaysaurus/co-koa-mongoose-plugin/badge.svg?branch=master)](https://coveralls.io/repos/github/jaysaurus/co-koa-mongoose-plugin/badge.svg?branch=master)
+[![Greenkeeper badge](https://badges.greenkeeper.io/jaysaurus/co-koa-mongoose-plugin.svg)](https://greenkeeper.io/)
+[![Test For Vulnerabilities](https://snyk.io/test/github/jaysaurus/co-koa-mongoose-plugin/badge.svg?targetFile=package.json)](https://snyk.io/test/github/jaysaurus/co-koa-mongoose-plugin?targetFile=package.json)
+
 ---
 
 An opinionated MVC; inspired by [Grails](https://grails.org/) MVC, written for Koa with optional support for MongoDB (via [mongoose](http://mongoosejs.com/)) and [Handlebars](http://handlebarsjs.com/) (HBS).
 
 **Co.Koa** obeys convention over configuration. It is the fruit of a number of years of study and industry work with MVC products. **Co.Koa's** greatest strength comes in its implementation of Dependency Management.  Controllers, Models and Services are each supplied with a powerful callback that reads and feels like a JQuery call.  No need to worry about requiring reams of files from across your project.
 
-**Note on release 1.2.0 and greater** if you installed Co.Koa with a version of co-koa-cli prior to 1.2.0 and wish to use co-koa-core@1.2.0 or higher, simply add `"useMongoose":true` to your `config.json`.
+#### Migration Notes for 1.5.0 and higher
+Co.Koa now manages mongoose as a completely independent plugin, it is supplied by default when installed with the latest versions of Co.Koa but can easily be remove altogether simply by removing the [plugin](http://cokoajs.com/miniSite/documentation/Plugins.html) call from your project's main app.js and deleting the dependency from your project's `package.json`.
+
+To upgrade to the latest version of Co.Koa:
+- follow the installation instructions on the [co-koa-mongoose-plugin npm page](https://www.npmjs.com/package/co-koa-mongoose-plugin)
+
+- have each of your mongoose model objects return a `_modelType: 'mongoose'` property.  e.g.
+```javascript
+module.exports = function Test ($) {
+  return {
+    _modelType: 'mongoose',
+    schema: {
+      ...
+    }
+    ...
+  }
+```
+- delete your envConfig file should you wish (it is no longer required)
+
+**NB.** The latest version of Co.Koa is not currently compatible with the [Co.Koa session plugin](https://github.com/jaysaurus/co-koa-session-plugin). This will be corrected in a release in the near-future.
+
 
 ---
 
@@ -89,7 +116,7 @@ module.exports = function BookController ($) {
 not a `require` or `import` statement in sight! Everything is routed for you under the hood thanks to Dependency Management!
 
 ## Models
-Co.Koa models are a pragmatic concept. Out of the box, they're simply a light-touch abstraction of mongoose Schemas; featuring all the components one would expect to find therein.  However, you can easily switch mongoose off and roll out your own persistence mechanisms with Co.Koa's plugin functionality (using local Databases and ORMs, serverless configurations or whatever!)
+Co.Koa models are a pragmatic concept. By default, your build will come installed with a mongoose plugin that is simply a light-touch abstraction of the mongoose API; featuring all the components one would expect to find therein.  However, you can easily switch mongoose off and roll out your own persistence mechanisms with Co.Koa's plugin functionality (using local Databases and ORMs, serverless configurations or whatever!)
 
 For the OOB Mongoose approach, you're dealing with the same mongoose API you already know, only you're not having to worry about requirements and which object goes where! Thus, you need only defer to mongoose API's own documentation to know what a component does!
 
@@ -101,6 +128,7 @@ module.exports = function Book ($) {
   const Author = $('Author'); // load the Author mongoose model, used in the public method defined below.
 
   return {
+    _modelType: 'mongoose', // tells Co.Koa that this model uses the mongoose model plugin. remove this flag to simply return this object.
     schema: { // represents the mongoose schema like-for-like
       Accredited: {
         authors: [{
@@ -143,6 +171,7 @@ observe that Co.Koa fully supports (and strongly encourages) `await/async` throu
 ```javascript
 module.exports = function Author ($) {
   return {
+    _modelType: 'mongoose',
     schema: {
       firstName: String,
       lastName: String
@@ -210,6 +239,9 @@ module.exports = function BookService ($) {
 
 **Co.Koa** will sort out the requirements for you! The service is exposed via the `$` DependencyManager in your controllers, models and other services as `$('BookService')`.
 
+## Vue Integration
+Co.koa now ships with `@koa/cors` and will very happily interface with a vue instance in tow.  With the release of [co-koa-cli](https://npmjs.com/co-koa-cli)@1.0.0 [VueJS](https://vuejs.org/) is easy to ship as your development front end!  For more information please visit the [CoKoa Documentation](http://cokoajs.com/miniSite/documentation/VueIntegration.html)
+
 ## Views
 **Co.Koa** Supports the handlebars .hbs extension using "koa-hbs-renderer" (https://www.npmjs.com/package/koa-hbs-renderer). supply your views, helpers, layouts and partials within the directories indicated below:
 ```
@@ -267,6 +299,3 @@ now your .hbs file can use custom logic!
 {% endraw %}
 
 Note that your helpers are prefixed with `CK_`. Co.Koa uses `koa-hbs-renderer`.  For more information please navigate to the <a href="https://github.com/ConnorWiseman/koa-hbs-renderer/">koa-hbs-renderer github</a>.  For more information on how to use Handlebars, please visit: http://handlebarsjs.com/
-
-## Vue Integration
-Co.koa now ships with `@koa/cors` and will very happily interface with a vue instance in tow.  With the release of [co-koa-cli](https://npmjs.com/co-koa-cli)@1.0.0 [VueJS](https://vuejs.org/) is easy to ship as your development front end!  For more information please visit the [CoKoa Documentation](http://cokoajs.com/miniSite/documentation/VueIntegration.html)
