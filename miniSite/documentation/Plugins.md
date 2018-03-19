@@ -84,3 +84,5 @@ module.exports = function Foo ($) {
 ```
 
 Thus, when `$('Foo')` is called elsewhere in the system, `someDBInterface('Foo')` will be called!  In this fashion you can have different models pointing to different databases or completely different service behaviours! It's up to you!
+
+To see how this actually works in anger, visit the [co-koa-mongoose-plugin](https://github.com/jaysaurus/co-koa-mongoose-plugin/blob/master/index.js) project on github.
