@@ -1,0 +1,6 @@
+{
+  "buildFailed": "Failed to build {0}s: {1}",
+  "invalidDirectory": "directory '{0}' doesn't exist.",
+  "invalidType": "Spotted '{0}' in '/{1}'. Build will not action this item.",
+  "success": "The {0}s have been imported"
+}
