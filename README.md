@@ -37,9 +37,10 @@
 
 ---
 
-An opinionated MVC; inspired by [Grails](https://grails.org/) MVC, written for Koa with optional support for MongoDB (via [mongoose](http://mongoosejs.com/)) and [Handlebars](http://handlebarsjs.com/) (HBS).
+An opinionated MVC that let's you choose what should/shouldn't be a Model; inspired by [Grails](https://grails.org/) MVC, but viewed through the lens of Koa.  Just like [Koa](http://koajs.com/), Co.Koa is about pragmatism; it encourages developers to interface with the underlying koa.app via [Plugins](http://cokoajs.com/miniSite/documentation/Plugins.html).  Mixin different databases and endpoints, it's up to you!  
+When installed via the CLI, Co.Koa ships with support for MongoDB (via [mongoose](http://mongoosejs.com/)) and a layout that comfortably interfaces with [VueJS](https://vuejs.org/) or [Handlebars](http://handlebarsjs.com/) (HBS);  but, hey, don't let that stop you choosing other toolchains!
 
-**Co.Koa** obeys convention over configuration. It is the fruit of a number of years of study and industry work with MVC products. **Co.Koa's** greatest strength comes in its implementation of Dependency Management.  Controllers, Models and Services are each supplied with a powerful callback that reads and feels like a JQuery call.  No need to worry about requiring reams of files from across your project.
+**Co.Koa** obeys convention over configuration. One of **Co.Koa's** greatest strength comes in its implementation of Dependency Management.  Controllers, Models and Services are each supplied with a powerful callback that reads and feels like a JQuery call.  No need to worry about requiring reams of files from across your project.
 
 #### Migration Notes for 1.5.0 and higher
 Co.Koa now manages mongoose as a completely independent plugin, it is supplied by default when installed with the latest versions of Co.Koa but can easily be remove altogether simply by removing the [plugin](http://cokoajs.com/miniSite/documentation/Plugins.html) call from your project's main app.js and deleting the dependency from your project's `package.json`.
