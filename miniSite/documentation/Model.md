@@ -118,6 +118,47 @@ Please see [Mongoose's validation documentation](http://mongoosejs.com/docs/vali
 
 ---
 
+### Virtuals
+Virtuals behave exactly as they would if supplied to a mongoose schema. Simply add an object to a model's virtuals object and supply it a get and/or set method:
+
+```javascript
+module.exports = function Author ($) {
+  return {
+    _modelType: 'mongoose',
+    schema: {
+      firstName: String,
+      lastName: String
+    },
+    /* ------ OPTIONAL COMPONENTS ----- */
+    virtuals: {
+      fullName: {
+        get () { return `${this.lastName}, ${this.firstName}`; },
+        set (name) {
+          const fullName = name.split(' ');
+          this.firstName = fullName[0];
+          this.lastName = fullName[1];
+          return this;
+        }
+      }
+    }
+  };
+};
+```
+thus, a virtual property is associated with your model
+```javascript
+module.exports = function BookService ($) {
+  const Author = $('Author');
+
+  return {
+    async createAuthor () {
+      const author = await new Author({
+        name: 'J.K Rowling' }).save();
+      return author;
+    }
+  };
+};
+```
+
 ### More Information
 
 Since the overwhelming majority of **Co.Koa's** mongoose plugin implementation is based on Mongoose's default behaviour, please visit the [Mongoose documentation website](http://mongoosejs.com/docs/guide.html) for more information.
