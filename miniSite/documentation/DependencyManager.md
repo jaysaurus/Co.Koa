@@ -44,7 +44,10 @@ const SampleValidator = $('SampleValidator') // call a validator library for you
 
 #### [Static Resources](DMStaticResources.md)
 
-prefixing your argument string with ':' tells Co.Koa you are requesting a static resource of some kind.  The following resources are available:
+
+<div>
+  prefixing your argument string with ':' tells Co.Koa you are requesting a static resource of some kind.  The following resources are available:
+</div>
 
 <table>
 <tr>
