@@ -63,7 +63,7 @@ supply a default list of keys for koa's implementation of [key grip](https://git
 ---
 
 ```javascript
-"dependencyManager": {},
+"dependencyRegister": {},
 ```
 
 The <span id="DependencyRegister">Dependency Register</span> allows you to specify custom dynamic dependencies for the Dependency Manager.  Co.Koa expects this property to be defined as an object literal `"Type": "Path"` pairs.
