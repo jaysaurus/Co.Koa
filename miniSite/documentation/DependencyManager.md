@@ -40,6 +40,13 @@ const Sample = $('Sample') // call a Mongoose model instance derived from the Sa
 const SampleValidator = $('SampleValidator') // call a validator library for your mongoose instance from ./api/models/validators/SampleValidator.js
 ```
 
+#### Adding Custom Dependencies to the Dependency Manager
+
+as of @1.8.0, Co.Koa supports the use of custom dependencies via the [Dependency Register](http://cokoajs.com/miniSite/documentation/Config.html#DependencyRegister) within your project's config.json. more information on custom dependencies can be found in the [Config Documentation](http://cokoajs.com/miniSite/documentation/Config.html#DependencyRegister).
+
+```javascript
+const yourDependencyHere = $('YourDependencyHere');
+```
 ---
 
 #### [Static Resources](DMStaticResources.md)
@@ -105,13 +112,3 @@ returns an object containing the methods <span class=".highlighter-rouge">.strea
 </table>
 
 more information on Static Resources can be found [here](DMStaticResources.md)
-
----
-
-### Adding Custom Dependencies to the Dependency Manager
-
-as of @1.8.0, Co.Koa supports the use of custom dependencies via the [Dependency Register](http://cokoajs.com/miniSite/documentation/Config.html#DependencyRegister) within your project's config.json. more information on custom dependencies can be found in the [Config Documentation](http://cokoajs.com/miniSite/documentation/Config.html#DependencyRegister).
-
-```javascript
-const yourDependencyHere = $('YourDependencyHere');
-```
