@@ -16,7 +16,7 @@
 
 ## Plugins
 
-As of [co-koa-core](https://npmjs.com/package/co-koa-core)@0.17.0 (and higher) Co.Koa will support plugin integration.  This is a more versatile way of implementing middleware in a discrete fashion.  The first official Co.Koa MVC plugin is [co-koa-session-plugin](https://www.npmjs.com/package/co-koa-session-plugin) which is designed to integrate [koa-session](https://www.npmjs.com/package/koa-session) with your mongoDB instance.  But feel free to write your own!
+As of [co-koa-core](https://npmjs.com/package/co-koa-core)@0.17.0 (and higher) Co.Koa will support plugin integration.  This is a more versatile way of implementing middleware in a discrete fashion.
 
 ### Why plugins?
 
@@ -86,3 +86,8 @@ module.exports = function Foo ($) {
 Thus, when `$('Foo')` is called elsewhere in the system, `someDBInterface('Foo')` will be called!  In this fashion you can have different models pointing to different databases or completely different service behaviours! It's up to you!
 
 To see how this actually works in anger, visit the [co-koa-mongoose-plugin](https://github.com/jaysaurus/co-koa-mongoose-plugin/blob/master/index.js) project on github.
+
+### Other plugins
+The first official Co.Koa MVC plugin was [co-koa-session-plugin](https://www.npmjs.com/package/co-koa-session-plugin) which integrates [koa-session](https://www.npmjs.com/package/koa-session) with [co-koa-mongoose-plugin](https://github.com/jaysaurus/co-koa-mongoose-plugin/blob/master/index.js) to give you session storage in tow.  
+
+New submissions are very welcome!
