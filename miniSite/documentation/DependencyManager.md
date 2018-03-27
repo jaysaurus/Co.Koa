@@ -82,7 +82,6 @@ returns the co-koa-core's builder tool for iterating through files.  This is an 
 </td>
 </tr>
 <tr>
-<tr>
 <td class="tdHilight">
 $(':enums')
 </td>
