@@ -91,7 +91,7 @@ now, given the examples above, all files with access to the DependencyManager wo
 $('FooValidator');
 ```
 
-If your custom dependency files supply module export with a function, the function in question will be supplied with access to the dependency manager just like models, services and so on:
+If a custom dependency file supplies `module.exports` with a function, the function in question will be supplied the dependency manager as an argument just like models, services and so on:
 
 ```javascript
 module.exports = function FooValidator ($) {
