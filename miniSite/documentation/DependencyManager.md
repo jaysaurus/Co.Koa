@@ -30,7 +30,10 @@ The Dependency Manager is kind of a Swiss-Army knife of useful interrelated tool
 
 The Dependency Manager breaks down into 2 use categories:
 
-#### [DynamicResources](DMDynamicResources.md)
+- Dynamic Resources
+- Static Resources
+
+#### **[DynamicResources](DMDynamicResources.md)**
 
 The DependencyManager knows how to find [Services](Service.md), [Models](Model.md) and [Validators](Model.md) within their respective folders.  the example below demonstrates the syntax:
 
@@ -49,7 +52,7 @@ const yourDependencyHere = $('YourDependencyHere');
 ```
 ---
 
-#### [Static Resources](DMStaticResources.md)
+#### **[Static Resources](DMStaticResources.md)**
 
 
 <div>
