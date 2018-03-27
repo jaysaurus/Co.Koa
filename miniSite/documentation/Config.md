@@ -63,6 +63,50 @@ supply a default list of keys for koa's implementation of [key grip](https://git
 ---
 
 ```javascript
+"dependencyManager": {},
+```
+
+The <span id="DependencyRegister">Dependency Register</span> allows you to specify custom dynamic dependencies for the Dependency Manager.  Co.Koa expects this property to be defined as an object literal `"Type": "Path"` pairs.
+
+**Type** dictates the suffix the files are expected to have.  For example:
+
+If a type key is set to `"Validator"`, the files in the designated directory should be suffixed as below:
+
+```javascript
+FooValidator.js
+BarValidator.js
+BazValidator.js
+...
+```
+**Path** dictates the directory  <u>starting from the api directory</u>.  For example:
+
+If a path value is set to `"models/virtuals"` then your files will be located at:
+
+```javascript
+rootDir/api/models/virtuals
+```
+now, given the examples above, all files with access to the DependencyManager would be able to call:
+
+```javascript
+$('FooValidator');
+```
+
+If your custom dependency files supply module export with a function, the function in question will be supplied with access to the dependency manager just like models, services and so on:
+
+```javascript
+module.exports = function FooValidator ($) {
+  ...
+}
+```
+
+#### Caveat
+**Be very careful what you add to the register!** once it's in the register, the dependencyManager may not be able to load Models that share the same suffix.
+
+**Do not add a forward slash at the beginning or the end of your path value!** Co.Koa has it covered!
+
+---
+
+```javascript
 "defaultLanguage":"en",
 ```
 

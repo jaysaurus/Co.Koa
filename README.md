@@ -60,9 +60,6 @@ module.exports = function Test ($) {
 ```
 - delete your envConfig file should you wish (it is no longer required)
 
-**NB.** The latest version of Co.Koa is not currently compatible with the [Co.Koa session plugin](https://github.com/jaysaurus/co-koa-session-plugin). This will be corrected in a release in the near-future.
-
-
 ---
 
 ## Structure & Installation
@@ -114,6 +111,8 @@ module.exports = function BookController ($) {
 };
 ```
 not a `require` or `import` statement in sight! Everything is routed for you under the hood thanks to Dependency Management!
+
+As of Co.Koa@1.8.0 the Co.Koa core now supports custom Dependencies via a [Dependency Register](http://cokoajs.com/miniSite/documentation/Config.html#DependencyRegister)
 
 ## Models
 Co.Koa models are a pragmatic concept. By default, your build will come installed with a mongoose plugin that is simply a light-touch abstraction of the mongoose API; featuring all the components one would expect to find therein.  However, you can easily switch mongoose off and roll out your own persistence mechanisms with Co.Koa's plugin functionality (using local Databases and ORMs, serverless configurations or whatever!)
