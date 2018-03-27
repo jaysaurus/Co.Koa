@@ -103,6 +103,8 @@ returns an object containing the methods <span class=".highlighter-rouge">.strea
 
 more information on Static Resources can be found [here](DMStaticResources.md)
 
+---
+
 ### Adding Custom Dependencies to the Dependency Manager
 
 as of @1.8.0, Co.Koa supports the use of custom dependencies via the [Dependency Register](http://cokoajs.com/miniSite/documentation/Config.html#DependencyRegister) within your project's config.json. more information on custom dependencies can be found in the [Config Documentation](http://cokoajs.com/miniSite/documentation/Config.html#DependencyRegister).
