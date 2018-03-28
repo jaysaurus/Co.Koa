@@ -146,7 +146,7 @@ module.exports = function Book ($) {
       ...
       hooks: {
         pre: {
-          save (next) {
+          async save (next) {
             ... // your pre-save action here
             next();
           }
@@ -157,7 +157,7 @@ module.exports = function Book ($) {
       }
 ...
 ```
-For more information on Mongoose middleware hooks, please visit the [Mongoose Documentation]([hooks](http://mongoosejs.com/docs/middleware.html)
+For more information on Mongoose middleware hooks, please visit the [Mongoose Documentation](http://mongoosejs.com/docs/middleware.html).  Please also see the [Dependency Manager Caveat Notes](http://cokoajs.com/miniSite/documentation/DMDynamicResources.html#caveats) for some inspiration!
 
 ---
 
