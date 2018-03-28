@@ -48,18 +48,18 @@ const SampleValidator = $('SampleValidator') // call a validator library for you
 
 ### Caveats
 
-Be careful to avoid accessing dependencies cyclically.  An example would be allowing the the full function block of a model to load itself.  Suppose we have `Sample.js` as a model:
+Be careful to avoid accessing dependencies cyclically.  An example would be allowing the the full function block of a model to load itself.  Suppose we have `Sample.js` as a model, and we call `$('Sample')` at the top of the function:
 
 ```javascript
 module.exports = function Sample ($) {
-  const Sample = $('Sample');
+  const Sample = $('Sample'); // CRASH CRASH CRASH!
   return {
     ...
   }
 }
 ```
 
-The above will crash the server.  as will calling the service  below in the model above:
+The above will crash the server.  as will calling the service  below in the Sample Model:
 
 ```javascript
 // SampleService.js
