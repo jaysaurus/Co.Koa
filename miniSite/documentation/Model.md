@@ -118,6 +118,49 @@ Please see [Mongoose's validation documentation](http://mongoosejs.com/docs/vali
 
 ---
 
+### Hooks
+As of `co-koa-mongoose-plugin`@1.4.0, Co.Koa's mongoose plugin now supports [hooks](http://mongoosejs.com/docs/middleware.html).  The syntax is to define either or both a `pre` and/or `post` and supply said object(s) with methods:
+```
+    init
+    validate
+    save
+    remove
+```
+Query middleware:
+```
+    count
+    find
+    findOne
+    findOneAndRemove
+    findOneAndUpdate
+    update
+```
+Thus a pre-save action could look as below:
+
+```javascript
+module.exports = function Book ($) {
+  const bookValidator = $('BookValidator');
+  return {
+    _modelType: 'mongoose',
+    schema: {
+      ...
+      hooks: {
+        pre: {
+          save (next) {
+            ... // your pre-save action here
+            next();
+          }
+        }
+        post: {
+
+        }
+      }
+...
+```
+For more information on Mongoose middleware hooks, please visit the [Mongoose Documentation]([hooks](http://mongoosejs.com/docs/middleware.html)
+
+---
+
 ### Virtuals
 Virtuals behave exactly as they would if supplied to a mongoose schema. Simply add an object to a model's virtuals object and supply it a get and/or set method:
 

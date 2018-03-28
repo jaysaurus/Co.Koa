@@ -117,16 +117,14 @@ Default language specifies the language you want Co.Koa to use both within its c
 ```javascript
 "environment": {
   "test": {
-    "port": 3000,
-    "mongoDB_URI": "mongodb://localhost:27017/coKoaTest"
+    "port": 3000
   },
   "development": {
-    "port": 3000,
-    "mongoDB_URI": "mongodb://localhost:27017/coKoa"
+    "port": 3000
   }
 },
 ```
-The environment property allows you to supply a port and the connection data required to connect to mongodb.  This is used in conjunction with the envConfig.js we discuss further down.
+The environment property allows you to supply a port.  This may be expanded in future.
 
 ---
 
@@ -160,20 +158,6 @@ If you wish to use [Vue](VueIntegration.md) with your instance, you will need to
 
 ---
 
-```javascript
-"useMongoose": true
-```
-
-set this value to `false` and mongoose will not be used anywhere within the system.  Calling a model with the [Dependency Manager](DependencyManager.md) will simply return the JS object within the Model location (rather than a mongoose model).  Combine this change with a custom [Plugin](Plugins.md) to maintain a centralised persistence mechanism; alternatively, defer to REST services within your models and Co.Koa can behave as you see fit; it's up to you!
-
----
-
-### envConfig.js
-
-envConfig exposes the mongoose module to your local instance.  This is largely available for convenience should you have specific access needs related to your mongoose instance.  Most importantly, you may choose your mongoose instance's promise library here.  By default it is set to `global.Promise`; it is strongly recommended that you use an alternative such as Bluebird instead.
-
----
-
 ### hbsConfig.js
 
 The hbsConfig exposes, like-for-like the configurations file for [koa-hbs-renderer](https://www.npmjs.com/package/koa-hbs-renderer).  Needless to say, be careful changing this file!
@@ -192,7 +176,7 @@ The logger is also passed to the `$(':echo')` component and will be used therein
 
 ### middleware.js
 
-the middleware.js is the definitive location to perform koa-style middleware actions.  Each method supplied to the middleware.js object will be called (sequentially) by koa's app.use() on launch.  As an example, Co.Koa sets up a simple function that will be called each time it receives a request:
+the middleware.js is a location from which to perform koa-style middleware actions.  Each method supplied to the middleware.js object will be called (sequentially) by koa's app.use() on launch.  As an example, Co.Koa sets up a simple function that will be called each time it receives a request:
 
 ```javascript
 module.exports = function ($, conf) {
