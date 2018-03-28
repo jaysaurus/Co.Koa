@@ -83,7 +83,7 @@ module.exports = function Sample ($) {
 
 *However*, there are legitimate instances where loading an ostensibly cyclical dependency will work just fine; provided that the cyclical reference is loaded within the scope of a callback.
 
-**For Example** the `co-koa-mongoose-plugin` that ships with Co.Koa. you can load in the same model to a hook so as to cross-reference data already in your database before persisting.  Since [Mongoose doesn't ship with a traditional 'Unique' validator](http://mongoosejs.com/docs/validation.html#the-unique-option-is-not-a-validator), this is a good tactic for validating unique fields in Mongoose:
+**For Example** the `co-koa-mongoose-plugin` that ships with Co.Koa can load in the same model to a hook so as to cross-reference data already in your database.  Since [Mongoose doesn't ship with a traditional 'Unique' validator](http://mongoosejs.com/docs/validation.html#the-unique-option-is-not-a-validator), this is a good tactic for validating unique fields in Mongoose before saving a document:
 
 ```javascript
 module.exports = function Sample ($) {
