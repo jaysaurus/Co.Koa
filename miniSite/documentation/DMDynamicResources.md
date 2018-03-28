@@ -83,7 +83,9 @@ module.exports = function Sample ($) {
 
 *However*, there are legitimate instances where loading an ostensibly cyclical dependency will work just fine; provided that the cyclical reference is loaded within the scope of a callback.
 
-**For Example** the `co-koa-mongoose-plugin` that ships with Co.Koa can load in the same model to a hook so as to cross-reference data already in your database.  Since [Mongoose doesn't ship with a traditional 'Unique' validator](http://mongoosejs.com/docs/validation.html#the-unique-option-is-not-a-validator), this is a good tactic for validating unique fields in Mongoose before saving a document:
+**For Example** the `co-koa-mongoose-plugin` that ships with Co.Koa can load in a model cyclically via a callback; this allows you to cross reference an existing document before/after a mongoose event is actioned.
+
+Since [Mongoose doesn't ship with a traditional 'Unique' validator](http://mongoosejs.com/docs/validation.html#the-unique-option-is-not-a-validator), this is a good tactic for validating unique fields in Mongoose before saving a document. See below:
 
 ```javascript
 module.exports = function Sample ($) {
@@ -92,11 +94,11 @@ module.exports = function Sample ($) {
     hooks: {
       pre: {
         async save (next) {
-          // check if incoming "name" field is already present in database
+          // check if a document has the same "name" as the new document the user is trying to create
           if (this._doc.hasOwnProperty('name')) {
             const Model = $('Sample');
             const hasModel = await Model.findOne({ name: this._doc.name });
-            if (hasModel) throw new Error('ToolHook.NotUnique');
+            if (hasModel) throw new Error('The name field is not unique!');
           }
           next()
         }
