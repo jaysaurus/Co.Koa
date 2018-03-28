@@ -45,3 +45,63 @@ const sampleService = $('SampleService'); // load an instance of SampleService i
 const Sample = $('Sample') // call a Mongoose model instance derived from the Sample schema in ./api/models/Sample.js
 const SampleValidator = $('SampleValidator') // call a validator library for your mongoose instance from ./api/models/validators/SampleValidator.js
 ```
+
+### Caveats
+
+Be careful to avoid accessing dependencies cyclically.  An example would be allowing the the full function block of a model to load itself.  Suppose we have `Sample.js` as a model:
+
+```javascript
+module.exports = function Sample ($) {
+  const Sample = $('Sample');
+  return {
+    ...
+  }
+}
+```
+
+The above will crash the server.  as will calling the service  below in the model above:
+
+```javascript
+// SampleService.js
+module.exports = function SampleService ($) {
+  const Sample = $('Sample');
+  return {
+    ...
+  }
+}
+```
+```javascript
+// Sample.js (model)
+module.exports = function Sample ($) {
+  const sampleService = $('SampleService'); // CRASH CRASH CRASH!
+  return {
+    ...
+  }
+}
+```
+
+
+*However*, there are legitimate instances where loading an ostensibly cyclical dependency will work just fine; provided that the cyclical reference is loaded within the scope of a callback.
+
+**For Example** the `co-koa-mongoose-plugin` that ships with Co.Koa. you can load in the same model to a hook so as to cross-reference data already in your database before persisting.  Since [Mongoose doesn't ship with a traditional 'Unique' validator](http://mongoosejs.com/docs/validation.html#the-unique-option-is-not-a-validator), this is a good tactic for validating unique fields in Mongoose:
+
+```javascript
+module.exports = function Sample ($) {
+  return {
+    ...
+    hooks: {
+      pre: {
+        async save (next) {
+          // check if incoming "name" field is already present in database
+          if (this._doc.hasOwnProperty('name')) {
+            const Model = $('Sample');
+            const hasModel = await Model.findOne({ name: this._doc.name });
+            if (hasModel) throw new Error('ToolHook.NotUnique');
+          }
+          next()
+        }
+      }
+    }
+  }
+}
+```

@@ -119,14 +119,14 @@ Please see [Mongoose's validation documentation](http://mongoosejs.com/docs/vali
 ---
 
 ### Hooks
-As of `co-koa-mongoose-plugin`@1.4.0, Co.Koa's mongoose plugin now supports [hooks](http://mongoosejs.com/docs/middleware.html).  The syntax is to define either or both a `pre` and/or `post` and supply said object(s) with methods:
+As of `co-koa-mongoose-plugin`@1.4.0, Co.Koa's mongoose plugin now supports [hooks](http://mongoosejs.com/docs/middleware.html).  The syntax is to define either or both a `pre` and/or `post` and supply said object(s) with document middleware methods as below:
 ```
     init
     validate
     save
     remove
 ```
-Query middleware:
+and query middleware methods:
 ```
     count
     find
@@ -135,7 +135,7 @@ Query middleware:
     findOneAndUpdate
     update
 ```
-Thus a pre-save action could look as below:
+Thus a pre-save action should be set out as below:
 
 ```javascript
 module.exports = function Book ($) {
