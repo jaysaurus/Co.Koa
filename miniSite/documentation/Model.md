@@ -202,6 +202,10 @@ module.exports = function BookService ($) {
 };
 ```
 
+### Additional DependencyManager callback
+
+as of `co-koa-mongoose-plugin`@1.6.0, the plugin supplies the  dependency manager with a callback enabling you to access Mongoose's `Types` object.  simply by calling `$.getMongooseTypes()` wherever the DependencyManager is exposed.
+
 ### More Information
 
 Since the overwhelming majority of **Co.Koa's** mongoose plugin implementation is based on Mongoose's default behaviour, please visit the [Mongoose documentation website](http://mongoosejs.com/docs/guide.html) for more information.
