@@ -158,6 +158,14 @@ If you wish to use [Vue](VueIntegration.md) with your instance, you will need to
 
 ---
 
+```javascript
+"welcomeMessage": true
+```
+Switch off the verbose ascii message that accompanies the server load of Co.Koa
+
+---
+
+
 ### hbsConfig.js
 
 The hbsConfig exposes, like-for-like the configurations file for [koa-hbs-renderer](https://www.npmjs.com/package/koa-hbs-renderer).  Needless to say, be careful changing this file!
