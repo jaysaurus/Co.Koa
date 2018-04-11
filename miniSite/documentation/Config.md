@@ -63,6 +63,21 @@ supply a default list of keys for koa's implementation of [key grip](https://git
 ---
 
 ```javascript
+"cors": {
+  "allowMethods": "GET,HEAD,PUT,POST,DELETE,PATCH",
+  "origin": "*",
+  "exposeHeaders": "x-requested-with, Content-Type, origin, authorization, accept, content-type, x-experience-api-version, client-security-token",
+  "maxAge": 3600,
+  "credentials": true,
+  "keepHeadersOnError": true
+},
+```
+
+Passes configurations through to the [`@koa/cors`](https://github.com/evert0n/koa-cors) plugin. For more information on [Cross-Origin Resource Sharing](https://www.w3.org/TR/cors/), please see this article: [Using CORS](https://www.html5rocks.com/en/tutorials/cors/).
+
+---
+
+```javascript
 "dependencyRegister": {},
 ```
 
