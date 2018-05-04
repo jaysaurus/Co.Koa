@@ -33,3 +33,4 @@ Links below contain other information for your consideration related to this fra
 * [Core Execution Order](documentation/Core.md)
 * [Plugins](documentation/Plugins.md)
 * [Vue Integration](documentation/VueIntegration.md)
+* [Testing](documentation/Testing.md)
