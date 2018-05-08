@@ -299,3 +299,31 @@ now your .hbs file can use custom logic!
 {% endraw %}
 
 Note that your helpers are prefixed with `CK_`. Co.Koa uses `koa-hbs-renderer`.  For more information please navigate to the <a href="https://github.com/ConnorWiseman/koa-hbs-renderer/">koa-hbs-renderer github</a>.  For more information on how to use Handlebars, please visit: http://handlebarsjs.com/
+
+## Testing
+
+as of `co-koa-cli`@^1.17.0, Co.Koa has baked in support for unit and integration testing with [Jest](https://facebook.github.io/jest/) thanks to the `app.test.harness`.  
+
+```javascript
+const testHarness = require('../app.test.harness.js');
+const coKoa = testHarness.init({ port: 3004, type: 'integration' });
+describe('Integration Test Suite For Example', async () => {
+  const $ = coKoa.$
+  const Example = $('Example');
+
+  test('An integration test', async () => {
+    try {
+      const result = await new Example({ }).save();
+      expect(typeof result).toBe('object');
+    } catch (e) {
+      console.error(e.message)
+    }
+  });
+
+  afterAll(async (done) => {
+    await coKoa.app.close() // close the Koa app listener
+    await testHarness.destroy(done) // (optional) empty test database
+  });
+});
+```
+for more information please see the [testing](http://cokoajs.com/miniSite/documentation/Testing.html) documentation.
