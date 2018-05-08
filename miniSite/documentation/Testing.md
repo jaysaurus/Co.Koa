@@ -16,29 +16,91 @@
 
 ## Testing
 
-As of [co-koa-core](https://npmjs.com/package/co-koa-core)@1.13.0, Co.Koa now supports integration for jest unit tests.  a new project will contain the following example:
+As of [co-koa-core](https://npmjs.com/package/co-koa-core)@^1.17.0, you can add new unit and/or integration tests to your Co.Koa instance by calling:
+```shell
+npx co-koa-cli --createUnitTest <ItemToTest>
+# or
+npx co-koa-cli --createIntegrationTest <ItemToTest>
+```
+Both unit and integration tests utilise a test harness; the notable difference between the two being that the former neither harnesses the mongoose plugin nor exposes a running instance of the koa.app server.  
+
+### Unit Test
+Calling a model in your unit test will return the unadulterated schema rather than the model.  Unit tests like the below are limited in scope therefore.
 
 ```javascript
 const testHarness = require('../app.test.harness.js');
-const coKoa = testHarness.init();
-describe('Demonstrative Integration Test Suite', async () => {
+const coKoa = testHarness.init({ type: 'unit' });
+describe('Unit Test Suite For Example', async () => {
+  const $ = coKoa.$
+  const Example = $('Example');
+
+  test('A unit test', async () => {
+    try {
+
+    } catch (e) {
+      console.error(e.message)
+    }
+  });
+});
+```
+
+Sometimes you will be better off manually loading a file and injecting your own mock dependencyManager:
+
+```javascript
+const exampleController = require('../api/controllers/ExampleController');
+
+describe('Manually loaded controller') {
+  const spy = [];
+  const controller = exampleController(
+    function (value) { // Mock dependencyManager
+      switch (value) {
+        case 'Example': // $('Example').findOne({ query: 'eg' });
+          return { findOne (obj) { spy.push(obj); } };
+      }
+    })
+  test('Controller action called on mock supplied with ', async () => {
+    let body = {}
+    await controller['GET /']({ body });
+    expect(body.name).toBe('Example');
+  })
+}
+```
+### Integration Test
+Integration tests are notably slower than their counterparts.   By default, each requires a server restart and will delete the contents of your test database using Jest's afterAll command.  to help prevent `EADDRESS` issues when running a number of integration tests simultaneously, each test is assigned its own port.
+
+```javascript
+const testHarness = require('../app.test.harness.js');
+const coKoa = testHarness.init({ port: 3004, type: 'integration' });
+describe('Integration Test Suite For Example', async () => {
+  const $ = coKoa.$
+  const Example = $('Example');
+
   test('An integration test', async () => {
     try {
-      // EXAMPLE:
-      // const Example = coKoa.$('Example');
-      // const eg = await new Example({ name: 'I am an example' }).save();
-      // expect(typeof eg).toBe('object');
-      expect('test').toBe('test');
+      const result = await new Example({ }).save();
+      expect(typeof result).toBe('object');
     } catch (e) {
       console.error(e.message)
     }
   });
 
-  afterAll((done) => {
-    coKoa.app.close() // Make sure to close the Koa app listener
-    testHarness.destroy(done) // optionally empty the test database
+  afterAll(async (done) => {
+    await coKoa.app.close() // close the Koa app listener
+    await testHarness.destroy(done) // (optional) empty test database
   });
 });
 ```
+Caution is advised when running Integration Tests; large batches of tests could have a significant performance overhead.  If writing a sizable number of integration tests, consider writing a test bootstrap for your project and importing multiple different tests into one file so that the database is not being created and destroyed unneccessarily.  Integration tests may also require additional configuration if working with a Continuous Integration suite.
 
-the app.test.harness is visible in your base directory.
+---
+
+the app.test.harness is visible in your project's base directory.  Should you wish to roll your own model plugin with Co.Koa, you will need to explicitly initialise it within the following block of the test.harness file:
+
+```javascript
+if (type === 'integration') {
+  const harness = mongoosePlugin({
+    connectionString: 'mongodb://localhost:27017/co-koa-test'
+  });
+  harness.init(coKoa.app, coKoa.$);
+}
+```
