@@ -74,7 +74,7 @@ In the above instance, if `:id` was before `foo`, your controller would treat a 
 
 ### Multiple Request Verbs
 
-As of co-koa-core@^1.18.0, your actions can be assigned multiple request verbs via a comma-separated list.  For Example:
+As of co-koa-core@^1.15.0, your actions can be assigned multiple request verbs via a comma-separated list.  For Example:
 
 ```javascript
 async 'DELETE,PUT /Author/:id' (ctx) {
