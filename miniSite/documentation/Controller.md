@@ -72,6 +72,25 @@ module.exports = function ($) {
 
 In the above instance, if `:id` was before `foo`, your controller would treat a "/foo" request as if it was an `:id` parameter.
 
+### Multiple Request Verbs
+
+As of co-koa-core@^1.15.0, your actions can be assigned multiple request verbs via a comma-separated list.  For Example:
+
+```javascript
+async 'DELETE,PUT /Author/:id' (ctx) {
+  try {
+    if (ctx.request.body.hasOwnProperty('childId')) {
+      ctx.body =
+        await someService
+          .someMethod(
+            ctx.request.method === 'DELETE' ? '$pull' : '$push'])
+    } else throw new Error('childId was not found.');
+  } catch (e) {
+    ctx.body = { success: false, error: e.message };
+  }
+}
+```
+
 ### IndexController.js
 
 Each project is supplied with an `"IndexController.js"`.  Routes within this file will point directly to the virtual root of your web application.  For example, in a development instance at `localhost:3000`, `GET /` will route to the address `localhost:3000/`.  It is **strongly** advised that, at most, you supply only the following actions to this controller:
