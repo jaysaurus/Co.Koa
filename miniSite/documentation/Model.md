@@ -201,10 +201,67 @@ module.exports = function BookService ($) {
   };
 };
 ```
+---
+
+### Nested schemas
+
+as of `co-koa-mongoose-plugin`@^1.8.0 you can now nest schemas within other schemas by supplying the model you wish to nest with a `_nest` property assigned a number:
+
+```javascript
+module.exports = function Foo ($) {
+  return {
+    _modelType: 'mongoose',
+    _nest: 0,
+    schema: { ...
+  ...
+```
+To make a schema available for nesting within other schemas, it must be initialised by mongoose **prior** to any schemas you'd like to assign it to.  To represent the order in which nested schemas are defined, therefore, the _nest property number explicitly allows you to set the order in which specific schemas are initialised.
+
+So if, for example, we wanted to nest schema `Foo` within schema `Bar`. And we wanted to nest `Bar` in schema `Baz`...  `Foo` would need a **lower** number than `Bar`, while `Baz` - at least in this example - wouldn't need a _nest property at all
+
+```JavaScript
+Foo: { _nest: 0 }
+Bar: { _nest: 10 }
+Baz: {} // if a model doesn't have a _nest property, it'll run AFTER all models with a _nest property
+```
+**note.** It is advised that you leave space between schema `_nest` numbers to help future-proof your build.
+
+To tell mongoose to assign a nested schema to a schema, simply defined a string with the nomenclature `"nested:<SchemaName>"`.  For example, using the Baz analogy above, Bar could be assigned as below:
+
+```javascript
+module.exports = function Foo ($) {
+  return {
+    _modelType: 'mongoose',
+    _nest: 0,
+    schema: {
+      bar: 'nested:Bar'
+      ...
+    }
+    ...
+  }
+}
+```
+
+`"nested:<SchemaName>"` is a place holder, so it can be used with arrays, sub-documents and so on.
+
+```javascript
+schema: {
+  foos: ['nested:Foo'],
+  subDoc: {
+    subSubDoc: {
+      bar: 'nested:Bar'
+    }
+  }
+  ...
+```
+
+Try to keep track of your nest order.  A schema of `_nest: 0` cannot contain a schema of `_nest: 10`!  Likewise, 2 schemas cannot contain the same `_nest` number (which could result in undesireable behaviour).
+
+---
 
 ### Additional DependencyManager callback
 
-as of `co-koa-mongoose-plugin`@1.6.0, the plugin supplies the  dependency manager with a callback enabling you to access Mongoose's `Types` object.  simply by calling `$.getMongooseTypes()` wherever the DependencyManager is exposed.
+as of `co-koa-mongoose-plugin`@^1.6.0, the plugin supplies the  dependency manager with a callback enabling you to access Mongoose's `Types` object.  simply by calling `$.getMongooseTypes()` wherever the DependencyManager is exposed.
 
 ### More Information
 
