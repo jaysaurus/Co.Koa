@@ -285,7 +285,7 @@ const dataset = {
 };
 ```
 
-The following code easily digests the above:
+As of `co-koa-core`@^1.16.0, The following code easily digests the above:
 
 ```javascript
 const keyObserver = [];
@@ -308,24 +308,24 @@ _tree(dataset)
     nodeObserver[it.key] = it.item;  
   });
 
-console.log(keyObserver[0]) // [ 'a', 'a3', 'a3_1', 'a3_1_1' ]
+console.log(keyObserver[0]) // [ 'a' ]
 console.log(keyObserver[1]) // [ 'a' ]
-console.log(keyObserver[2]) // [ 'a' ]
+console.log(keyObserver[2]) // [ 'a', 'a3', 'a3_1', 'a3_1_1' ]
 console.log(keyObserver[3]) // [ 'b', 'b1' ]
-console.log(keyObserver[4]) // [ 'b', 'b1', 'b1_3', 'b1_3_2', 'b_deep', 'deeper' ]
+console.log(keyObserver[4]) // [ 'b', 'b1' ]
 console.log(keyObserver[5]) // [ 'b', 'b1', 'b1_3' ]
-console.log(keyObserver[6]) // [ 'b', 'b1' ]
+console.log(keyObserver[6]) // [ 'b', 'b1', 'b1_3', 'b1_3_2', 'b_deep', 'deeper' ]
 console.log(keyObserver[7]) // [ 'b', 'b1' ]
-console.log(outObserver === tree) // true
+console.log(outObserver === dataset) // true
 console.log(nodeObserver) // would render an object as below:
 
-{ a3_1_1_1: 'a3_1_1_1',
-        a2: 'a2',
-        a1: 'a1',
-        b1_4: 'b1_4',
-        deepest: 'Deep!',
-        b1_3_1: 'b1_3_1',
-        b1_2: 'b1_2',
-        b1_1: 'b1_1',
-        c: 'c' }
+{ a1: 'a1',
+  a2: 'a2',
+  a3_1_1_1: 'a3_1_1_1',
+  b1_1: 'b1_1',
+  b1_2: 'b1_2',
+  b1_3_1: 'b1_3_1',
+  deepest: 'Deep!',
+  b1_4: 'b1_4',
+  c: 'c' }
 ```
