@@ -35,6 +35,8 @@
 [![Greenkeeper badge](https://badges.greenkeeper.io/jaysaurus/co-koa-mongoose-plugin.svg)](https://greenkeeper.io/)
 [![Test For Vulnerabilities](https://snyk.io/test/github/jaysaurus/co-koa-mongoose-plugin/badge.svg?targetFile=package.json)](https://snyk.io/test/github/jaysaurus/co-koa-mongoose-plugin?targetFile=package.json)
 
+[Release Notes Page](https://jaysaurus.github.io/Co.Koa/ReleaseNotes.html)
+
 ---
 
 An opinionated MVC that let's you choose what should/shouldn't be a Model; inspired by [Grails](https://grails.org/) MVC, but viewed through the lens of Koa.  Just like [Koa](http://koajs.com/), Co.Koa is about pragmatism; it encourages developers to interface with the underlying koa.app via [Plugins](http://cokoajs.com/miniSite/documentation/Plugins.html).  Mixin different databases and endpoints, it's up to you!  

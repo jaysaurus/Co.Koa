@@ -49,9 +49,9 @@ As the name would suggest, bootstrap is the place to inject code you would like 
 
 ---
 
-### config.json
+### config.json/config.js(co-koa-core^1.17.1)
 
-The config.json file houses a number of core configurations for your project:
+The config.json/config.js file houses a number of core configurations for your project.  as of co-koa-core^1.17.1, you can now opt to use a config.js in place of config.json.  This is designed to help with deployments to - for example - Heroku instances where a dynamic port is assigned on your behalf.
 
 ```javascript
 "appKeys": [],
