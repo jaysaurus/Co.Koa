@@ -58,7 +58,14 @@ The config.json/config.js file houses a number of core configurations for your p
 ```
 
 supply a default list of keys for koa's implementation of [key grip](https://github.com/crypto-utils/keygrip).
-**Note** as of co-koa-core@0.21.0, If you set app.keys in a Co.Koa [plugin](Plugins.md), this config property will be ignored.
+**Note** as of co-koa-core@^0.21.0, If you set app.keys in a Co.Koa [plugin](Plugins.md), this config property will be ignored.
+
+---
+
+```javascript
+"bodyParser": {},
+```
+Under the hood, co-koa-core uses [koa-bodyParser](https://github.com/koajs/bodyparser) to serve your actions a simply legible body.  as of co-koa-core@^1.18.0 you can now supply options to the bodyParser directly via the `bodyParser` option within config.js
 
 ---
 
