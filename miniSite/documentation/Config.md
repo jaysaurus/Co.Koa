@@ -65,7 +65,7 @@ supply a default list of keys for koa's implementation of [key grip](https://git
 ```javascript
 "bodyParser": {},
 ```
-Under the hood, co-koa-core uses [koa-bodyParser](https://github.com/koajs/bodyparser) to serve your actions a simply legible body.  as of co-koa-core@^1.18.0 you can now supply options to the bodyParser directly via the `bodyParser` option within config.js
+Under the hood, co-koa-core uses [koa-bodyParser](https://github.com/koajs/bodyparser) to serve your actions a simply legible body.  as of co-koa-core@^1.18.1 you can now supply options to the bodyParser directly via the `bodyParser` option within config.js
 
 ---
 
